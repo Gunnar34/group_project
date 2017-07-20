@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+"author": "Peter Wildberger, Noah Rolf",
+"license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3"
