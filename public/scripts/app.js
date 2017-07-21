@@ -5,8 +5,11 @@ var app = angular.module('myApp', ['ui.materialize', 'ngRoute']);
 app.config(function ($routeProvider){
   $routeProvider.when('/', {
     templateUrl: 'view/partials/home.html'
-  }).when('/', {
+  }).when('/parent', {
     templateUrl: 'view/partials/parent.html',
+    controller: 'ParentController as pc'
+  }).when('/emergencyContact', {
+    templateUrl: 'view/partials/parentQuestions/emergencyContact.html',
     controller: 'ParentController as pc'
   });
 });//end config
