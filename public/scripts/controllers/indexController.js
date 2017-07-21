@@ -18,7 +18,20 @@ function IndexController(httpService) {
     hello('google').login({scope:'email'}).then(function(auth){
       console.log(auth);
       hello(auth.network).api('/me').then(function (res) {
-        console.log(res);
+        let email = res.email;
+        let firstName = res.first_name;
+        let lastName = res.last_name;
+        let itemToSend = {
+          email: email,
+          first: firstName,
+          last: lastName
+        };
+        httpService.postItem(itemToSend).then(function(err, res){
+          localStorage.setItem('loggedIn', true);
+          localStorage.setItem('firstName', firstName);
+          localStorage.setItem('lastName', lastName);
+          localStorage.setItem('email', email);
+        });
       });
   });
 };
