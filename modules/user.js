@@ -1,0 +1,11 @@
+var mongoose = require( 'mongoose' );
+
+mongoose.connect( 'localhost:/27017/abausers' );
+var userSchema = new mongoose.Schema({
+  email: String,
+  
+});
+
+var userModel = mongoose.model( 'userModel', userSchema );
+
+module.exports = userModel;
