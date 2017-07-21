@@ -1,14 +1,17 @@
 class Student {
 
-  constructor(classID, grade) {
+  constructor(parentID, firstName, lastName, grade) {
+    this.studentId = parentID + '$' + new Date();
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.grade = grade;
-    this.studentId = classID + '$' + new Date();
     this.emergencyInfo = [];
   } // end constructor
 }
-function eContact(name, phone) {
+function eContact(name, phone, relation ) {
   return {
   name,
-  phone
+  phone,
+  relation
   };
 }
