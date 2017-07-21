@@ -11,6 +11,10 @@ app.config(function ($routeProvider){
     controller: 'IndexController'
   }).when('/parent', {
     templateUrl: 'view/partials/parent.html',
-    controller: 'ParentController'
+    controller: 'ParentController as pc'
+  }).when('/emergencyContact', {
+    templateUrl: 'view/partials/parentQuestions/emergencyContact.html',
+    controller: 'ParentController as pc'
+
   });
 });//end config
