@@ -44,7 +44,7 @@ app.controller('ParentController', function(ParentService, $location){
     vm.useSystem = function(boolean){
       vm.display.usePin = boolean;
       if (boolean) {
-        vm.go('/pinPad')
+        vm.go('/pinPad');
       }else {
         console.log('banished to the shadow realm');
       }
