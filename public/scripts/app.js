@@ -10,11 +10,27 @@ app.config(function ($routeProvider){
     templateUrl: 'view/partials/instructor.html',
     controller: 'IndexController'
   }).when('/parent', {
-    templateUrl: 'view/partials/parent.html',
+    templateUrl: 'view/parent.html',
     controller: 'ParentController as pc'
   }).when('/emergencyContact', {
-    templateUrl: 'view/partials/parentQuestions/emergencyContact.html',
-    controller: 'ParentController as pc'
-
+    templateUrl: 'view/parentQuestions/emergencyContact.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/selfCheckOut', {
+    templateUrl: 'view/parentQuestions/selfCheckOut.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/reciveText', {
+    templateUrl: 'view/parentQuestions/reciveTexts.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/pinSystem', {
+    templateUrl: 'view/parentQuestions/pinSystem.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/pinPad', {
+    templateUrl: 'view/parentQuestions/pinPad.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
   });
 });//end config
