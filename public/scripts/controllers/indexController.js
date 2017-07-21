@@ -12,7 +12,7 @@ function IndexController(httpService) {
 
   vm.init = function(){
     getAccess();
-  }
+  };
 
   vm.login = function(){
     hello('google').login({scope:'email'}).then(function(auth){
@@ -29,7 +29,7 @@ function IndexController(httpService) {
         google: res.data
       });
     });
-  }; //end get of appID
+  } //end get of appID
 
 
 } // end IndexController

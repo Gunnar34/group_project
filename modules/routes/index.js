@@ -19,7 +19,7 @@ router.get('/', function(req, res){
 router.post('/', function(req, res) {
   console.log('in base url posst hit', req.body);
   user.findOne({
-    email: req.body.username
+    email: req.body.email
   }, function(err, email) {
     if (err) {
       console.log('find user error: ', err);
