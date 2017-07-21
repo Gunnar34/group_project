@@ -23,7 +23,7 @@ app.service('httpService', function($http) {
   };
   sv.putItem = function(path, id, its) {
     console.log('its: ', its);
-      return $http.put(path + id, its).then(function(response){
+      return $http.put(path + '/' + id, its).then(function(response){
         console.log('service updated', response);
         return response;
       });
