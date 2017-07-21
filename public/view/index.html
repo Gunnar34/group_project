@@ -13,6 +13,7 @@
   <script src="vendors/angular-route.min.js" charset="utf-8"></script>
   <script src="vendors/materialize.min.js" charset="utf-8"></script>
   <script src="vendors/angular-materialize.min.js" charset="utf-8"></script>
+  <script src="vendors/hello.all.min.js"></script>
   <!-- Ng-App -->
   <script src="/scripts/app.js" charset="utf-8"></script>
   <script src="/scripts/services/http.service.js" charset="utf-8"></script>
@@ -24,6 +25,32 @@
 
 <body ng-app="myApp">
   <main ng-controller="IndexController as ic">
+
+    <a href="#" class="button-collapse" data-activates="nav" data-sidenav="left" data-closeonclick="true">
+    <p><i class="large material-icons">menu</i></p></a>
+
+    <!-- start sideNav -->
+    <ul id="nav" class="side-nav">
+        <li class="bold"><a href="/" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
+
+        <li class="no-padding white">
+            <ul class="collapsible collapsible-accordion white">
+                <li class="bold"><a class="collapsible-header waves-effect waves active"><span class="menuItem">Class Options</span></a>
+                    <div class="collapsible-body">
+                        <ul class="">
+                            <li class=""><a href="#!"><span class="menuItem">Logistics</span></a></li>
+                            <li class=""><a href="#!"><span class="menuItem">Roster</span></a></li>
+                            <li class="n"><a href="#!"><span class="menuItem">Emergency Contact</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <li class="bold"><a href="#!" ng-click="ic.logout()" class="waves-effect waves-grey"><span class="menuItem">Logout</span></a></li>
+        <li><img class="brand-logo" src="images/abamath.png" alt=""></li>
+    </ul>
+    <!-- end sideNav -->
 
     <ng-view></ng-view>
   </main>
