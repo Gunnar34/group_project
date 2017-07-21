@@ -4,7 +4,7 @@ app.service('httpService', function($http) {
   // httpServices
   sv.getItem = function(path) {
     return $http.get(path).then(function(response) {
-      console.log('service getItem: ', response);
+      // console.log('service getItem: ', response);
       return response;
     });
   }; // end getItem
