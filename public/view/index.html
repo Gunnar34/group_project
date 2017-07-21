@@ -6,7 +6,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="vendors/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="styles/styles.scss">
+  <link rel="stylesheet" href="styles/styles.min.css">
   <!-- Vendors -->
   <script src="vendors/jquery-3.2.1.min.js" charset="utf-8"></script>
   <script src="vendors/angular.min.js" charset="utf-8"></script>
@@ -26,8 +26,16 @@
 <body ng-app="myApp">
   <main ng-controller="IndexController as ic">
 
-    <a href="#" class="button-collapse" data-activates="nav" data-sidenav="left" data-closeonclick="true">
-    <p><i class="large material-icons">menu</i></p></a>
+    <!-- start topNav -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="navButton button-collapse left" data-activates="nav" data-sidenav="left" data-closeonclick="true">
+          <i class="large material-icons">menu</i>
+        </a>
+        <img ng-src="../images/abamath.png" class="brand-logo right navLogo" />
+      </div>
+    </nav>
+    <!-- end topNav -->
 
     <!-- start sideNav -->
     <ul id="nav" class="side-nav">
