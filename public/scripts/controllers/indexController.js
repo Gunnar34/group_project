@@ -3,46 +3,50 @@
 // declare controller
 app.controller('IndexController', IndexController);
 
-function IndexController(httpService) {
+function IndexController(httpService, AuthFactory, $window) {
   const vm = this;
 
   vm.addInstructor = function() {
     console.log('in vm.addInstructor');
   };  // end addInstructor
 
-  vm.init = function(){
-    getAccess();
+
+  var authFactory = AuthFactory;
+  vm.displayLogout = false; // should we display the logout option on the DOM?
+  vm.message = {
+    text: false,
+    type: 'info',
   };
 
-  vm.login = function(){
-    hello('google').login({scope:'email'}).then(function(auth){
-      console.log(auth);
-      hello(auth.network).api('/me').then(function (res) {
-        let email = res.email;
-        let firstName = res.first_name;
-        let lastName = res.last_name;
-        let itemToSend = {
-          email: email,
-          first: firstName,
-          last: lastName
-        };
-        httpService.postItem(itemToSend).then(function(err, res){
-          localStorage.setItem('loggedIn', true);
-          localStorage.setItem('firstName', firstName);
-          localStorage.setItem('lastName', lastName);
-          localStorage.setItem('email', email);
-        });
-      });
+  authFactory.isLoggedIn()
+  .then(function (response) {
+    if (response.data.status) {
+      vm.displayLogout = true;
+      authFactory.setLoggedIn(true);
+      vm.username = response.data.name;
+    } else { // is not logged in on server
+      vm.displayLogout = false;
+      authFactory.setLoggedIn(false);
+    }
+  },
+
+  function () {
+    vm.message.text = 'Unable to properly authenticate user';
+    vm.message.type = 'error';
   });
-};
 
-  function getAccess() {
-    httpService.getItem('/access').then(function(res){
-      hello.init({
-        google: res.data
+  vm.logout = function () {
+    authFactory.logout()
+      .then(function (response) { // success
+        authFactory.setLoggedIn(false);
+        vm.username = '';
+        $window.location.href = '/'; // forces a page reload which will update our NavController
+      },
+
+      function (response) { // error
+        vm.message.text = 'Unable to logout';
+        vm.message.type = 'error';
       });
-    });
-  } //end get of appID
-
+  };
 
 } // end IndexController

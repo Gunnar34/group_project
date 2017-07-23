@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var path = require( 'path' );
 var bodyParser = require('body-parser');
-var user = require('../user');
 
 
 router.use(bodyParser.urlencoded({
@@ -10,8 +9,11 @@ router.use(bodyParser.urlencoded({
 }));
 router.use(bodyParser.json());
 
-router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../public/views/index.html'));
+
+router.get('/', function(req, res){
+  console.log('Base URL hit');
+  res.sendFile(path.join(__dirname, '../public/view/index.html'));
+  // res.sendFile( path.resolve( 'public/view/index.html' ) );
 });
 
 module.exports = router;

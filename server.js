@@ -1,15 +1,35 @@
-var express = require( 'express' );
+var express = require('express');
 var app = express();
-var path = require( 'path' );
-var bodyParser = require( 'body-parser' );
-var port = process.env.PORT || 4567;
-var index = require('./modules/routes/index');
-var access = require('./modules/routes/access');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('./auth/passport');
+var configs = require('./config/auth');
+var index = require('./routes/index');
+var auth = require('./routes/auth');
+var isLoggedIn = require('./utils/auth');
+var private = require('./routes/private/index');
+var database = require('./utils/database');
+var port = process.env.PORT || 3000;
 
+//uses
+app.use('/public', express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+database();
+app.use(session({
+  secret: configs.sessionVars.secret,
+  key: 'user',
+  resave: 'true',
+  saveUninitialized: false,
+  cookie: { maxage: 60000, secure: false },
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+//use routes
+app.use('/auth', auth);
+app.use('/private', isLoggedIn, private);
 app.use('/', index);
-app.use('/access', access);
-app.use( express.static( 'public' ) );
-app.use( bodyParser.urlencoded( { extended: true } ) );
+
 
 app.listen( port, function(){
   console.log('server 4567');
