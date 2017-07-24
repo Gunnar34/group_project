@@ -3,6 +3,7 @@ var router  = express.Router();
 var calendar = require('./calendar');
 var funPage = require('./funPage');
 var classes = require('./classes');
+var students = require('./students');
 
 
 
@@ -11,6 +12,7 @@ var classes = require('./classes');
 router.use('/fun', funPage);
 router.use('/calendar', calendar);
 router.use('/classes', classes);
+router.use('/students', students);
 
 
 /**

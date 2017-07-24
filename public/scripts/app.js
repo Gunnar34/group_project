@@ -11,6 +11,10 @@ app.config(function ($routeProvider){
       templateUrl: 'public/view/partials/classesDashboard.html',
       controller: 'ClassesController',
       controllerAs: 'cc'
+    }).when('/students', {
+      templateUrl: 'public/view/partials/studentDashboard.html',
+      controller: 'StudentsController',
+      controllerAs: 'sc'
     });
   // .when('/instructor', {
   //   templateUrl: 'view/partials/instructor.html',
