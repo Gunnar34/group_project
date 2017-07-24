@@ -1,0 +1,12 @@
+<div class="">
+  <h3>Emergency Contact Info</h3>
+  <span>Please review this infomation and make any changes.</span>
+  <p>Is this information correct?</p>
+  <button ng-click='pc.go("/selfCheckout")' type="button" name="button">Yes</button>
+  <button ng-click='pc.emergencyAlert()' type="button" name="button">No</button>
+</div>
+
+<!-- emergencyContact page will use x-editable,
+ doesn't need a function as I currently understand it.
+Use a sweetAlert to stop people from moving on if they hit No,
+ and instead prompt them to correct the info directly. -->

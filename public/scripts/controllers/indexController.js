@@ -3,7 +3,7 @@
 // declare controller
 app.controller('IndexController', IndexController);
 
-function IndexController(httpService, AuthFactory, $window) {
+function IndexController(httpService, AuthFactory, $window, $location) {
   const vm = this;
 
   vm.addInstructor = function() {
@@ -48,5 +48,10 @@ function IndexController(httpService, AuthFactory, $window) {
         vm.message.type = 'error';
       });
   };
+
+  // ben test section, remove if merging
+  vm.go = function(path){
+    $location.url(path);
+  };//end go function
 
 } // end IndexController
