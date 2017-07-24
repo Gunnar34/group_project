@@ -9,7 +9,8 @@ app.config(function ($routeProvider){
       controllerAs: 'auth',
     }).when('/classes', {
       templateUrl: 'public/view/partials/classesDashboard.html',
-      controller: 'ClassesController'
+      controller: 'ClassesController',
+      controllerAs: 'cc'
     });
   // .when('/instructor', {
   //   templateUrl: 'view/partials/instructor.html',
