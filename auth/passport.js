@@ -55,17 +55,21 @@ passport.use('google', new GoogleStrategy({
       }
 
       // user does not exist in our database, let's create one!
-      UserService.createGoogleUser(profile.id, token, profile.displayName,
-        profile.emails[0].value, /* we take first email address */
-        function (err, user) {
-          if (err) {
-            return done(err);
-          }
+      UserService.findUserByEmail(profile.emails[0].value, function (err, user){
+        if (user === null || err) {
+          return done(err);
+        }
+        UserService.createGoogleUser(profile.id, token, profile.displayName,
+          profile.emails[0].value, /* we take first email address */
+          function (err, user) {
+            if (err) {
+              return done(err);
+            }
 
-          return done(null, user);
-        });
+            return done(null, user);
+          });
+      });
     });
-
-}));
+    }));
 
 module.exports = passport;
