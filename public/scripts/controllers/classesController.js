@@ -1,5 +1,5 @@
 app.controller('ClassesController', function ($http) {
-  console.log('loaded ClC');
+  console.log('loaded CC');
   var vm = this;
   vm.data = '';
 
@@ -12,4 +12,10 @@ app.controller('ClassesController', function ($http) {
       }
       console.log(vm.data);
     });
+
+    vm.populateClass = function(){
+      console.log('in populateClasses');
+    };//end populateClasss
+
+
 });
