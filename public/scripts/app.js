@@ -2,42 +2,42 @@
 var app = angular.module('myApp', ['ui.materialize', 'ngRoute']);
 
 //routes
-app.config(function ($routeProvider){
+app.config(function($routeProvider) {
   $routeProvider.when('/', {
-      templateUrl: 'public/view/partials/login.html',
-      controller: 'AuthController',
-      controllerAs: 'auth',
-    });
-  // .when('/instructor', {
-  //   templateUrl: 'view/partials/instructor.html',
-  //   controller: 'IndexController'
-  // }).when('/parent', {
-  //   templateUrl: 'view/parent.html',
-  //   controller: 'ParentController as pc'
-  // }).when('/emergencyContact', {
-  //   templateUrl: 'view/parentQuestions/emergencyContact.html',
-  //   controller: 'ParentController',
-  //   controllerAs: 'pc'
-  // }).when('/selfCheckOut', {
-  //   templateUrl: 'view/parentQuestions/selfCheckOut.html',
-  //   controller: 'ParentController',
-  //   controllerAs: 'pc'
-  // }).when('/reciveText', {
-  //   templateUrl: 'view/parentQuestions/reciveTexts.html',
-  //   controller: 'ParentController',
-  //   controllerAs: 'pc'
-  // }).when('/pinSystem', {
-  //   templateUrl: 'view/parentQuestions/pinSystem.html',
-  //   controller: 'ParentController',
-  //   controllerAs: 'pc'
-  // }).when('/pinPad', {
-  //   templateUrl: 'view/parentQuestions/pinPad.html',
-  //   controller: 'ParentController',
-  //   controllerAs: 'pc'
-  // });
-  // // .when('/', {
-  // //   templateUrl: '/publicview/partials/home.html',
-  // //   controller: 'IndexController'
-  // // })
+    templateUrl: 'public/view/partials/login.html',
+    controller: 'AuthController',
+    controllerAs: 'auth',
+  }).when('/instructor', {
+    templateUrl: 'view/partials/instructor.html',
+    controller: 'IndexController'
+  }).when('/parent', {
+    templateUrl: 'public/view/parent.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/emergencyContact', {
+    templateUrl: 'public/view/parentQuestions/1-emergencyContact.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/selfCheckout', {
+    templateUrl: 'public/view/parentQuestions/2-selfCheckOut.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/receiveTexts', {
+    templateUrl: 'public/view/parentQuestions/3-receiveTexts.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/pinSystem', {
+    templateUrl: 'public/view/parentQuestions/4a-pinSystem.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/pinPad', {
+    templateUrl: 'public/view/parentQuestions/4b-pinPad.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  }).when('/complete', {
+    templateUrl: 'public/view/parentQuestions/5-complete.html',
+    controller: 'ParentController',
+    controllerAs: 'pc'
+  });
 
-});//end config
+}); //end config
