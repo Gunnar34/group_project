@@ -16,8 +16,10 @@ app.controller('ParentController', function(ParentService, $location){
     studentid: 30,
     firstName: 'Peta',
     lastName: 'Malark',
-    grade: '4th'
+    grade: '4th',
+    emergency: 'No one cares'
   };//this can be deleted just dummy data
+
 
     vm.studentArray = [];
     vm.studentArray.push(vm.dummyKid);//this can be deleted just dummy data
@@ -28,6 +30,8 @@ app.controller('ParentController', function(ParentService, $location){
       ParentService.currentStudent = vm.studentArray[index];
        console.log(vm.display);
     };//end checkStudent
+
+
 
     vm.checkingOut = function(boolean){
       vm.display.selfCheck = boolean;
@@ -44,10 +48,10 @@ app.controller('ParentController', function(ParentService, $location){
     vm.useSystem = function(boolean){
       vm.display.usePin = boolean;
       if (boolean) {
-        vm.go('/pinPad');
+        vm.go('/pinPad')
       }else {
         console.log('banished to the shadow realm');
-      }
+      }//end if/else for boolean
 
     };//end useSystem
 
