@@ -47,6 +47,18 @@ var UserService = {
       return callback(null, user);
     });
   },
+
+  findUserByEmail: function (email, callback){
+    console.log(email);
+    User.findOne({googleEmail: email}, function (err, user){
+      if (user === null || err) {
+        console.log(user, err);
+        return callback(user, err);
+      }
+      console.log('callback', user);
+      return callback(null, user);
+    });
+  }
 };
 
 module.exports = UserService;
