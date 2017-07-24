@@ -6,7 +6,7 @@ var user = require('../user');
 
 
 router.use(bodyParser.urlencoded({
-  extend: true
+  extended: true
 }));
 router.use(bodyParser.json());
 
