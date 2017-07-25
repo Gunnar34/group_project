@@ -58,6 +58,20 @@ var UserService = {
       console.log('callback', user);
       return callback(null, user);
     });
+  },
+
+  createUser: function (email, callback){
+    var user = new User();
+
+    user.googleEmail = email;
+
+    user.save(function (err) {
+      if (err) {
+        return callback(err, null);
+      }
+
+      return callback(null, user);
+    });
   }
 };
 
