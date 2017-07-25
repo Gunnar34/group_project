@@ -2,7 +2,7 @@
   <h4>Welcome {{cc.name}}! This is the list of current classes!</h4>
   <div class="row">
     <div class="col s6">
-      <button onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+      <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
     </div>
     <div class="input-field col s6">
       <input ng-if='cc.admin' ng-model=cc.email type="text" name="" value="" placeholder="noah">
