@@ -5,13 +5,12 @@ app.controller('IndexController', IndexController);
 
 function IndexController(httpService, AuthFactory, $window, $location) {
   const vm = this;
+  const authFactory = AuthFactory;
 
   vm.addInstructor = function() {
     console.log('in vm.addInstructor');
   };  // end addInstructor
 
-
-  var authFactory = AuthFactory;
   vm.displayLogout = false; // should we display the logout option on the DOM?
   vm.message = {
     text: false,

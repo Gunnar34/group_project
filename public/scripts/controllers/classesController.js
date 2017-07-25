@@ -23,7 +23,7 @@ app.controller('ClassesController', function (httpService, $location) {
         endTime: vm.endTime,
         instructors: vm.instructors,
         students: []
-      }
+      };
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend).then(function(res){
 

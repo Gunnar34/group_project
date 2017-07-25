@@ -7,8 +7,16 @@ app.config(function($routeProvider) {
     templateUrl: 'public/view/partials/login.html',
     controller: 'AuthController',
     controllerAs: 'auth',
+  }).when('/classes', {
+    templateUrl: 'public/view/partials/classesDashboard.html',
+    controller: 'ClassesController',
+    controllerAs: 'cc'
+  }).when('/students', {
+    templateUrl: 'public/view/partials/studentDashboard.html',
+    controller: 'studentsController',
+    controllerAs: 'sc'
   }).when('/instructor', {
-    templateUrl: 'view/partials/instructor.html',
+    templateUrl: 'public/view/partials/instructor.html',
     controller: 'IndexController'
   }).when('/parent', {
     templateUrl: 'public/view/parent.html',
