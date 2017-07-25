@@ -41,4 +41,38 @@ router.get('/popClasses', function(req, res){
   });//end classes find
 });//end popClassess
 
+router.delete('/:id', function(req, res){
+  console.log('delete hit', req.params.id);
+  classesModel.remove({_id: req.params.id}).then(function(err){
+    if (!err){
+      res.send('nudes');
+    }else{
+      res.send('error');
+    }//end else
+  });//end then
+});//end delete
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//spacer
