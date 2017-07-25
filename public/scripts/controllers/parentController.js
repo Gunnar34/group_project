@@ -7,8 +7,9 @@ app.controller('ParentController', function(ParentService, $location) {
     studentid: 30,
     firstName: 'Peta',
     lastName: 'Malark',
-    grade: '4th'
-  }; //this can be deleted just dummy data
+    grade: '4th',
+    emergency: 'No one cares'
+  };//this can be deleted just dummy data
 
   vm.dummyKid2 = {
     studentid: 30,
