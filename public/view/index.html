@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="/public/vendors/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/public/vendors/angular-keypad.min.css">
-  <link rel="stylesheet" href="/public/styles/styles.min.css">
+  <link rel="stylesheet" href="/public/styles/main.min.css">
+
   <!-- Vendors -->
   <script src="/public/vendors/jquery-3.2.1.min.js" charset="utf-8"></script>
   <script src="/public/vendors/angular.min.js" charset="utf-8"></script>
@@ -37,18 +38,25 @@
   <main ng-controller="IndexController as ic">
 
     <!-- start topNav -->
-    <nav ng-if="ic.displayLogout">
-      <div class="nav-wrapper red lighten-2">
-        <a href="#" class="navButton button-collapse left" data-activates="nav" data-sidenav="left" data-closeonclick="true">
-          <i class="large material-icons">menu</i>
-        </a>
-        <img ng-src="public/assets/images/abamath.png" class="brand-logo right navLogo" />
+    <nav>
+      <div class="nav-wrapper row">
+        <div class=" col s4">
+          <a ng-if="ic.displayLogout" href="#" class="navButton button-collapse left" data-activates="nav" data-sidenav="left" data-closeonclick="true">
+            <i class="menu material-icons">menu</i>
+          </a>
+        </div>
+        <div class="col s4">
+          <h1 class="center-align">Abamath</h1>
+        </div>
+        <div class="col s4 ">
+          <img ng-src="public/assets/images/abamath.png" class="brand-logo right navLogo" />
+        </div>
       </div>
     </nav>
     <!-- end topNav -->
 
       <!-- start sideNav -->
-      <ul id="nav" class="side-nav red lighten-2">
+      <ul id="nav" class="side-nav">
         <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
 
         <li class="">
@@ -56,9 +64,9 @@
             <li class="bold"><a class="padding collapsible-header waves-effect waves active"><span class="menuItem">Class Options</span></a>
               <div class="collapsible-body">
                 <ul class="">
-                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Logistics</span></a></li>
-                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Roster</span></a></li>
-                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Emergency Contact</span></a></li>
+                  <li class="navCollapse"><a href="#!"><span class="collapsible-item menuItem">Logistics</span></a></li>
+                  <li class="navCollapse"><a href="#!"><span class="collapsible-item menuItem">Roster</span></a></li>
+                  <li class="navCollapse"><a href="#!"><span class="collapsible-item menuItem">Emergency Contact</span></a></li>
                 </ul>
               </div>
             </li>
