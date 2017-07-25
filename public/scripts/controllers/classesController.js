@@ -2,6 +2,13 @@ app.controller('ClassesController', function (httpService, $location) {
   console.log('loaded CC');
   var vm = this;
 
+  window.onclick = function(event) {
+      id = event.target.getAttribute("id");
+      if (event.target.getAttribute("class") == 'modal') {
+        document.getElementById(id).style.display = 'none';
+      }
+    };
+    
     vm.populateClass = function(){
       console.log('in populateClasses');
     };//end populateClasss
