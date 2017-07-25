@@ -8,7 +8,7 @@ app.controller('ClassesController', function (httpService, $location) {
         document.getElementById(id).style.display = 'none';
       }
     };
-    
+
     vm.populateClass = function(){
       console.log('in populateClasses');
     };//end populateClasss
@@ -29,7 +29,7 @@ app.controller('ClassesController', function (httpService, $location) {
       let itemToSend = {
         email: vm.email
       };
-      httpService.postItem('private/classes', itemToSend).then(function(res){
+      httpService.postItem('private/instructor', itemToSend).then(function(res){
         vm.email = undefined;
       });
     };
