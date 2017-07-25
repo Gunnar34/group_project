@@ -1,0 +1,10 @@
+/*Variable styles*/
+$buttonColor: #2196f3;
+$navColor: #4fc3f7;
+$sideNavColor: #4fc3f7;
+$navCollapse: #2196f3;
+
+/*Import styles*/
+@import 'navigation';
+@import 'login';
+@import 'generalStyles';
