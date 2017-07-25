@@ -2,7 +2,7 @@ app.controller('ClassesController', function (httpService, $location) {
   console.log('loaded CC');
   var vm = this;
 
-  vm.classesArray = [];
+  vm.classesArray = httpService.classes;
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -25,7 +25,10 @@ app.controller('ClassesController', function (httpService, $location) {
         students: []
       }
       console.log(objectToSend);
-      httpService.postItem('private/classes/classes', objectToSend)
+      httpService.postItem('private/classes/classes', objectToSend).then(function(){
+
+      });//end then function
+        vm.populateClasses();
         document.getElementById('addClass').style.display = 'none';
     };//end addClass
 
@@ -33,7 +36,10 @@ app.controller('ClassesController', function (httpService, $location) {
       console.log('in populateClasses');
       httpService.getItem('private/classes/popClasses').then(function(res){
         console.log(res, res.data);
-        vm.classesArray = res.data[0];
+        httpService.classes = res.data[0];
+        vm.classesArray = httpService.classes;
+        console.log('classes array', vm.classesArray);
+        console.log('httparray', httpService.classes);
       });//end http get popClasses
     };//end populateClasses
 
