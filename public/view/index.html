@@ -17,6 +17,7 @@
 
   <!-- Ng-App -->
   <script src="/public/scripts/app.js" charset="utf-8"></script>
+  <script src="/public/scripts/defineClasses.js" charset="utf-8"></script>
   <script src="/public/scripts/services/http.service.js" charset="utf-8"></script>
   <script src="/public/scripts/services/parentService.js" charset="utf-8"></script>
   <script src="/public/scripts/services/authFactory.js" charset="utf-8"></script>
@@ -24,6 +25,8 @@
   <script src="/public/scripts/controllers/indexController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/authController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/parentController.js" charset="utf-8"></script>
+  <script src="/public/scripts/controllers/classesController.js" charset="utf-8"></script>
+  <script src="/public/scripts/controllers/studentsController.js" charset="utf-8"></script>
   <title>Abamath</title>
 </head>
 
@@ -32,7 +35,7 @@
 
     <!-- start topNav -->
     <nav ng-if="ic.displayLogout">
-      <div class="nav-wrapper">
+      <div class="nav-wrapper red lighten-2">
         <a href="#" class="navButton button-collapse left" data-activates="nav" data-sidenav="left" data-closeonclick="true">
           <i class="large material-icons">menu</i>
         </a>
@@ -42,24 +45,24 @@
     <!-- end topNav -->
 
       <!-- start sideNav -->
-      <ul id="nav" class="side-nav">
-        <li class="bold"><a href="/" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
+      <ul id="nav" class="side-nav red lighten-2">
+        <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
 
-        <li class="no-padding white">
-          <ul class="collapsible collapsible-accordion white">
-            <li class="bold"><a class="collapsible-header waves-effect waves active"><span class="menuItem">Class Options</span></a>
+        <li class="">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="padding collapsible-header waves-effect waves active"><span class="menuItem">Class Options</span></a>
               <div class="collapsible-body">
                 <ul class="">
-                  <li class=""><a href="#!"><span class="menuItem">Logistics</span></a></li>
-                  <li class=""><a href="#!"><span class="menuItem">Roster</span></a></li>
-                  <li class="n"><a href="#!"><span class="menuItem">Emergency Contact</span></a></li>
+                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Logistics</span></a></li>
+                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Roster</span></a></li>
+                  <li class="red accent-1"><a href="#!"><span class="collapsible-item menuItem">Emergency Contact</span></a></li>
                 </ul>
               </div>
             </li>
-            <li><img class="brand-logo" src="/public/assets/images/abamath.png" alt=""></li>
-            <li class="bold"><a href="#!" ng-click="ic.logout()" class="waves-effect waves-grey"><span class="menuItem">Logout</span></a></li>
           </ul>
         </li>
+        <li class="bold"><a href="#!" ng-click="ic.logout()" class="waves-effect waves-grey"><span class="menuItem">Logout</span></a></li>
+        <li><img class="sideNav-logo" src="/public/assets/images/abamath.png" alt=""></li>
       </ul>
 
     <!-- end sideNav -->
