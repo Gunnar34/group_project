@@ -2,6 +2,8 @@ app.controller('ClassesController', function (httpService, $location) {
   console.log('loaded CC');
   var vm = this;
 
+  vm.classesArray = [];
+
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
       if (event.target.getAttribute("class") == 'modal') {
@@ -24,7 +26,15 @@ app.controller('ClassesController', function (httpService, $location) {
       }
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend)
-    };//end populateClasss
+    };//end addClass
+
+    vm.populateClasses = function(){
+      console.log('in populateClasses');
+      httpService.getItem('private/classes/popClasses').then(function(res){
+        console.log(res, res.data);
+        vm.classesArray = res.data[0];
+      });//end http get popClasses
+    };//end populateClasses
 
     httpService.getItem('auth').then(function(res){
       if (res.data.name) {
