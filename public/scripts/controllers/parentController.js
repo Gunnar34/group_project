@@ -1,7 +1,16 @@
 app.controller('ParentController', function(ParentService, $location) {
 
   const vm = this;
-  // vm.currentStudent = ParentService.currentStudent;
+  vm.pinEntry = '';
+
+  // ParentService.currentStudent = ParentService.currentStudent;
+  // vm.currentStudent = {};
+  // vm.studentObjectToSend = {
+  //   // selfCheck: Boolean,
+  //   // receiveTexts: Boolean,
+  //   // usePin: Boolean,
+  //   // pin: 0
+  // };
 
   vm.dummyKid = {
     studentid: 30,
@@ -25,40 +34,46 @@ app.controller('ParentController', function(ParentService, $location) {
   // functions
   vm.go = function(path) {
     $location.url(path);
-  }; //end go function
+  }; // end go
 
   vm.checkInStudent = function(index) {
-    vm.currentStudent = vm.studentArray[index];
+    ParentService.currentStudent = vm.studentArray[index];
     // eventually, put in a call (to server?) to get currentStudent from class array
     // ParentService.currentStudent = vm.studentArray[index];
-    console.log(vm.currentStudent);
+    console.log(ParentService.currentStudent);
     vm.go('/emergencyContact');
-  }; //end checkInStudent
+  }; // end checkInStudent
 
   vm.emergencyAlert = function(boolean) {
     alert('You can edit the info directly on this page.');
-  }; //end emergencyAlert
+  }; // end emergencyAlert
 
   vm.selfCheckout = function(boolean) {
-    vm.currentStudent.selfCheck = boolean;
-    console.log(vm.currentStudent);
+    ParentService.currentStudent.selfCheck = boolean;
+    console.log(ParentService.currentStudent);
     vm.go('/receiveTexts');
-  }; //end selfCheckout
+  }; // end selfCheckout
 
-  vm.receiveText = function(boolean) {
-    vm.currentStudent.receiveText = boolean;
-    console.log(vm.currentStudent);
+  vm.receiveTexts = function(boolean) {
+    ParentService.currentStudent.receiveTexts = boolean;
+    console.log(ParentService.currentStudent);
     vm.go('/pinSystem');
-  }; //end receiveText
+  }; // end receiveTexts
 
   vm.usePin = function(boolean) {
-    vm.currentStudent.usePin = boolean;
+    ParentService.currentStudent.usePin = boolean;
+    console.log(ParentService.currentStudent);
     if (boolean) {
       vm.go('/pinPad');
     } else {
-      console.log('banished to the shadow realm');
       vm.go('/complete');
     }
-  }; //end usePin
+  }; // end usePin
 
-}); //end ParentController
+  vm.enterPin = function(thingie, pin) {
+    ParentService.currentStudent.pin = pin;
+    console.log(ParentService.currentStudent);
+    vm.go('/complete');
+  }; // end enterPin
+
+}); // end ParentController
