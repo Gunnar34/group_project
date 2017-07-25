@@ -1,21 +1,30 @@
-app.controller('ClassesController', function ($http) {
+app.controller('ClassesController', function (httpService, $location) {
   console.log('loaded CC');
   var vm = this;
-  vm.data = '';
-
-  $http.get('/private/classes')
-    .then(function (response) {
-      if (response.data.err) {
-        vm.data = 'Sorry, you are not logged in!';
-      } else {
-        vm.data = response.data.message;
-      }
-      console.log(vm.data);
-    });
 
     vm.populateClass = function(){
       console.log('in populateClasses');
     };//end populateClasss
 
+    httpService.getItem('auth').then(function(res){
+      if (res.data.name) {
+        vm.admin = res.data.name.admin;
+        vm.name = res.data.name.googleName;
+      }
+      else {
+        alert('Please Login before viewing this page');
+        $location.path('/');
+      }
+    });
+
+    vm.addUser = function(){
+      console.log(vm.email);
+      let itemToSend = {
+        email: vm.email
+      };
+      httpService.postItem('private/classes', itemToSend).then(function(res){
+        vm.email = undefined;
+      });
+    };
 
 });
