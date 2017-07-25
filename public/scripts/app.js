@@ -1,5 +1,5 @@
 //angular module
-var app = angular.module('myApp', ['ui.materialize', 'ngRoute']);
+var app = angular.module('myApp', ['ui.materialize', 'ngRoute', 'bc.AngularKeypad']);
 
 //routes
 app.config(function($routeProvider) {

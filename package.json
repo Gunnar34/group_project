@@ -10,6 +10,7 @@
   "author": "Peter Wildberger, Parker Walker, Noah Rolf, Ben Zeise",
   "license": "ISC",
   "dependencies": {
+    "angular-keypad": "^2.0.4",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-session": "^1.15.4",

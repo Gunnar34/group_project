@@ -1,3 +1,11 @@
 <div class="">
-  pretend this is a styled pin pad
+  <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
+  <span>Don't show this, but PIN is: <input type="text" data-ng-model="pc.pinEntry"></span>
+  <bc-keypad
+  bc-number-model="pc.pinEntry"
+  bc-max-length="4"
+  bc-left-button="backspace"
+  bc-right-button="submit"
+  bc-right-button-method="pc.enterPin($event, numbers)"  
+  ></bc-keypad>
 </div>
