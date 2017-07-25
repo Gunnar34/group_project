@@ -1,0 +1,89 @@
+/*table styles*/
+
+table {
+  color: #333;
+  width: 90%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+}
+
+td, th {
+  border: 1px solid transparent;
+  height: 30px;
+  transition: all 0.3s;
+}
+
+th {
+  // background: #59C3C3;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+td {
+  background: #FAFAFA;
+  text-align: center;
+}
+
+/* modal styles */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-container {
+  min-height: 10vh;
+  overflow: hidden;
+}
+
+.modal-content {
+  vertical-align: middle;
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 80vw;
+    overflow-y: scroll;
+     -webkit-overflow-scrolling: touch;
+     min-height: 10%;
+     max-height: 100vh;
+}
+
+.close {
+    position: absolute;
+    right: 5vh;
+    top: 5vh;
+    color: #000;
+    font-size: 7rem;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    animation: animatezoom 1s
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* button styling */
+.btn {
+  background-color: $buttonColor !important;
+}

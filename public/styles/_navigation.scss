@@ -1,0 +1,44 @@
+/*Navigation styles*/
+
+.side-nav {
+  background-color: $navColor !important;
+}
+
+.navButton {
+  display: inline-block !important;
+}
+
+.navLogo {
+  height: inherit;
+}
+
+.collapsible-header {
+  padding: 0 32px !important;
+}
+
+.collapsible-item{
+  padding: 0 40px !important;
+}
+
+.navCollapse {
+  background-color: $navCollapse;
+}
+
+.sideNav-logo {
+  height: auto;
+  width: 100%;
+}
+
+.menu {
+  font-size: 6rem !important;
+  margin-top: 1rem;
+}
+
+nav {
+  height: 10vh;
+  background-color: $sideNavColor;
+}
+
+.title {
+  display: inline-block;
+}
