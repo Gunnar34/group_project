@@ -26,6 +26,7 @@ app.controller('ClassesController', function (httpService, $location) {
       }
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend)
+        document.getElementById('addClass').style.display = 'none';
     };//end addClass
 
     vm.populateClasses = function(){
