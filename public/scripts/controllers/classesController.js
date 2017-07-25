@@ -13,7 +13,7 @@ app.controller('ClassesController', function (httpService, $location) {
 
     vm.addClass = function(){
 
-      let objectToSend ={
+      let objectToSend = {
         grades: vm.grades,
         location: vm.location,
         subject: vm.subject,
@@ -25,7 +25,7 @@ app.controller('ClassesController', function (httpService, $location) {
         students: []
       }
       console.log(objectToSend);
-      httpService.postItem('private/classes/classes', objectToSend).then(function(){
+      httpService.postItem('private/classes/classes', objectToSend).then(function(res){
 
       });//end then function
         vm.populateClasses();
@@ -42,6 +42,13 @@ app.controller('ClassesController', function (httpService, $location) {
         console.log('httparray', httpService.classes);
       });//end http get popClasses
     };//end populateClasses
+
+    vm.removeClass = function(id){
+      httpService.deleteItem('/private/classes', id).then(function(res){
+        console.log('deleted', res);
+        vm.populateClasses();
+      });//end deleteItem
+    };//end remove class
 
     httpService.getItem('auth').then(function(res){
       if (res.data.name) {
