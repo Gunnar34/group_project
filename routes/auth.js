@@ -13,13 +13,6 @@ var passport = require('../auth/passport');
  * Ask user to authenticate with Google and authorize our app for provided scopes
  * (aka the permissions/APIs app will need). User will be prompted
  * to select a Google account.
- *
- * We are using the Google Calendar API in this example.
- * See {@link https://developers.google.com/identity/protocols/googlescopes}
- * for more available scopes.
- *
- * See {@link https://developers.google.com/identity/protocols/OpenIDConnect#authenticationuriparameters}
- * for info on more authentication parameters that might be used here.
  */
 router.get('/google', passport.authenticate('google',
   {
