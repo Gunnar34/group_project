@@ -1,5 +1,47 @@
-<div ng-controller='ClassesController' class="">
-  <h4>yo its the classes</h4>
-  <button ng-if='cc.admin' class='btn' type="button" name="button">noah</button>
-  <input ng-if='cc.admin' type="text" name="" value=""placeholder="noah">
+<div class="container">
+  <h4>Welcome {{cc.name}}! This is the list of current classes!</h4>
+  <div class="row">
+    <div class="col s6">
+      <button onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+    </div>
+    <div class="input-field col s6">
+      <input ng-if='cc.admin' ng-model=cc.email type="text" name="" value="" placeholder="noah">
+    </div>
+    <button ng-if='cc.admin' ng-click="cc.addUser()" class='btn' type="button" name="button">add admin</button>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <table>
+        <tr>
+          <th>Instructors</th>
+          <th>Name</th>
+          <th>District</th>
+          <th>Days</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Time</th>
+          <th>Grades</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat='x in cc.classesArray '>
+          <td>Instructors</td>
+          <td>{{ x.subject }}</td>
+          <td>{{ x.location }}</td>
+          <td>Days</td>
+          <td>{{ x.startDate }}</td>
+          <td>{{ x.endDate }}</td>
+          <td>Time</td>
+          <td>{{ x.grades }}</td>
+          <td><button class="delete" ng-click='cc.removeClass(x._id)'>Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- The Modal -->
+  <div id="addClass" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
+    </div>
+  </div>
+
 </div>
