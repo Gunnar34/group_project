@@ -40,17 +40,18 @@
   <!-- The Modal -->
   <div id="addClass" class="modal">
     <div class="modal-content">
+        <span class="close" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
       <form ng-submit='cc.addClass()'class="" action="index.html" method="post">
-        <input ng-model='cc.grades' type="text" name="" value="">
-        <input ng-model='cc.location' type="text" name="" value="">
-        <input ng-model='cc.subject' type="text" name="" value="">
-        <input ng-model='cc.startDate' type="date" name="" value="">
-        <input ng-model='cc.endDate' type="date" name="" value="">
-        <input ng-model='cc.startTime' type="text" name="" value="">
-        <input ng-model='cc.endTime' type="text" name="" value="">
+        <input ng-model='cc.grades' placeholder="Grades" type="text" name="" value="">
+        <input ng-model='cc.location' placeholder="Location" type="text" name="" value="">
+        <input ng-model='cc.subject' placeholder="Subject" type="text" name="" value="">
+        <input ng-model='cc.startDate' placeholder="Start Date" type="date" name="" value="">
+        <input ng-model='cc.endDate' placeholder="End Date" type="date" name="" value="">
+        <input ng-model='cc.startTime' placeholder="Start Time" type="text" name="" value="">
+        <input ng-model='cc.endTime' placeholder="End Time" type="text" name="" value="">
       </form>
       <button class='btn' ng-click='cc.addClass()' type="button" name="button"></button>
-      <span class="close" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
+
     </div>
   </div>
 
