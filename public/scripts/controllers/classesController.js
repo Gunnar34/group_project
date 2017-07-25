@@ -9,8 +9,21 @@ app.controller('ClassesController', function (httpService, $location) {
       }
     };
 
-    vm.populateClass = function(){
-      console.log('in populateClasses');
+    vm.addClass = function(){
+
+      let objectToSend ={
+        grades: vm.grades,
+        location: vm.location,
+        subject: vm.subject,
+        startDate: vm.startDate,
+        endDate: vm.endDate,
+        startTime: vm.startTime,
+        endTime: vm.endTime,
+        instructors: vm.instructors,
+        students: []
+      }
+      console.log(objectToSend);
+      httpService.postItem('private/classes/classes', objectToSend)
     };//end populateClasss
 
     httpService.getItem('auth').then(function(res){
