@@ -2,7 +2,7 @@
   <h4>Welcome {{cc.name}}! This is the list of current classes!</h4>
   <div class="row">
     <div class="col s6">
-      <button onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+      <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
     </div>
     <div class="input-field col s6">
       <input ng-if='cc.admin' ng-model=cc.email type="text" name="" value="" placeholder="noah">
@@ -40,24 +40,39 @@
   <!-- The Modal -->
   <div id="addClass" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
-      <form ng-submit='cc.addClass()'class="" action="index.html" method="post">
-        <input ng-model='cc.grades' placeholder="Grades" type="text" name="" value="">
-        <input ng-model='cc.location' placeholder="Location" type="text" name="" value="">
-        <input ng-model='cc.subject' placeholder="Subject" type="text" name="" value="">
-        <input ng-model='cc.startDate' placeholder="Start Date" type="date" name="" value="">
-        <input ng-model='cc.endDate' placeholder="End Date" type="date" name="" value="">
-        <input ng-model='cc.startTime' placeholder="Start Time" type="text" name="" value="">
-        <input ng-model='cc.endTime' placeholder="End Time" type="text" name="" value="">
+      <span class="close" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
+      <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
+        <div class="input-field">
+          <input ng-model='cc.grades' type="text" name="" value="">
+          <label for="">Grades</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.location' type="text" name="" value="">
+          <label for="">Location</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.subject' type="text" name="" value="">
+          <label for="">Subject</label>
+        </div>
+        <label for="start">Start Date</label>
+        <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
+        <label for="end">End Date</label>
+        <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
+        <div class="input-field">
+          <input ng-model='cc.startTime' type="text" name="" value="">
+          <label for="">Start Time</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.endTime' type="text" name="" value="">
+          <label for="">End Time</label>
+        </div>
       </form>
-      <button class='btn' ng-click='cc.addClass()' type="button" name="button"></button>
+      <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
 
     </div>
   </div>
 
 </div>
-
-
 
 
 
