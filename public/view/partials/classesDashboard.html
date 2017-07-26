@@ -27,7 +27,7 @@
           <th>Grades</th>
           <th></th>
         </tr>
-        <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView(x._id)">
+        <tr ng-repeat='x in cc.classesArray '>
           <td>Instructors</td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
@@ -36,8 +36,21 @@
           <td>{{ x.endDate | date : 'mediumDate'}}</td>
           <td>Time</td>
           <td>{{ x.grades }}</td>
-          <td><button class="btn" ng-click='cc.removeClass(x._id)'>Delete</button></td>
-          <td><button class="btn" onclick="document.getElementById('editClass').style.display = 'block'">Edit</button></td>
+          <td>
+            <button tooltipped class="btn" ng-click="cc.classView(x._id)"  data-position="top" data-delay="50" data-tooltip="View Students">
+              <i class="small material-icons">people</i>
+            </button>
+          </td>
+          <td>
+            <button tooltipped class="btn" ng-click="cc.removeClass(x._id)" data-position="top" data-delay="50" data-tooltip="Delete Class">
+              <i class="small material-icons">delete</i>
+            </button>
+          </td>
+          <td>
+            <button tooltipped class="btn" onclick="document.getElementById('editClass').style.display = 'block'" data-position="top" data-delay="50" data-tooltip="Edit Class">
+              <i class="small material-icons">create</i>
+            </button>
+          </td>
         </tr>
       </table>
     </div>
