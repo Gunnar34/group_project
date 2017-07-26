@@ -42,18 +42,19 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   // adds student to class array in db
   vm.addStudent = function(){
     //creates item to send
-    var itemToSend = {
-      studentID: vm.currentID + '$' + new Date(),
-      firstName: vm.firstName,
-      lastName: vm.lastName,
-      grade: vm.grade,
-      selfCheck: false,
-      receiveTexts: false,
-      usePin: false,
-      pin: null,
-      checkedIn: false
-      // emergencyInfo: vm.emergencyInfo
-    };
+    var itemToSend = new Student(parentID, firstName, lastName, grade, emergencyInfo);
+    // var itemToSend = {
+    //   studentID: vm.currentID + '$' + new Date(),
+    //   firstName: vm.firstName,
+    //   lastName: vm.lastName,
+    //   grade: vm.grade,
+    //   selfCheck: false,
+    //   receiveTexts: false,
+    //   usePin: false,
+    //   pin: null,
+    //   checkedIn: false
+    //   // emergencyInfo: vm.emergencyInfo
+    // };
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
