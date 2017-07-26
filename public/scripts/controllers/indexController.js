@@ -3,13 +3,25 @@
 // declare controller
 app.controller('IndexController', IndexController);
 
-function IndexController(httpService, AuthFactory, $window, $location) {
+function IndexController(httpService, AuthFactory, $window, $location, $interval) {
   const vm = this;
   const authFactory = AuthFactory;
+  localStorage.setItem('classView', false);
 
   vm.addInstructor = function() {
     console.log('in vm.addInstructor');
   };  // end addInstructor
+
+  classView = $interval(function () {
+    if (localStorage.getItem('classView') == 'true'){
+      vm.classMenu = true;
+      vm.classSub = false;
+      }
+    if (localStorage.getItem('classView') == 'false'){
+      vm.classMenu = false;
+      vm.classSub = true;
+      }
+    }, 10);
 
   vm.displayLogout = false; // should we display the logout option on the DOM?
   vm.message = {
