@@ -27,7 +27,6 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend).then(function(res){
         console.log(res);
-
       });//end then function
         vm.populateClasses(); //repopulate classes in table
         document.getElementById('addClass').style.display = 'none'; //close modal
