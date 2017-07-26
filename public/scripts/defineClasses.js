@@ -16,11 +16,3 @@ class Student {
 
   } // end constructor
 }
-
-function eContact(name, phone, relation ) {
-  return {
-  name,
-  phone,
-  relation
-  };
-}
