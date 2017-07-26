@@ -25,7 +25,7 @@
         <tr ng-repeat='x in sc.studentsArray '>
           <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
-          <td><button class="btn">View Emergency Contact</button></td>
+          <td><button ng-click="sc.viewEmergency()" class="btn">View Emergency Contact</button></td>
           <td><button class="btn"onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
           <td><button ng-click="sc.deletStudents(x.studentID)" class="btn">Delete</button></td>
         </tr>
@@ -53,8 +53,8 @@
       </div>
 
       <div id="editStudent" class="modal">
+        <span class="close animate" onclick="document.getElementById('editStudent').style.display = 'none'">&times;</span>
         <div class="modal-content animate">
-          <span class="close animate" onclick="document.getElementById('editStudent').style.display = 'none'">&times;</span>
           <form ng-submit='sc.editStudent()' class="" action="index.html" method="post">
             <div class="input-field">
               <input ng-model='sc.firstName' type="text" name="" value="">

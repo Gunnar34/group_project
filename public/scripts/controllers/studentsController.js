@@ -79,11 +79,11 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   };//end populateStudents
 
   vm.deletStudents = function(id){
-    console.log(id);
     hs.deleteItem('/private/students', id).then(function(res){
       console.log('back from deleteItem');
-    });
-  }
+      vm.displayClass();
+    });//end deleteItem
+  };//end delete students
 
 });//end student controller
 
