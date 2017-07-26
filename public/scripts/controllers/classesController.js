@@ -3,6 +3,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
   var vm = this;
   vm.inputNumber = [0];
   var number = 1;
+  localStorage.setItem('classView', false);
 
   vm.addInput = function(){
     vm.inputNumber.push(number);
@@ -86,6 +87,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       console.log(x); //takes the class Id that was clicked and stores it
       localStorage.setItem('classID', x);
       $location.path('/students');
+      localStorage.setItem('classView', true);
     };
 
 });
