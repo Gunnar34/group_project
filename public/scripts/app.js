@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
     controllerAs: 'cc'
   }).when('/students', {
     templateUrl: 'public/view/partials/studentDashboard.html',
-    controller: 'studentsController',
+    controller: 'StudentsController',
     controllerAs: 'sc'
   }).when('/instructor', {
     templateUrl: 'public/view/partials/instructor.html',
