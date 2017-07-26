@@ -1,9 +1,9 @@
-app.controller('ParentController', function(ParentService, $location) {
+app.controller('ParentController', function(dataService, $location) {
 
   const vm = this;
   vm.pinEntry = '';
 
-  // ParentService.currentStudent = ParentService.currentStudent;
+  // dataService.currentStudent = dataService.currentStudent;
   // vm.currentStudent = {};
   // vm.studentObjectToSend = {
   //   // selfCheck: Boolean,
@@ -37,10 +37,10 @@ app.controller('ParentController', function(ParentService, $location) {
   }; // end go
 
   vm.checkInStudent = function(index) {
-    ParentService.currentStudent = vm.studentArray[index];
+    dataService.currentStudent = vm.studentArray[index];
     // eventually, put in a call (to server?) to get currentStudent from class array
-    // ParentService.currentStudent = vm.studentArray[index];
-    console.log(ParentService.currentStudent);
+    // dataService.currentStudent = vm.studentArray[index];
+    console.log(dataService.currentStudent);
     vm.go('/emergencyContact');
   }; // end checkInStudent
 
@@ -49,20 +49,20 @@ app.controller('ParentController', function(ParentService, $location) {
   }; // end emergencyAlert
 
   vm.selfCheckout = function(boolean) {
-    ParentService.currentStudent.selfCheck = boolean;
-    console.log(ParentService.currentStudent);
+    dataService.currentStudent.selfCheck = boolean;
+    console.log(dataService.currentStudent);
     vm.go('/receiveTexts');
   }; // end selfCheckout
 
   vm.receiveTexts = function(boolean) {
-    ParentService.currentStudent.receiveTexts = boolean;
-    console.log(ParentService.currentStudent);
+    dataService.currentStudent.receiveTexts = boolean;
+    console.log(dataService.currentStudent);
     vm.go('/pinSystem');
   }; // end receiveTexts
 
   vm.usePin = function(boolean) {
-    ParentService.currentStudent.usePin = boolean;
-    console.log(ParentService.currentStudent);
+    dataService.currentStudent.usePin = boolean;
+    console.log(dataService.currentStudent);
     if (boolean) {
       vm.go('/pinPad');
     } else {
@@ -71,8 +71,8 @@ app.controller('ParentController', function(ParentService, $location) {
   }; // end usePin
 
   vm.enterPin = function(thingie, pin) {
-    ParentService.currentStudent.pin = pin;
-    console.log(ParentService.currentStudent);
+    dataService.currentStudent.pin = pin;
+    console.log(dataService.currentStudent);
     vm.go('/complete');
   }; // end enterPin
 
