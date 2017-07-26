@@ -69,7 +69,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
 
     vm.classView = function(x){
       console.log(x); //takes the class Id that was clicked and stores it in the service
-      dataService.currentClass = x;
+      localStorage.setItem('classID', x);
       $location.path('/students')
     };
 

@@ -5,7 +5,8 @@ app.controller('StudentsController', function ($http, dataService, httpService) 
   const ds = dataService;
   const hs = httpService;
   vm.data = '';
-vm.studentsArray = [];
+  vm.studentsArray = [];
+  vm.currentID = localStorage.getItem('classID');
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -15,8 +16,8 @@ vm.studentsArray = [];
     };//end window onclick
 
   vm.displayClass = function(){
-    console.log('before', ds.currentClass);
-    hs.getWithID('/private/students', ds.currentClass).then(function(res){
+    console.log('before', vm.currentID);
+    hs.getWithID('/private/students', vm.currentID).then(function(res){
       vm.studentsArray = res.data.students;
       console.log(vm.studentsArray);
       console.log('call made');
@@ -31,7 +32,7 @@ vm.displayClass();
 vm.addStudent = function(){
 //creates item to send
   var itemToSend = {
-    studentID: ds.currentClass + '$' + new Date(),
+    studentID: vm.currentID + '$' + new Date(),
     firstName: vm.firstName,
     lastName: vm.lastName,
     grade: vm.grade,
@@ -43,9 +44,11 @@ vm.addStudent = function(){
     // emergencyInfo: vm.emergencyInfo
   };
   console.log(itemToSend);
-  hs.putItem('/private/students', ds.currentClass, itemToSend).then(function(){
+  hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
     //call to update
     vm.displayClass();
+    document.getElementById('addStudent').style.display = 'none';
+
   });
 };
   hs.getItem('/private/students').then(function (response) {
