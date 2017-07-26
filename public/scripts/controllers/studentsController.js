@@ -5,7 +5,7 @@ app.controller('StudentsController', function ($http, dataService, httpService) 
   const ds = dataService;
   const hs = httpService;
   vm.data = '';
-
+vm.studentsArray = [];
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -15,11 +15,15 @@ app.controller('StudentsController', function ($http, dataService, httpService) 
     };
 
   vm.displayClass = function(){
-    console.log(ds.currentClass);
+    console.log('before', ds.currentClass);
     hs.getWithID('/private/students', ds.currentClass).then(function(res){
-      console.log(res);
+      vm.studentsArray = res.data.students;
+      console.log(vm.studentsArray);
+      console.log('call made');
+      console.log('response: ',res);
     });
   };
+
 vm.displayClass();
   hs.getItem('/private/students').then(function (response) {
       if (response.data.err) {
