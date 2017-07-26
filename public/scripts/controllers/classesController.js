@@ -9,6 +9,12 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     number ++;
   };
 
+  vm.subInput = function(){
+    if (vm.inputNumber.length > 1) {
+      vm.inputNumber.pop();
+    }
+  };
+
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
       if (event.target.getAttribute("class") == 'modal') {
@@ -17,7 +23,11 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     };
 
     vm.addClass = function(){
-
+      let instructorsArray = [];
+      for (var i = 0; i < vm.inputNumber.length; i++) {
+        let instructor = vm.instructor[i];
+        instructorsArray.push(instructor);
+      }
       let objectToSend = {
         grades: vm.grades,
         location: vm.location,
@@ -26,7 +36,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         endDate: vm.endDate,
         startTime: vm.startTime,
         endTime: vm.endTime,
-        instructors: vm.instructors,
+        instructors: instructorsArray,
         students: []
       };
       console.log(objectToSend);
@@ -73,10 +83,9 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     };
 
     vm.classView = function(x){
-      console.log(x); //takes the class Id that was clicked and stores it in the service
-
+      console.log(x); //takes the class Id that was clicked and stores it
       localStorage.setItem('classID', x);
-      $location.path('/students')
+      $location.path('/students');
     };
 
 });

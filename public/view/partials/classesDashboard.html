@@ -27,7 +27,7 @@
           <th></th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
-          <td>Instructors</td>
+          <td><span ng-repeat="instructor in x.instructors">{{instructor}}  </span></td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
           <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
@@ -82,12 +82,12 @@
       <div class="input-field col l6 s12">
         <i class="material-icons prefix">timelapse</i>
         <label class="" for="startTime">Start Time</label>
-        <input id="startTime" class="timepicker" ng-model="cc.startTime" input-clock data-twelvehour="false" type="text" />
+        <input id="startTime" class="timepicker" ng-model="cc.startTime" input-clock data-twelvehour="true" type="text" />
       </div>
       <div class="input-field col l6 s12">
         <i class="material-icons prefix">timelapse</i>
         <label class="placeInLabel" for="endTime">End Time</label>
-        <input id="endTime" class="timepicker placeInput" ng-model="cc.endTime" input-clock data-twelvehour="false" type="text" />
+        <input id="endTime" class="timepicker placeInput" ng-model="cc.endTime" input-clock data-twelvehour="true" type="text" />
       </div>
       <div class="input-field col l8 offset-l2 s12">
         <i class="material-icons prefix">location_on</i>
@@ -96,12 +96,17 @@
       </div>
       <div class="input-field col l8 offset-l2 s12" ng-repeat="number in cc.inputNumber">
         <i class="material-icons prefix">person</i>
-        <input ng-model='cc.instructors' type="text" id="instructors" value="">
-        <label for="instructors">instructors</label>
+        <input ng-model='cc.instructor[number]' type="text" id="instructor{{$index}}" value="">
+        <label for="instructor{{$index}}">instructors</label>
       </div>
-      <button class="btn" name="button" ng-click="cc.addInput()">
-        <i class="material-icons prefix">add</i>
-      </button>
+      <div class="col l2 s12">
+        <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
+          <i class="material-icons prefix">add</i>
+        </button>
+        <button tooltipped class="btn btn-floating" name="button" ng-click="cc.subInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
+          <i class="material-icons prefix">cancel</i>
+        </button>
+      </div>
     </form>
     <div class="row">
       <div class="col s12 center-align">
@@ -143,12 +148,12 @@
         <div class="input-field">
           <i class="material-icons prefix">timelapse</i>
           <label class="" for="startTimeUP">Start Time</label>
-          <input id="startTimeUP" class="timepicker" ng-model="cc.startTimeUP" input-clock data-twelvehour="false" type="text" />
+          <input id="startTimeUP" class="timepicker" ng-model="cc.startTimeUP" input-clock data-twelvehour="true" type="text" />
         </div>
         <div class="input-field">
           <i class="material-icons prefix">timelapse</i>
           <label class="placeInLabel" for="endTimeUP">End Time</label>
-          <input id="endTimeUP" class="timepicker placeInput" ng-model="cc.endTimeUP" input-clock data-twelvehour="false" type="text" />
+          <input id="endTimeUP" class="timepicker placeInput" ng-model="cc.endTimeUP" input-clock data-twelvehour="true" type="text" />
         </div>
       </form>
       <button class='btn' ng-click='' type="button" name="button">Save Class</button>
