@@ -4,27 +4,31 @@ var bodyParser = require('body-parser');
 var classesModel = require('../../models/classesModel');
 
 
-router.get('/', function (req, res) {
-  res.send({ message: 'nice students' });
-});//end get students
+router.get('/', function(req, res) {
+  res.send({
+    message: 'nice students'
+  });
+}); //end get students
 
-router.get('/:id', function(req, res){
+router.get('/:id', function(req, res) {
   console.log('id hit', req.params.id);
-  classesModel.findOne({_id: req.params.id}).then(function(err, data){
-    if(!err){
+  classesModel.findOne({
+    _id: req.params.id
+  }).then(function(err, data) {
+    if (!err) {
       res.send(data);
-    }else{
+    } else {
       res.send(err);
-    }//end else
-  });//end find one then
-});//end find one student
+    } //end else
+  }); //end find one then
+}); //end find one student
 
 //adds students to db
 router.put('/:id', function(req, res) {
   console.log('db add student', req.params.id);
   var myQuery = {
     _id: req.params.id
-  };//end myQuery object
+  }; //end myQuery object
   console.log(myQuery);
   var newValues = { $push:
     { students: {
@@ -49,6 +53,31 @@ classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
     res.send('error');
   }//end else
 });//end findOne and update
-});
+});//end put
 
+
+
+router.delete('/:id', function(req, res) {
+  console.log('db student delete', req.params.id);
+  console.log("-----------------");
+  var newValues = {
+    $pull: {
+      students: {
+        studentID: req.params.id
+      }
+    }
+  };//end new value
+  console.log('new student: ', newValues);
+  classesModel.update({}, newValues, {
+    multi: true
+  }, function(err) {
+    console.log('Did we make it in?');
+    if (!err) {
+      res.send('safe');
+    } else {
+      console.log(err);
+      res.send('error');
+    }
+  });// end update
+}); //end router.delete
 module.exports = router;
