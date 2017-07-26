@@ -12,11 +12,8 @@ router.get('/:id', function(req, res){
   console.log('id hit', req.params.id);
   classesModel.findOne({_id: req.params.id}).then(function(err, data){
     if(!err){
-      // console.log('this is the response', res);
       res.send(data);
-
     }else{
-      console.log(err);
       res.send(err);
     }//end else
   });//end find one then

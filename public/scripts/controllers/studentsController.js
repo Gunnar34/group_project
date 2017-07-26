@@ -11,8 +11,8 @@ vm.studentsArray = [];
       id = event.target.getAttribute("id");
       if (event.target.getAttribute("class") == 'modal') {
         document.getElementById(id).style.display = 'none';
-      }
-    };
+      }//end if
+    };//end window onclick
 
   vm.displayClass = function(){
     console.log('before', ds.currentClass);
@@ -21,9 +21,10 @@ vm.studentsArray = [];
       console.log(vm.studentsArray);
       console.log('call made');
       console.log('response: ',res);
-    });
-  };
-//ng-init call
+    });//end get withId
+  };//end displayClass
+
+//ng-init display call
 vm.displayClass();
 
 // adds student to class array in db
@@ -52,9 +53,9 @@ vm.addStudent = function(){
         vm.data = 'Sorry, you are not logged in!';
       } else {
         vm.data = response.data.message;
-      }
+      }//end else
       console.log(vm.data);
-    });
+    });//end displayClass
 
     vm.populateStudents = function(){
       console.log('in populateStudents');
@@ -63,4 +64,4 @@ vm.addStudent = function(){
     };//end populateStudents
 
 
-});
+});//end student controller
