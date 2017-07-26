@@ -1,6 +1,6 @@
 app.service('httpService', function($http) {
   var sv = this;
-sv.classes = [];
+  sv.classes = [];
   // httpServices
   sv.getItem = function(path) {
     return $http.get(path).then(function(response) {

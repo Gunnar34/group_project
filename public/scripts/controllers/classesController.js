@@ -26,20 +26,17 @@ app.controller('ClassesController', function (httpService, $location) {
       };
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend).then(function(res){
+        console.log(res);
 
       });//end then function
-        vm.populateClasses();
-        document.getElementById('addClass').style.display = 'none';
+        vm.populateClasses(); //repopulate classes in table
+        document.getElementById('addClass').style.display = 'none'; //close modal
     };//end addClass
 
     vm.populateClasses = function(){
       console.log('in populateClasses');
-      httpService.getItem('private/classes/popClasses').then(function(res){
-        console.log(res, res.data);
-        httpService.classes = res.data[0];
-        vm.classesArray = httpService.classes;
-        console.log('classes array', vm.classesArray);
-        console.log('httparray', httpService.classes);
+      httpService.getItem('private/classes/classes').then(function(res){
+        vm.classesArray = res.data[0];
       });//end http get popClasses
     };//end populateClasses
 
@@ -69,6 +66,10 @@ app.controller('ClassesController', function (httpService, $location) {
       httpService.postItem('private/instructor', itemToSend).then(function(res){
         vm.email = undefined;
       });
+    };
+
+    vm.classView = function(){
+      console.log('click');
     };
 
 });

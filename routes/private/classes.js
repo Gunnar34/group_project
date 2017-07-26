@@ -7,23 +7,12 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/classes', function(req, res){
-  console.log(req.body);
-  var newClass = {
-    grades: req.body.grades,
-    location: req.body.location,
-    subject: req.body.subject,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
-    startTime: req.body.startTime,
-    endTime: req.body.endTime,
-    instructors: req.body.instructors,
-    students: []
-  }
-  console.log(newClass);
-  classesModel(newClass).save();
+  console.log('post', req.body);
+  classesModel(req.body).save();
+  res.sendStatus(201);
 });//end post classes
 
-router.get('/popClasses', function(req, res){
+router.get('/classes', function(req, res){
   console.log('pop classes hit');
 
   var foundClasses = [];

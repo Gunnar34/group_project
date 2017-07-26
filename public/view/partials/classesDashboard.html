@@ -27,7 +27,7 @@
           <th>Grades</th>
           <th></th>
         </tr>
-        <tr ng-repeat='x in cc.classesArray '>
+        <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView()">
           <td>Instructors</td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
@@ -37,6 +37,7 @@
           <td>Time</td>
           <td>{{ x.grades }}</td>
           <td><button class="btn" ng-click='cc.removeClass(x._id)'>Delete</button></td>
+          <td><button class="btn" onclick="document.getElementById('editClass').style.display = 'block'">Edit</button></td>
         </tr>
       </table>
     </div>
@@ -76,6 +77,39 @@
     </div>
   </div>
 
+  <div id="editClass" class="modal">
+    <div class="modal-content animate">
+      <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
+      <form ng-submit='' class="" action="index.html" method="post">
+        <div class="input-field">
+          <input ng-model='cc.grades' type="text" name="" value="">
+          <label for="">Grades</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.location' type="text" name="" value="">
+          <label for="">Location</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.subject' type="text" name="" value="">
+          <label for="">Subject</label>
+        </div>
+        <label for="start">Start Date</label>
+        <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
+        <label for="end">End Date</label>
+        <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
+        <div class="input-field">
+          <input ng-model='cc.startTime' type="text" name="" value="">
+          <label for="">Start Time</label>
+        </div>
+        <div class="input-field">
+          <input ng-model='cc.endTime' type="text" name="" value="">
+          <label for="">End Time</label>
+        </div>
+      </form>
+      <button class='btn' ng-click='' type="button" name="button">Save Class</button>
+
+    </div>
+  </div>
 
 
 
