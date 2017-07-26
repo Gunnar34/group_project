@@ -1,8 +1,13 @@
 app.controller('ClassesController', function (httpService, $location, dataService) {
   console.log('loaded CC');
   var vm = this;
+  vm.inputNumber = [0];
+  var number = 1;
 
-  vm.classesArray = httpService.classes;
+  vm.addInput = function(){
+    vm.inputNumber.push(number);
+    number ++;
+  };
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -69,6 +74,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
 
     vm.classView = function(x){
       console.log(x); //takes the class Id that was clicked and stores it in the service
+
       localStorage.setItem('classID', x);
       $location.path('/students')
     };
