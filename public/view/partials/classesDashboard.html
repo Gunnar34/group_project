@@ -27,7 +27,7 @@
           <th>Grades</th>
           <th></th>
         </tr>
-        <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView()">
+        <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView(x._id)">
           <td>Instructors</td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
