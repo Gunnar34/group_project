@@ -49,6 +49,8 @@ classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
     res.send('error');
   }//end else
 });//end findOne and update
-});
+});//end put
+
+
 
 module.exports = router;
