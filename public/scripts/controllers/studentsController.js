@@ -44,18 +44,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.addStudent = function(){
     //creates item to send
     var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyName, vm.emergencyPhone, vm.emergencyRelation);
-    // var itemToSend = {
-    //   studentID: vm.currentID + '$' + new Date(),
-    //   firstName: vm.firstName,
-    //   lastName: vm.lastName,
-    //   grade: vm.grade,
-    //   selfCheck: false,
-    //   receiveTexts: false,
-    //   usePin: false,
-    //   pin: null,
-    //   checkedIn: false
-    //   // emergencyInfo: vm.emergencyInfo
-    // };
+
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
@@ -84,8 +73,9 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
     console.log(id);
     hs.deleteItem('/private/students', id).then(function(res){
       console.log('back from deleteItem');
+      vm.displayClass();
     });
-  }
+  };
 
 });//end student controller
 
