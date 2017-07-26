@@ -1,5 +1,9 @@
 //angular module
-var app = angular.module('myApp', ['ui.materialize', 'ngRoute', 'bc.AngularKeypad']);
+var app = angular.module('myApp', ['ui.materialize', 'ngRoute', 'bc.AngularKeypad', 'xeditable']);
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'default'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 
 //routes
 app.config(function($routeProvider) {

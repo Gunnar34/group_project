@@ -14,17 +14,22 @@ app.controller('ParentController', function(dataService, $location) {
 
   vm.dummyKid = {
     studentid: 30,
-    firstName: 'Peta',
-    lastName: 'Malark',
+    firstName: 'Peeta',
+    lastName: 'Mellark',
     grade: '4th',
-    emergency: 'No one cares'
+    emergencyName: 'Katniss Everdeen',
+    emergencyPhone: '763-555-1234',
+    emergencyRelation: "It's complicated"
   };//this can be deleted just dummy data
 
   vm.dummyKid2 = {
     studentid: 30,
     firstName: 'Snorgarml',
     lastName: 'Blarginton',
-    grade: '3rd'
+    grade: '3rd',
+    emergencyName: 'Binshwagn Blickinonigan',
+    emergencyPhone: '612-555-7878',
+    emergencyRelation: "Father-Figure"
   }; //this can be deleted just dummy data
 
   vm.studentArray = [];
@@ -43,6 +48,17 @@ app.controller('ParentController', function(dataService, $location) {
     console.log(dataService.currentStudent);
     vm.go('/emergencyContact');
   }; // end checkInStudent
+
+  vm.loadEmergencyInfo = function() {
+    // load currentStudent data from service into vm to be edited
+    vm.currentStudent = dataService.currentStudent;
+  }; // end loadEmergencyInfo
+
+  vm.emergencySubmit = function() {
+    // reverse last function, saving data from vm back to service
+    dataService.currentStudent = vm.currentStudent;
+    vm.go("/selfCheckout");
+  }; // end emergencySubmit
 
   vm.emergencyAlert = function(boolean) {
     alert('You can edit the info directly on this page.');

@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "angular-keypad": "^2.0.4",
+    "angular-xeditable": "^0.8.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-session": "^1.15.4",
