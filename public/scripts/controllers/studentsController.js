@@ -4,6 +4,13 @@ app.controller('StudentsController', function ($http) {
   var vm = this;
   vm.data = '';
 
+  window.onclick = function(event) {
+      id = event.target.getAttribute("id");
+      if (event.target.getAttribute("class") == 'modal') {
+        document.getElementById(id).style.display = 'none';
+      }
+    };
+    
   $http.get('/private/students')
     .then(function (response) {
       if (response.data.err) {
