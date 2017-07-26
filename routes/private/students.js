@@ -11,7 +11,6 @@ var myQuery = {
     _id: req.params.id
 };
 console.log(myQuery);
-console.log(req.body.id);
 var newValues = { $push:
     { students: {
       parentID: req.body.parentID,
@@ -25,14 +24,14 @@ var newValues = { $push:
             }
           }
         };
-console.log('new: ', newValues);
+console.log('new student: ', newValues);
     patients.findOneAndUpdate(myQuery, newValues, function(err) {
         if (!err) {
-            res.send('nudes');
+            res.send('added to class');
         } else {
             res.send('error');
         }
     });
-}); 
+});
 
 module.exports = router;
