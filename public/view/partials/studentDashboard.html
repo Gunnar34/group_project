@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <form class="" action="index.html" method="post">
+      <!-- <form class="" action="index.html" method="post">
         <input ng-model='sc.parentID' type="text" name="" value="">
         <input ng-model='sc.firstName' type="text" name="" value="">
         <input ng-model='sc.lastName' type="text" name="" value="">
         <input ng-model='sc.grade' type="text" name="" value="">
         <button ng-click='sc.populateStudents()' type="button" name="button"></button>
-      </form>
+      </form> -->
+      <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button>
     </div>
   </div>
   <div class="row">
@@ -18,14 +19,59 @@
           <th>Grade</th>
           <th>Emergency Contact</th>
           <th></th>
+          <th></th>
+          <th></th>
         </tr>
         <tr ng-repeat='x in sc.studentsArray '>
           <td>{{ x.firstName }}</td>
           <td>{{ x.grade }}</td>
           <td><button>View Emergency Contact</button></td>
+          <td><button onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
           <td><button>Delete</button></td>
         </tr>
       </table>
+
+      <div id="addStudent" class="modal">
+        <div class="modal-content animate">
+          <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
+          <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
+            <div class="input-field">
+              <input ng-model='sc.firstName' type="text" name="" value="">
+              <label for="">First Name</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.lastName' type="text" name="" value="">
+              <label for="">Last Name</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.grade' type="text" name="" value="">
+              <label for="">Grade</label>
+            </div>
+          </form>
+          <button class='btn' ng-click='cc.addStudent()' type="button" name="button">Save Student</button>
+        </div>
+      </div>
+
+      <div id="editStudent" class="modal">
+        <div class="modal-content animate">
+          <span class="close animate" onclick="document.getElementById('editStudent').style.display = 'none'">&times;</span>
+          <form ng-submit='cc.editStudent()' class="" action="index.html" method="post">
+            <div class="input-field">
+              <input ng-model='sc.firstName' type="text" name="" value="">
+              <label for="">First Name</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.lastName' type="text" name="" value="">
+              <label for="">Last Name</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.grade' type="text" name="" value="">
+              <label for="">Grade</label>
+            </div>
+          </form>
+          <button class='btn' ng-click='cc.editStudent()' type="button" name="button">Save Edits</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
