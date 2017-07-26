@@ -1,6 +1,6 @@
 app.service('dataService', function(){
-  console.log('in the ParentService');
+  console.log('in the dataService, used to be ParentService');
   const sv = this;
 
   sv.currentClass;
-});//end parent service
+});//end dataService
