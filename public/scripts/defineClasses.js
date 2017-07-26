@@ -1,23 +1,18 @@
 class Student {
 
-  constructor(parentID, firstName, lastName, grade, emergencyInfo) {
+  constructor(parentID, firstName, lastName, grade, emergencyName, emergencyPhone, emergencyRelation) {
     this.studentId = parentID + '$' + new Date();//change to dat now
     this.firstName = firstName;
     this.lastName = lastName;
     this.grade = grade;
+    this.emergencyName = emergencyName;
+    this.emergencyPhone = emergencyPhone;
+    this.emergencyRelation = emergencyRelation;
     this.selfCheck = false;
     this.receiveTexts = false;
     this.usePin = false;
     this.pin = null;
     this.checkedIn = false;
-    this.emergencyInfo = emergencyInfo;
-  } // end constructor
-}
 
-function eContact(name, phone, relation ) {
-  return {
-  name,
-  phone,
-  relation
-  };
+  } // end constructor
 }
