@@ -8,6 +8,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.studentsArray = [];
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
+  localStorage.setItem('classView', true);
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
