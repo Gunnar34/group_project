@@ -23,18 +23,18 @@
           <th></th>
         </tr>
         <tr ng-repeat='x in sc.studentsArray '>
-          <td>{{ x.firstName }}</td>
+          <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
-          <td><button>View Emergency Contact</button></td>
-          <td><button onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
-          <td><button>Delete</button></td>
+          <td><button class="btn">View Emergency Contact</button></td>
+          <td><button class="btn"onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
+          <td><button class="btn">Delete</button></td>
         </tr>
       </table>
 
       <div id="addStudent" class="modal">
         <div class="modal-content animate">
           <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
-          <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
+          <form ng-submit='sc.addStudent()' class="" action="index.html" method="post">
             <div class="input-field">
               <input ng-model='sc.firstName' type="text" name="" value="">
               <label for="">First Name</label>
@@ -48,14 +48,14 @@
               <label for="">Grade</label>
             </div>
           </form>
-          <button class='btn' ng-click='cc.addStudent()' type="button" name="button">Save Student</button>
+          <button class='btn' ng-click='sc.addStudent()' type="button" name="button">Save Student</button>
         </div>
       </div>
 
       <div id="editStudent" class="modal">
         <div class="modal-content animate">
           <span class="close animate" onclick="document.getElementById('editStudent').style.display = 'none'">&times;</span>
-          <form ng-submit='cc.editStudent()' class="" action="index.html" method="post">
+          <form ng-submit='sc.editStudent()' class="" action="index.html" method="post">
             <div class="input-field">
               <input ng-model='sc.firstName' type="text" name="" value="">
               <label for="">First Name</label>
@@ -69,7 +69,7 @@
               <label for="">Grade</label>
             </div>
           </form>
-          <button class='btn' ng-click='cc.editStudent()' type="button" name="button">Save Edits</button>
+          <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button>
         </div>
       </div>
     </div>
