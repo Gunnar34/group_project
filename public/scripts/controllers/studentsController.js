@@ -63,7 +63,12 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
       document.getElementById('addStudent').style.display = 'none';
 
     });
-  };
+  };//end add student
+
+  vm.viewEmrgency = function(id){
+    console.log(id);
+
+  };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {
     if (response.data.err) {
