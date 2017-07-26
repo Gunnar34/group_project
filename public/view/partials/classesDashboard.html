@@ -3,115 +3,120 @@
     <h4 class="center-align">Welcome {{cc.name}}! This is the list of current classes!</h4>
   </div>
 </div>
-  <div class="row">
-    <div class="center-align">
-      <div ng-if='cc.admin' class="input-field col s6 offset-s1">
-        <input  ng-model=cc.email type="text" name="" value="">
-        <label for="">Instrucotrs email</label>
+<div class="row">
+  <div class="center-align">
+    <div ng-if='cc.admin' class="input-field col s6 offset-s1">
+      <input  ng-model=cc.email type="text" name="" value="">
+      <label for="">Instrucotrs email</label>
+    </div>
+    <button ng-if='cc.admin' ng-click="cc.addUser()" class='btn center-align' type="button" name="button">add admin</button>
+    <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <table>
+      <tr>
+        <th>Instructors</th>
+        <th>Name</th>
+        <th>District</th>
+        <th>Days</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Time</th>
+        <th>Grades</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView(x._id)">
+        <td>Instructors</td>
+        <td>{{ x.subject }}</td>
+        <td>{{ x.location }}</td>
+        <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
+        <td>{{ x.startDate | date : 'mediumDate'}}</td>
+        <td>{{ x.endDate | date : 'mediumDate'}}</td>
+        <td>Time</td>
+        <td>{{ x.grades }}</td>
+        <td><button class="btn" ng-click='cc.removeClass(x._id)'>Delete</button></td>
+        <td><button class="btn" onclick="document.getElementById('editClass').style.display = 'block'">Edit</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- The Modal -->
+<div id="addClass" class="modal">
+  <div class="modal-content animate">
+    <span class="close animate" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
+    <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
+      <div class="input-field">
+        <i class="material-icons prefix">grade</i>
+        <input ng-model='cc.grades' type="text" name="" value="">
+        <label for="">Grades</label>
       </div>
-      <button ng-if='cc.admin' ng-click="cc.addUser()" class='btn center-align' type="button" name="button">add admin</button>
-      <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12">
-      <table>
-        <tr>
-          <th>Instructors</th>
-          <th>Name</th>
-          <th>District</th>
-          <th>Days</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Time</th>
-          <th>Grades</th>
-          <th></th>
-        </tr>
-        <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView(x._id)">
-          <td>Instructors</td>
-          <td>{{ x.subject }}</td>
-          <td>{{ x.location }}</td>
-          <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
-          <td>{{ x.startDate | date : 'mediumDate'}}</td>
-          <td>{{ x.endDate | date : 'mediumDate'}}</td>
-          <td>Time</td>
-          <td>{{ x.grades }}</td>
-          <td><button class="btn" ng-click='cc.removeClass(x._id)'>Delete</button></td>
-          <td><button class="btn" onclick="document.getElementById('editClass').style.display = 'block'">Edit</button></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <!-- The Modal -->
-  <div id="addClass" class="modal">
-    <div class="modal-content animate">
-      <span class="close animate" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
-      <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
-        <div class="input-field">
-           <i class="material-icons prefix">grade</i>
-          <input ng-model='cc.grades' type="text" name="" value="">
-          <label for="">Grades</label>
-        </div>
-        <div class="input-field">
-          <input ng-model='cc.location' type="text" name="" value="">
-          <label for="">Location</label>
-        </div>
-        <div class="input-field">
-           <i class="material-icons prefix">account_circle</i>
-          <input ng-model='cc.subject' type="text" name="" value="">
-          <label for="">Subject</label>
-        </div>
-        <label for="start">Start Date</label>
-        <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
-        <label for="end">End Date</label>
-        <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
-        <div class="input-field">
-          <input ng-model='cc.startTime' type="text" name="" value="">
-          <label for="">Start Time</label>
-        </div>
-        <div class="input-field">
-          <input ng-model='cc.endTime' type="text" name="" value="">
-          <label for="">End Time</label>
-        </div>
-      </form>
-      <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
+      <div class="input-field">
+        <i class="material-icons prefix">location_on</i>
+        <input ng-model='cc.location' type="text" name="" value="">
+        <label for="">Location</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">subject</i>
+        <input ng-model='cc.subject' type="text" name="" value="">
+        <label for="">Subject</label>
+      </div>
+      <label for="start">Start Date</label>
+      <i class="material-icons prefix">date_range</i>
+      <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
+      <label for="end">End Date</label>
+      <i class="material-icons prefix">date_range</i>
+      <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
+      <div class="input-field">
+        <i class="material-icons prefix">timelapse</i>
+        <input ng-model='cc.startTime' type="text" name="" value="">
+        <label for="">Start Time</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">timelapse</i>
+        <input ng-model='cc.endTime' type="text" name="" value="">
+        <label for="">End Time</label>
+      </div>
+    </form>
+    <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
 
-    </div>
   </div>
+</div>
 
-  <div id="editClass" class="modal">
-    <div class="modal-content animate">
-      <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
-      <form ng-submit='' class="" action="index.html" method="post">
-        <div class="input-field">
-          <input ng-model='cc.grades' type="text" name="" value="">
-          <label for="">Grades</label>
-        </div>
-        <div class="input-field">
-          <input ng-model='cc.location' type="text" name="" value="">
-          <label for="">Location</label>
-        </div>
-        <div class="input-field">
-          <input ng-model='cc.subject' type="text" name="" value="">
-          <label for="">Subject</label>
-        </div>
-        <label for="start">Start Date</label>
-        <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
-        <label for="end">End Date</label>
-        <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
-        <div class="input-field">
-          <input ng-model='cc.startTime' type="text" name="" value="">
-          <label for="">Start Time</label>
-        </div>
-        <div class="input-field">
-          <input ng-model='cc.endTime' type="text" name="" value="">
-          <label for="">End Time</label>
-        </div>
-      </form>
-      <button class='btn' ng-click='' type="button" name="button">Save Class</button>
+<div id="editClass" class="modal">
+  <div class="modal-content animate">
+    <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
+    <form ng-submit='' class="" action="index.html" method="post">
+      <div class="input-field">
+        <input ng-model='cc.grades' type="text" name="" value="">
+        <label for="">Grades</label>
+      </div>
+      <div class="input-field">
+        <input ng-model='cc.location' type="text" name="" value="">
+        <label for="">Location</label>
+      </div>
+      <div class="input-field">
+        <input ng-model='cc.subject' type="text" name="" value="">
+        <label for="">Subject</label>
+      </div>
+      <label for="start">Start Date</label>
+      <input input-date type="text" name="start" format="mm/dd/yyyy" ng-model='cc.startDate'>
+      <label for="end">End Date</label>
+      <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
+      <div class="input-field">
+        <input ng-model='cc.startTime' type="text" name="" value="">
+        <label for="">Start Time</label>
+      </div>
+      <div class="input-field">
+        <input ng-model='cc.endTime' type="text" name="" value="">
+        <label for="">End Time</label>
+      </div>
+    </form>
+    <button class='btn' ng-click='' type="button" name="button">Save Class</button>
 
-    </div>
   </div>
+</div>
 
 
 
