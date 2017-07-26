@@ -12,9 +12,9 @@ router.get('/:id', function(req, res){
   console.log('id hit', req.params.id);
   classesModel.findOne({_id: req.params.id}).then(function(err, res){
     if(!err){
-      res.send(res)
+      res.send(res);
     }else{
-      res.send(err)
+      res.send(err);
     }//end else
   });//end find one then
 });//end find one student
