@@ -23,8 +23,30 @@ vm.studentsArray = [];
       console.log('response: ',res);
     });
   };
-
+//ng-init call
 vm.displayClass();
+
+// adds student to class array in db
+vm.addStudent = function(){
+//creates item to send
+  var itemToSend = {
+    studentID: ds.currentClass + '$' + new Date(),
+    firstName: vm.firstName,
+    lastName: vm.lastName,
+    grade: vm.grade,
+    selfCheck: false,
+    receiveTexts: false,
+    usePin: false,
+    pin: null,
+    checkedIn: false
+    // emergencyInfo: vm.emergencyInfo
+  };
+  console.log(itemToSend);
+  hs.putItem('/private/students', ds.currentClass, itemToSend).then(function(){
+    //call to update
+    vm.displayClass();
+  });
+};
   hs.getItem('/private/students').then(function (response) {
       if (response.data.err) {
         vm.data = 'Sorry, you are not logged in!';

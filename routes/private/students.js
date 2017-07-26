@@ -22,6 +22,7 @@ router.get('/:id', function(req, res){
   });//end find one then
 });//end find one student
 
+//adds students to db
 router.put('/:id', function(req, res) {
   console.log('db add student', req.params.id);
   var myQuery = {
@@ -30,20 +31,21 @@ router.put('/:id', function(req, res) {
   console.log(myQuery);
   var newValues = { $push:
     { students: {
-      parentID: req.body.parentID,
+      studentID: req.body.studentID,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       grade: req.body.grade,
       selfCheck: req.body.selfCheck,
       receiveTexts: req.body.receiveTexts,
       usePin: req.body.usePin,
+      pin: req.body.pin,
       checkedIn: req.body.checkedIn,
       emergencyInfo: req.body.emergencyInfo
     }//end students object
   }//end $push
 };//end newValues object
 console.log('new student: ', newValues);
-patients.findOneAndUpdate(myQuery, newValues, function(err) {
+classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
   if (!err) {
     res.send('added to class');
   } else {
