@@ -20,6 +20,7 @@ var newValues = { $push:
       selfCheck: req.body.selfCheck,
       receiveTexts: req.body.receiveTexts,
       usePin: req.body.usePin,
+      checkedIn: req.body.checkedIn,
       emergencyInfo: req.body.emergencyInfo
             }
           }
