@@ -11,8 +11,8 @@ vm.studentsArray = [];
       id = event.target.getAttribute("id");
       if (event.target.getAttribute("class") == 'modal') {
         document.getElementById(id).style.display = 'none';
-      }
-    };
+      }//end if
+    };//end window onclick
 
   vm.displayClass = function(){
     console.log('before', ds.currentClass);
@@ -21,8 +21,8 @@ vm.studentsArray = [];
       console.log(vm.studentsArray);
       console.log('call made');
       console.log('response: ',res);
-    });
-  };
+    });//end get withId
+  };//end displayClass
 
 vm.displayClass();
   hs.getItem('/private/students').then(function (response) {
@@ -30,9 +30,9 @@ vm.displayClass();
         vm.data = 'Sorry, you are not logged in!';
       } else {
         vm.data = response.data.message;
-      }
+      }//end else
       console.log(vm.data);
-    });
+    });//end displayClass
 
     vm.populateStudents = function(){
       console.log('in populateStudents');
@@ -41,4 +41,4 @@ vm.displayClass();
     };//end populateStudents
 
 
-});
+});//end student controller
