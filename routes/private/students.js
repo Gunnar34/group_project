@@ -30,31 +30,32 @@ router.put('/:id', function(req, res) {
     _id: req.params.id
   }; //end myQuery object
   console.log(myQuery);
-  var newValues = {
-    $push: {
-      students: {
-        studentID: req.body.studentID,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        grade: req.body.grade,
-        selfCheck: req.body.selfCheck,
-        receiveTexts: req.body.receiveTexts,
-        usePin: req.body.usePin,
-        pin: req.body.pin,
-        checkedIn: req.body.checkedIn,
-        emergencyInfo: req.body.emergencyInfo
-      } //end students object
-    } //end $push
-  }; //end newValues object
-  console.log('new student: ', newValues);
-  classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
-    if (!err) {
-      res.send('added to class');
-    } else {
-      res.send('error');
-    } //end else
-  }); //end findOne and update
-});
+  var newValues = { $push:
+    { students: {
+      studentID: req.body.studentID,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      grade: req.body.grade,
+      selfCheck: req.body.selfCheck,
+      receiveTexts: req.body.receiveTexts,
+      usePin: req.body.usePin,
+      pin: req.body.pin,
+      checkedIn: req.body.checkedIn,
+      emergencyInfo: req.body.emergencyInfo
+    }//end students object
+  }//end $push
+};//end newValues object
+console.log('new student: ', newValues);
+classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
+  if (!err) {
+    res.send('added to class');
+  } else {
+    res.send('error');
+  }//end else
+});//end findOne and update
+});//end put
+
+
 
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
