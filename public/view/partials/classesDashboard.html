@@ -57,8 +57,8 @@
   </div>
   <!-- The Modal -->
   <div id="addClass" class="modal">
+    <span class="close animate" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
     <div class="modal-content animate">
-      <span class="close animate" onclick="document.getElementById('addClass').style.display = 'none'">&times;</span>
       <form ng-submit='cc.addClass()' class="" action="index.html" method="post">
         <div class="input-field">
           <input ng-model='cc.grades' type="text" name="" value="">
@@ -77,12 +77,13 @@
         <label for="end">End Date</label>
         <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
         <div class="input-field">
-          <input ng-model='cc.startTime' type="text" name="" value="">
-          <label for="">Start Time</label>
+          <label class="" for="startTime">Start Time</label>
+          <input id="startTime" class="timepicker" ng-model="cc.startTime" input-clock data-twelvehour="false" type="text" />
         </div>
         <div class="input-field">
-          <input ng-model='cc.endTime' type="text" name="" value="">
-          <label for="">End Time</label>
+          <label class="" for="endTime">End Time</label>
+          <input id="endTime" class="timepicker" ng-model="cc.endTime" input-clock data-twelvehour="false" type="text" />
+        </div>
         </div>
       </form>
       <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
@@ -91,8 +92,8 @@
   </div>
 
   <div id="editClass" class="modal">
+    <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
     <div class="modal-content animate">
-      <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
       <form ng-submit='' class="" action="index.html" method="post">
         <div class="input-field">
           <input ng-model='cc.grades' type="text" name="" value="">
@@ -111,12 +112,12 @@
         <label for="end">End Date</label>
         <input input-date type="text" name="end" format="mm/dd/yyyy" ng-model='cc.endDate'>
         <div class="input-field">
-          <input ng-model='cc.startTime' type="text" name="" value="">
-          <label for="">Start Time</label>
+          <label class="placeInLabel" for="startTime">Start Time</label>
+          <input id="startTime" class="timepicker placeInput" ng-model="cc.startTime" input-clock data-twelvehour="false" type="text" />
         </div>
         <div class="input-field">
-          <input ng-model='cc.endTime' type="text" name="" value="">
-          <label for="">End Time</label>
+          <label class="placeInLabel" for="startTime">End Time</label>
+          <input id="startTime" class="timepicker placeInput" ng-model="cc.endTime" input-clock data-twelvehour="false" type="text" />
         </div>
       </form>
       <button class='btn' ng-click='' type="button" name="button">Save Class</button>
