@@ -1,11 +1,16 @@
 class Student {
 
-  constructor(parentID, firstName, lastName, grade) {
+  constructor(parentID, firstName, lastName, grade, emergencyInfo) {
     this.studentId = parentID + '$' + new Date();//change to dat now
     this.firstName = firstName;
     this.lastName = lastName;
     this.grade = grade;
-    this.emergencyInfo = [];
+    this.selfCheck = false;
+    this.receiveTexts = false;
+    this.usePin = false;
+    this.pin = null;
+    this.checkedIn = false;
+    this.emergencyInfo = emergencyInfo;
   } // end constructor
 }
 
