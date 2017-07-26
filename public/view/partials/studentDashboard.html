@@ -26,7 +26,7 @@
           <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
           <td><button class="btn">View Emergency Contact</button></td>
-          <td><button class="btn"onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
+          <td><button class="btn" onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
           <td><button ng-click="sc.deletStudents(x.studentID)" class="btn">Delete</button></td>
         </tr>
       </table>
@@ -46,6 +46,18 @@
             <div class="input-field">
               <input ng-model='sc.grade' type="text" name="" value="">
               <label for="">Grade</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyName' type="text" name="" value="">
+              <label for="">Emergency Contact</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyPhone' type="text" name="" value="">
+              <label for="">Phone</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyRelation' type="text" name="" value="">
+              <label for="">Emergency Relation</label>
             </div>
           </form>
           <button class='btn' ng-click='sc.addStudent()' type="button" name="button">Save Student</button>
@@ -67,6 +79,18 @@
             <div class="input-field">
               <input ng-model='sc.grade' type="text" name="" value="">
               <label for="">Grade</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyName' type="text" name="" value="">
+              <label for="">Emergency Contact</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyPhone' type="text" name="" value="">
+              <label for="">Phone</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyRelation' type="text" name="" value="">
+              <label for="">Emergency Relation</label>
             </div>
           </form>
           <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button>
