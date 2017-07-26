@@ -1,8 +1,11 @@
 
-app.controller('StudentsController', function ($http) {
+app.controller('StudentsController', function ($http, dataService, httpService) {
   console.log('loaded sc');
-  var vm = this;
+  const vm = this;
+  const ds = dataService;
+  const hs = httpService;
   vm.data = '';
+
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -10,9 +13,15 @@ app.controller('StudentsController', function ($http) {
         document.getElementById(id).style.display = 'none';
       }
     };
-    
-  $http.get('/private/students')
-    .then(function (response) {
+
+  vm.displayClass = function(){
+    console.log(ds.currentClass);
+    hs.getWithID('/private/students', ds.currentClass).then(function(res){
+      console.log(res);
+    });
+  };
+vm.displayClass();
+  hs.getItem('/private/students').then(function (response) {
       if (response.data.err) {
         vm.data = 'Sorry, you are not logged in!';
       } else {
