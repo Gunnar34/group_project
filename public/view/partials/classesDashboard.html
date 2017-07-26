@@ -12,34 +12,47 @@
     <button ng-if='cc.admin' ng-click="cc.addUser()" class='btn center-align' type="button" name="button">add admin</button>
     <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
   </div>
-</div>
-<div class="row">
-  <div class="col s12">
-    <table>
-      <tr>
-        <th>Instructors</th>
-        <th>Name</th>
-        <th>District</th>
-        <th>Days</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Time</th>
-        <th>Grades</th>
-        <th></th>
-      </tr>
-      <tr ng-repeat='x in cc.classesArray ' ng-click="cc.classView(x._id)">
-        <td>Instructors</td>
-        <td>{{ x.subject }}</td>
-        <td>{{ x.location }}</td>
-        <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
-        <td>{{ x.startDate | date : 'mediumDate'}}</td>
-        <td>{{ x.endDate | date : 'mediumDate'}}</td>
-        <td>Time</td>
-        <td>{{ x.grades }}</td>
-        <td><button class="btn" ng-click='cc.removeClass(x._id)'>Delete</button></td>
-        <td><button class="btn" onclick="document.getElementById('editClass').style.display = 'block'">Edit</button></td>
-      </tr>
-    </table>
+  <div class="row">
+    <div class="col s12">
+      <table>
+        <tr>
+          <th>Instructors</th>
+          <th>Name</th>
+          <th>District</th>
+          <th>Days</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Time</th>
+          <th>Grades</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat='x in cc.classesArray '>
+          <td>Instructors</td>
+          <td>{{ x.subject }}</td>
+          <td>{{ x.location }}</td>
+          <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
+          <td>{{ x.startDate | date : 'mediumDate'}}</td>
+          <td>{{ x.endDate | date : 'mediumDate'}}</td>
+          <td>Time</td>
+          <td>{{ x.grades }}</td>
+          <td>
+            <button tooltipped class="btn" ng-click="cc.classView(x._id)"  data-position="top" data-delay="50" data-tooltip="View Students">
+              <i class="small material-icons">people</i>
+            </button>
+          </td>
+          <td>
+            <button tooltipped class="btn" ng-click="cc.removeClass(x._id)" data-position="top" data-delay="50" data-tooltip="Delete Class">
+              <i class="small material-icons">delete</i>
+            </button>
+          </td>
+          <td>
+            <button tooltipped class="btn" onclick="document.getElementById('editClass').style.display = 'block'" data-position="top" data-delay="50" data-tooltip="Edit Class">
+              <i class="small material-icons">create</i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 <!-- The Modal -->
