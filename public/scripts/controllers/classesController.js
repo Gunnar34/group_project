@@ -1,8 +1,19 @@
 app.controller('ClassesController', function (httpService, $location, dataService) {
   console.log('loaded CC');
   var vm = this;
+  vm.inputNumber = [0];
+  var number = 1;
 
-  vm.classesArray = httpService.classes;
+  vm.addInput = function(){
+    vm.inputNumber.push(number);
+    number ++;
+  };
+
+  vm.subInput = function(){
+    if (vm.inputNumber.length > 1) {
+      vm.inputNumber.pop();
+    }
+  };
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
@@ -12,7 +23,11 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     };
 
     vm.addClass = function(){
-
+      let instructorsArray = [];
+      for (var i = 0; i < vm.inputNumber.length; i++) {
+        let instructor = vm.instructor[i];
+        instructorsArray.push(instructor);
+      }
       let objectToSend = {
         grades: vm.grades,
         location: vm.location,
@@ -21,13 +36,12 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         endDate: vm.endDate,
         startTime: vm.startTime,
         endTime: vm.endTime,
-        instructors: vm.instructors,
+        instructors: instructorsArray,
         students: []
       };
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend).then(function(res){
         console.log(res);
-
       });//end then function
         vm.populateClasses(); //repopulate classes in table
         document.getElementById('addClass').style.display = 'none'; //close modal
@@ -69,9 +83,9 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     };
 
     vm.classView = function(x){
-      console.log(x); //takes the class Id that was clicked and stores it in the service
-      dataService.currentClass = x;
-      $location.path('/students')
+      console.log(x); //takes the class Id that was clicked and stores it
+      localStorage.setItem('classID', x);
+      $location.path('/students');
     };
 
 });

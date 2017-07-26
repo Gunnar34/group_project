@@ -1,0 +1,62 @@
+input:focus, textarea:focus {
+  border-bottom: 1px solid $inputColor !important;
+  box-shadow: 0 1px 0 0 $inputColor !important;
+}
+
+input:focus+label, textarea:focus+label, .input-field .prefix.active {
+  color: $inputColor !important;
+}
+
+.picker__wrap, .picker__frame {
+  width: 50vw !important;
+  max-width: inherit;
+}
+
+.picker--opened .picker__frame {
+  top: 5vh !important
+}
+
+.picker__month-display, .picker__year-display {
+  font-size: 1.8rem
+}
+.picker__weekday-display, .picker {
+  font-size: 2.2rem;
+}
+.clockpicker-tick {
+  font-size: 1.5rem !important;
+}
+.clockpicker-display {
+  vertical-align: inherit;
+  height: auto;
+}
+.picker__weekday, .picker__footer, .picker__day, .picker__close, .picker__today, .picker__clear {
+  font-size: 1.2rem !important;
+}
+.picker__day-display {
+  font-size: 4rem;
+}
+.picker {
+  line-height: 1.4;
+}
+.picker__box, .picker__date-display, .picker__weekday-display, .picker__month-display,
+.picker__day-display, .picker__year-display, .picker__calendar-container {
+  height: auto !important;
+  width: auto !important;
+}
+
+.select-dropdown li.disabled, .select-dropdown li.disabled>span, .select-dropdown li.optgroup {
+  color: rgba(0,0,0,0.3) !important;
+  background-color: transparent !important;
+}
+
+.picker__date-display, .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+  background-color: $pickerBody !important;
+}
+
+.picker__weekday-display {
+  background-color: $monthPickerTop !important;
+}
+
+.picker__day.picker__day--today, .picker__close, .picker__today {
+  color: $pickerText !important;
+}

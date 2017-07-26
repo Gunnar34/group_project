@@ -13,7 +13,7 @@ router.post('/', function (req, res) {
     }
       res.send(user);
 
-  });
-});
+  });//end creat user
+});//end post
 
 module.exports = router;

@@ -1,7 +1,7 @@
 app.service('dataService', function(){
   console.log('in the dataService, used to be ParentService');
   const sv = this;
-
+// the class._id from db so we can keep track of where we are
   sv.currentClass;
 
   sv.index = '';
