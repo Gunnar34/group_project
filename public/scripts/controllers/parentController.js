@@ -1,6 +1,7 @@
-app.controller('ParentController', function(dataService, $location) {
+app.controller('ParentController', function(dataService, httpService, $location) {
 
   const vm = this;
+  const hs = httpService;
   vm.pinEntry = '';
   // dataService.currentStudent = dataService.currentStudent;
   // vm.currentStudent = {};
@@ -89,9 +90,14 @@ app.controller('ParentController', function(dataService, $location) {
   }; // end enterPin
 
   vm.completeParentReview = function() {
+
     dataService.currentStudent.initialized = true;
-    dataService.studentArray[dataService.index] = dataService.currentStudent;
+    // dataService.studentArray[dataService.index] = dataService.currentStudent;
+    id = dataService.currentStudent.studentID;
+    hs.putItem('/students/init', id, dataService.currentStudent).then(function(res){
+    });
     vm.go('/complete');
   }; // end completeParentReview
+
 
 }); // end ParentController
