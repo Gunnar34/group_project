@@ -23,6 +23,18 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       }
     };//end window.onclick //allows clicking outside the modal to close
 
+    vm.editClass = function(index){
+      vm.gradesUP = vm.classesArray[index].grades;
+      vm.subjectUP = vm.classesArray[index].subject;
+      vm.startDateUP = vm.classesArray[index].startDate;
+      vm.endDateUP = vm.classesArray[index].endDate;
+      vm.startTimeUP = vm.classesArray[index].startTime;
+      vm.endTimeUP = vm.classesArray[index].startTime;
+      vm.locationUP = vm.classesArray[index].location;
+      vm.instructorsUP = vm.classesArray[index].instructors;
+      document.getElementById('editClass').style.display = 'block';
+    };
+
     vm.addClass = function(){
       let instructorsArray = [];
       for (var i = 0; i < vm.inputNumber.length; i++) {

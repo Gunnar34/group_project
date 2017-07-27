@@ -14,7 +14,7 @@ app.service('dataService', function(){
     emergencyName: 'Katniss Everdeen',
     emergencyPhone: '763-555-1234',
     emergencyRelation: "It's complicated"
-  };//this can be deleted just dummy data
+  }; //this can be deleted just dummy data
 
   sv.dummyKid2 = {
     studentid: 30,
