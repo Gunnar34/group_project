@@ -8,7 +8,6 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.studentsArray = [];
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
-  localStorage.setItem('classView', true);
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
@@ -44,8 +43,8 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   // adds student to class array in db
   vm.addStudent = function(){
     //creates item to send
-    var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyName, vm.emergencyPhone, vm.emergencyRelation);
-
+    var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyInfo);
+   
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
@@ -53,7 +52,12 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
       document.getElementById('addStudent').style.display = 'none';
 
     });
-  };
+  };//end add student
+
+  vm.viewEmrgency = function(id){
+    console.log(id);
+
+  };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {
     if (response.data.err) {
@@ -71,12 +75,11 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   };//end populateStudents
 
   vm.deletStudents = function(id){
-    console.log(id);
     hs.deleteItem('/private/students', id).then(function(res){
       console.log('back from deleteItem');
       vm.displayClass();
-    });
-  };
+    });//end deleteItem
+  };//end delete students
 
 });//end student controller
 
