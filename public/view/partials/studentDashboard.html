@@ -25,7 +25,7 @@
         <tr ng-repeat='x in sc.studentsArray '>
           <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
-          <td><button ng-click='sc.viewEmrgency(x.studentID)' class="btn">View Emergency Contact</button></td>
+          <td><button ng-click='sc.viewEmergency(x.studentID)' class="btn">View Emergency Contact</button></td>
           <td><button class="btn" onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
           <td><button ng-click="sc.deletStudents(x.studentID)" class="btn">Delete</button></td>
         </tr>

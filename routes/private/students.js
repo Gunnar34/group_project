@@ -23,6 +23,12 @@ router.get('/:id', function(req, res) {
   }); //end find one then
 }); //end find one student
 
+//gets emergencyInfo with id
+router.get('/emergencyInfo/:id', function(req, res){
+  console.log(req.params.id);
+  classesModel.findOne
+});//end emergencyInfo
+
 //adds students to db
 router.put('/:id', function(req, res) {
   console.log('db add student', req.params.id);
@@ -44,15 +50,15 @@ router.put('/:id', function(req, res) {
       emergencyInfo: req.body.emergencyInfo
     }//end students object
   }//end $push
-};//end newValues object
-console.log('new student: ', newValues);
-classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
-  if (!err) {
-    res.send('added to class');
-  } else {
-    res.send('error');
-  }//end else
-});//end findOne and update
+  };//end newValues object
+  console.log('new student: ', newValues);
+  classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
+    if (!err) {
+      res.send('added to class');
+    } else {
+      res.send('error');
+    }//end else
+  });//end findOne and update
 });//end put
 
 

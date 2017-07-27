@@ -8,20 +8,20 @@ app.controller('ClassesController', function (httpService, $location, dataServic
   vm.addInput = function(){
     vm.inputNumber.push(number);
     number ++;
-  };
+  };//end addInput //allows adding instructor inputs
 
   vm.subInput = function(){
     if (vm.inputNumber.length > 1) {
       vm.inputNumber.pop();
     }
-  };
+  };//end subInput //allows removing an instructor input
 
   window.onclick = function(event) {
       id = event.target.getAttribute("id");
       if (event.target.getAttribute("class") == 'modal') {
         document.getElementById(id).style.display = 'none';
       }
-    };
+    };//end window.onclick //allows clicking outside the modal to close
 
     vm.addClass = function(){
       let instructorsArray = [];
@@ -71,7 +71,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         alert('Please Login before viewing this page');
         $location.path('/');
       }
-    });
+    });//end http.get item
 
     vm.addUser = function(){
       console.log(vm.email);
@@ -88,6 +88,6 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       localStorage.setItem('classID', x);
       $location.path('/students');
       localStorage.setItem('classView', true);
-    };
+    };//end classView
 
 });
