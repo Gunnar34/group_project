@@ -33,7 +33,7 @@
           <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
           <td>{{ x.startDate | date : 'mediumDate'}}</td>
           <td>{{ x.endDate | date : 'mediumDate'}}</td>
-          <td>Time</td>
+          <td>{{x.startTime}} - {{x.endTime}}</td>
           <td>{{ x.grades }}</td>
           <td>
             <button tooltipped class="btn" ng-click="cc.classView(x._id)"  data-position="top" data-delay="50" data-tooltip="View Students">
@@ -46,7 +46,7 @@
             </button>
           </td>
           <td>
-            <button tooltipped class="btn" onclick="document.getElementById('editClass').style.display = 'block'" data-position="top" data-delay="50" data-tooltip="Edit Class">
+            <button tooltipped class="btn" ng-click="cc.editClass($index)" data-position="top" data-delay="50" data-tooltip="Edit Class">
               <i class="small material-icons">create</i>
             </button>
           </td>
@@ -116,48 +116,56 @@
   </div>
 </div>
 
-  <div id="editClass" class="modal">
-    <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
-    <div class="modal-content animate">
-      <form ng-submit='' class="" action="index.html" method="post">
-        <div class="input-field">
-          <i class="material-icons prefix">grade</i>
-          <input ng-model='cc.gradesUP' type="text" id="gradeUP" value="">
-          <label for="gradeUP">Grades</label>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">location_on</i>
-          <input ng-model='cc.locationUP' type="text" id="locationUP" value="">
-          <label for="locationUP">Location</label>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">subject</i>
-          <input ng-model='cc.subjectUP' type="text" id="subjectUP" value="">
-          <label for="subjectUP">Subject</label>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">date_range</i>
-          <input input-date type="text" id="startUP" format="mm/dd/yyyy" ng-model='cc.startDateUP'>
-          <label for="startUP">Start Date</label>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">date_range</i>
-          <input input-date type="text" id="endUP" format="mm/dd/yyyy" ng-model='cc.endDateUP'>
-          <label for="endUP">End Date</label>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">timelapse</i>
-          <label class="" for="startTimeUP">Start Time</label>
-          <input id="startTimeUP" class="timepicker" ng-model="cc.startTimeUP" input-clock data-twelvehour="true" type="text" />
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">timelapse</i>
-          <label class="placeInLabel" for="endTimeUP">End Time</label>
-          <input id="endTimeUP" class="timepicker placeInput" ng-model="cc.endTimeUP" input-clock data-twelvehour="true" type="text" />
-        </div>
-      </form>
-      <button class='btn' ng-click='' type="button" name="button">Save Class</button>
+<div id="editClass" class="modal">
+  <span class="close animate" onclick="document.getElementById('editClass').style.display = 'none'">&times;</span>
+  <div class="modal-content animate">
+    <form class="row">
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">grade</i>
+        <input ng-model='cc.gradesUP' type="text" id="gradeUP" value="">
+        <label for="gradeUP">Grades</label>
       </div>
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">subject</i>
+        <input ng-model='cc.subjectUP' type="text" id="subjectUP" value="">
+        <label for="subjectUP">Subject</label>
+      </div>
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">date_range</i>
+        <input input-date type="text" id="startUP" format="mm/dd/yyyy" ng-model='cc.startDateUP'>
+        <label for="startUP">Start Date</label>
+      </div>
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">date_range</i>
+        <input input-date type="text" id="endUP" format="mm/dd/yyyy" ng-model='cc.endDateUP'>
+        <label for="endUP">End Date</label>
+      </div>
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">timelapse</i>
+        <label class="" for="startTimeUP">Start Time</label>
+        <input id="startTimeUP" class="timepicker" ng-model="cc.startTimeUP" input-clock data-twelvehour="true" type="text" />
+      </div>
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">timelapse</i>
+        <label class="placeInLabel" for="endTimeUP">End Time</label>
+        <input id="endTimeUP" class="timepicker placeInput" ng-model="cc.endTimeUP" input-clock data-twelvehour="true" type="text" />
+      </div>
+      <div class="input-field col l8 offset-l2 s12">
+        <i class="material-icons prefix">location_on</i>
+        <input ng-model='cc.locationUP' type="text" id="locationUP" value="">
+        <label for="locationUP">Location</label>
+      </div>
+      <div class="input-field col l8 offset-l2 s12" ng-repeat="instructor in cc.instructorsUP">
+        <i class="material-icons prefix">person</i>
+        <input ng-model='$index' type="text" id="{{$index}}UP" value="">
+        <label for="{{$index}}UP">instructors</label>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class='btn' ng-click='' type="button" name="button">Save Class</button>
+      </div>
+    </div>
   </div>
 </div>
 
