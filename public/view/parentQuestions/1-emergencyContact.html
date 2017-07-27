@@ -1,8 +1,19 @@
-<div class="">
+<div class="" ng-init="pc.loadEmergencyInfo()">
   <h3>Emergency Contact Info</h3>
   <span>Please review this information and make any changes.</span>
+  <div class="card hoverable">
+    <p editable-text="pc.currentStudent.emergencyName">
+      Name:  {{pc.currentStudent.emergencyName || 'empty' }}
+    </p>
+    <p editable-text="pc.currentStudent.emergencyPhone">
+      Phone:  {{pc.currentStudent.emergencyPhone || 'empty' }}
+    </p>
+    <p editable-text="pc.currentStudent.emergencyRelation">
+      Relation:  {{pc.currentStudent.emergencyRelation || 'empty' }}
+    </p>
+  </div>
   <p>Is this information correct?</p>
-  <button class="btn" ng-click='pc.go("/selfCheckout")' type="button" name="button">Yes</button>
+  <button class="btn" ng-click='pc.emergencySubmit()' type="button" name="button">Yes</button>
   <button class="btn" ng-click='pc.emergencyAlert()' type="button" name="button">No</button>
 </div>
 

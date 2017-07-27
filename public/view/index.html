@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/public/vendors/materialize.clockpicker.css">
   <link rel="stylesheet" href="/public/vendors/angular-keypad.min.css">
+  <link rel="stylesheet" href="/public/vendors/xeditable.min.css">
   <link rel="stylesheet" href="/public/styles/main.min.css">
 
   <!-- Vendors -->
@@ -19,7 +20,7 @@
   <script src="/public/vendors/angular-materialize.min.js" charset="utf-8"></script>
   <script src="/public/vendors/materialize.clockpicker.js" charset="utf-8"></script>
   <script src="/public/vendors/angular-keypad.min.js"></script>
-
+  <script src="/public/vendors/xeditable.min.js"></script>
 
   <!-- Ng-App -->
   <script src="/public/scripts/app.js" charset="utf-8"></script>
@@ -61,7 +62,11 @@
       <ul id="nav" class="side-nav">
         <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
 
-        <li class="">
+        <li tooltipped ng-show="ic.classSub" class="disabled" data-position="right" data-delay="100" data-tooltip="Please select class from dashboard to view this dropdown">
+          <span>Class options</span>
+        </li>
+
+        <li ng-show="ic.classMenu" class="">
           <ul class="collapsible collapsible-accordion">
             <li class="bold"><a class="padding collapsible-header waves-effect waves active"><span class="menuItem">Class Options</span></a>
               <div class="collapsible-body">
