@@ -43,8 +43,8 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   // adds student to class array in db
   vm.addStudent = function(){
     //creates item to send
-    var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyInfo);
-   
+    var itemToSend = new Student(vm.currentID, vm.firstName,  vm.lastName,  vm.grade,  vm.emergencyName,  vm.emergencyPhone,  vm.emergencyRelation);
+
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update

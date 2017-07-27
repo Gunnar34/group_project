@@ -43,7 +43,9 @@ router.put('/:id', function(req, res) {
         pin: req.body.pin,
         checkedIn: req.body.checkedIn,
         initialized: req.body.initialized,
-        emergencyInfo: req.body.emergencyInfo
+        emergencyName: req.body.emergencyName,
+        emergencyPhone: req.body.emergencyPhone,
+        emergencyRelation: req.body.emergencyRelation
       } //end students object
     } //end $push
   }; //end newValues object
@@ -60,13 +62,10 @@ router.put('/:id', function(req, res) {
 //edits students to db
 router.put('/init/:id', function(req, res) {
   console.log('db notes update', req.body);
-  var parent = req.params.id;
-  parentID = parent.split('$', 1);
-  console.log('parentid', parentID);
 
   var myQuery = {
-    '_id': parentID,
-    'students.studentID': req.params.id
+    '_id': req.params.id,
+    'students.studentID': req.body.studentID
   };
   //
   console.log('query, ', myQuery);
@@ -85,7 +84,9 @@ router.put('/init/:id', function(req, res) {
         pin: req.body.pin,
         checkedIn: req.body.checkedIn,
         initialized: req.body.initialized,
-        emergencyInfo: req.body.emergencyInfo
+        emergencyName: req.body.emergencyName,
+        emergencyPhone: req.body.emergencyPhone,
+        emergencyRelation: req.body.emergencyRelation
       }
     } //end $set
   };
