@@ -56,10 +56,8 @@ classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
 });//end put
 
 
-
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
-  console.log("-----------------");
   var newValues = {
     $pull: {
       students: {
@@ -80,4 +78,5 @@ router.delete('/:id', function(req, res) {
     }
   });// end update
 }); //end router.delete
+
 module.exports = router;
