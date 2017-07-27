@@ -29,7 +29,12 @@ app.controller('ParentController', function(dataService, $location) {
     // eventually, put in a call (to server?) to get currentStudent from class array
     // dataService.currentStudent = dataService.studentArray[index];
     console.log('in checkInStudent', dataService.currentStudent);
-    vm.go('/emergencyContact');
+    if(dataService.currentStudent.initialized == true) {
+      // if the student has been checked in on previous days, skip emergencyContact page
+      vm.go('/selfCheckout');
+    } else {
+      vm.go('/emergencyContact');
+    }
   }; // end checkInStudent
 
   vm.loadEmergencyInfo = function() {
@@ -61,6 +66,12 @@ app.controller('ParentController', function(dataService, $location) {
     vm.go('/pinSystem');
   }; // end receiveTexts
 
+  vm.loadPinInfo = function() {
+    // load currentStudent data from service into vm to go to appropriate PIN page
+    vm.currentStudent = dataService.currentStudent;
+    console.log('in loadPinInfo', dataService.currentStudent);
+  }; // end loadPinInfo
+
   vm.usePin = function(boolean) {
     dataService.currentStudent.usePin = boolean;
     console.log('in usePin', dataService.currentStudent);
@@ -78,6 +89,7 @@ app.controller('ParentController', function(dataService, $location) {
   }; // end enterPin
 
   vm.completeParentReview = function() {
+    dataService.currentStudent.initialized = true;
     dataService.studentArray[dataService.index] = dataService.currentStudent;
     vm.go('/complete');
   }; // end completeParentReview
