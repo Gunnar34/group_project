@@ -44,7 +44,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.addStudent = function(){
     //creates item to send
     var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyInfo);
-  
+   
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
