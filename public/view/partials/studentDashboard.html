@@ -32,8 +32,8 @@
       </table>
 
       <div id="addStudent" class="modal">
+        <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
         <div class="modal-content animate">
-          <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
           <form ng-submit='sc.addStudent()' class="" action="index.html" method="post">
             <div class="input-field">
               <input ng-model='sc.firstName' type="text" name="" value="">
