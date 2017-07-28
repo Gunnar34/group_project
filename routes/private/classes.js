@@ -23,10 +23,10 @@ router.get('/classes', function(req, res){
       res.sendStatus(400);
     }else{
       console.log('found classes');
-      foundClasses.push(classes)
+      foundClasses.push(classes);
     }//end else
     console.log(foundClasses);
-    res.send(foundClasses)
+    res.send(foundClasses);
   });//end classes find
 });//end popClassess
 
