@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
+      <h4 class="center-align">Class Subject: {{sc.currentClass.subject}}</h4>
+      <h5 class='center-align'>Date: {{sc.currentClass.startDate | date}} - {{sc.currentClass.endDate | date}}</h5>
       <button class="btn"ng-click="sc.goToParent()">Check-in View</button>
       <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button>
-    </div>
+      </div>
   </div>
   <div class="row">
     <div class="col s12">
@@ -30,28 +32,28 @@
         <div class="modal-content animate">
           <form ng-submit='sc.addStudent()' class="" action="index.html" method="post">
             <div class="input-field">
-              <input ng-model='sc.firstName' type="text" name="" value="">
-              <label for="">First Name</label>
+              <input ng-model='sc.firstName' type="text" id='firstName' name="" value="">
+              <label for="firstName">First Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.lastName' type="text" name="" value="">
-              <label for="">Last Name</label>
+              <input ng-model='sc.lastName' type="text" id='lastName' name="" value="">
+              <label for="lastName">Last Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.grade' type="text" name="" value="">
-              <label for="">Grade</label>
+              <input ng-model='sc.grade' type="text" id='grade' name="" value="">
+              <label for="grade">Grade</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" name="" value="">
-              <label for="">Emergency Contact</label>
+              <input ng-model='sc.emergencyName' type="text" id='emergencyName' name="" value="">
+              <label for="emergencyName">Emergency Contact</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyPhone' type="text" name="" value="">
-              <label for="">Phone</label>
+              <input ng-model='sc.emergencyPhone' type="text" id='phone' name="" value="">
+              <label for="phone">Phone</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyRelation' type="text" name="" value="">
-              <label for="">Emergency Relation</label>
+              <input ng-model='sc.emergencyRelation' type="text" id='emergencyRelation' name="" value="">
+              <label for="emergencyRelation">Emergency Relation</label>
             </div>
           </form>
           <button class='btn' ng-click='sc.addStudent()' type="button" name="button">Save Student</button>
@@ -63,28 +65,28 @@
         <div class="modal-content animate">
           <form ng-submit='sc.editStudent()' class="" action="index.html" method="post">
             <div class="input-field">
-              <input ng-model='sc.firstName' type="text" name="" value="">
-              <label for="">First Name</label>
+              <input ng-model='sc.firstName' type="text" id='firstNameE' name="" value="">
+              <label for="firstNameE">First Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.lastName' type="text" name="" value="">
-              <label for="">Last Name</label>
+              <input ng-model='sc.lastName' type="text" id='lastNameE' name="" value="">
+              <label for="lastNameE">Last Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.grade' type="text" name="" value="">
-              <label for="">Grade</label>
+              <input ng-model='sc.grade' type="text" id='gradeE' name="" value="">
+              <label for="gradeE">Grade</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" name="" value="">
-              <label for="">Emergency Contact</label>
+              <input ng-model='sc.emergencyName' type="text" id='contactE' name="" value="">
+              <label for="contactE">Emergency Contact</label>
              </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyPhone' type="text" name="" value="">
-              <label for="">Phone</label>
+              <input ng-model='sc.emergencyPhone' type="text" id='phoneE' name="" value="">
+              <label for="phoneE">Phone</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyRelation' type="text" name="" value="">
-              <label for="">Emergency Relation</label>
+              <input ng-model='sc.emergencyRelation' type="text" id='emergencyRelationE' name="" value="">
+              <label for="emergencyRelationE">Emergency Relation</label>
             </div>
           </form>
           <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button>
