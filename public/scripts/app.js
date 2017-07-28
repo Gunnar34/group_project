@@ -21,7 +21,8 @@ app.config(function($routeProvider) {
     controllerAs: 'sc'
   }).when('/instructor', {
     templateUrl: 'public/view/partials/instructor.html',
-    controller: 'InstructorController'
+    controller: 'InstructorController',
+    controllerAs: 'inc'
   }).when('/parent', {
     templateUrl: 'public/view/parent.html',
     controller: 'ParentController',
@@ -50,6 +51,10 @@ app.config(function($routeProvider) {
     templateUrl: 'public/view/parentQuestions/5-complete.html',
     controller: 'ParentController',
     controllerAs: 'pc'
+  }).when('/stats', {
+    templateUrl: 'public/view/partials/stats.html',
+    controller: 'StatsController',
+    controllerAs: 'sc'
   });
 
 }); //end config

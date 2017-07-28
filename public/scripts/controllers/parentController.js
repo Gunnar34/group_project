@@ -5,7 +5,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.pinEntry = '';
   vm.currentID = localStorage.getItem('classID');
   vm.studentsArray = [];
-
+  vm.currentStudent = dataService.currentStudent;
   // functions
   vm.go = function(path) {
     $location.url(path);

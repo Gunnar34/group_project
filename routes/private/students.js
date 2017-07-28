@@ -12,9 +12,7 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   console.log('id hit', req.params.id);
-  classesModel.findOne({
-    _id: req.params.id
-  }).then(function(err, data) {
+  classesModel.findOne({_id: req.params.id}).then(function(err, data) {
     if (!err) {
       res.send(data);
     } else {
@@ -25,8 +23,21 @@ router.get('/:id', function(req, res) {
 
 //gets emergencyInfo with id
 router.get('/emergencyInfo/:id', function(req, res){
-  console.log(req.params.id);
-  classesModel.findOne
+  var id = req.params.id;
+  parentID = id.split('$', 1);
+
+  classesModel.findOne({'_id': parentID[0], 'students.studentID': req.params.id}).then(function(data, err){
+    if (err) {
+      console.log('err', err);
+      res.send(err)
+    } else {
+      for (var i = 0; i < data.students.length; i++) {
+        if (data.students[i].studentID == id){
+          res.send(data.students[i]);
+        }
+      }//end for loop
+    } //end else
+  });//end find one studentID
 });//end emergencyInfo
 
 //adds students to db
@@ -100,12 +111,12 @@ router.put('/init/:id', function(req, res) {
   classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
     console.log('Did we make it in?');
     if (!err) {
-          res.send('added to class');
-        } else {
-          res.send('error');
-        } //end else
-      }); //end findOne and update
-    }); //end put
+      res.send('added to class');
+    } else {
+      res.send('error');
+    } //end else
+  }); //end findOne and update
+}); //end put
 
 
 
