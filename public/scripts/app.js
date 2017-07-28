@@ -21,7 +21,7 @@ app.config(function($routeProvider) {
     controllerAs: 'sc'
   }).when('/instructor', {
     templateUrl: 'public/view/partials/instructor.html',
-    controller: 'IndexController'
+    controller: 'InstructorController'
   }).when('/parent', {
     templateUrl: 'public/view/parent.html',
     controller: 'ParentController',
