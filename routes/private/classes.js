@@ -8,8 +8,13 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/classes', function(req, res){
   console.log('post', req.body);
-  classesModel(req.body).save();
-  res.sendStatus(201);
+  classesModel(req.body).save(function(err){
+    console.log(err);
+    if (err) {
+      res.sendStatus(400);
+    }
+    res.sendStatus(201);
+  });
 });//end post classes
 
 router.get('/classes', function(req, res){
