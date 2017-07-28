@@ -9,10 +9,10 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
 
-vm.goToParent = function(){
-  console.log('click');
-  $location.path('/parent')
-};
+  vm.goToParent = function(){
+    console.log('click');
+    $location.path('/parent')
+  };
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
@@ -30,7 +30,7 @@ vm.goToParent = function(){
       alert('Please Login before viewing this page');
       $location.path('/');
     }
-  });
+  });//end httpService get item
 
   vm.displayClass = function(){
     console.log('before', vm.currentID);
@@ -48,18 +48,19 @@ vm.goToParent = function(){
   // adds student to class array in db
   vm.addStudent = function(){
     //creates item to send
-
     var itemToSend = new Student(vm.currentID, vm.firstName,  vm.lastName,  vm.grade,  vm.emergencyName,  vm.emergencyPhone,  vm.emergencyRelation);
-
-
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
       vm.displayClass();
       document.getElementById('addStudent').style.display = 'none';
-
     });
   };//end add student
+
+
+  vm.editStudent = function(id){
+    console.log(id);
+  };//end edit student
 
   vm.viewEmergency = function(id){
     console.log(id);
@@ -67,9 +68,9 @@ vm.goToParent = function(){
       console.log(res.data);
       vm.studentName = res.data.firstName;
       vm.emergencyName = res.data.emergencyName;
-      vm.emergencyRelation = res.data.
-    });
-
+      vm.emergencyRelation = res.data.emergencyRelation;
+      vm.emergencyPhone = res.data.emergencyPhone;
+    });//end .then
   };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {
@@ -89,5 +90,23 @@ vm.goToParent = function(){
   };//end delete students
 
 });//end student controller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //spacer
