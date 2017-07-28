@@ -64,8 +64,12 @@ vm.goToParent = function(){
   vm.viewEmergency = function(id){
     console.log(id);
     httpService.getWithID('/private/students/emergencyInfo', id).then(function(res){
-      console.log(res);
-    })
+      console.log(res.data);
+      vm.studentName = res.data.firstName;
+      vm.emergencyName = res.data.emergencyName;
+      vm.emergencyRelation = res.data.
+    });
+
   };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {
@@ -76,12 +80,6 @@ vm.goToParent = function(){
     }//end else
     console.log(vm.data);
   });//end displayClass
-
-  vm.populateStudents = function(){
-    console.log('in populateStudents');
-    objectToSend = new Student(vm.parentID, vm.firstName, vm.lastName, vm.grade);
-    console.log(objectToSend);
-  };//end populateStudents
 
   vm.deletStudents = function(id){
     hs.deleteItem('/private/students', id).then(function(res){
