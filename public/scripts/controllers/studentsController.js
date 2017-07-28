@@ -9,6 +9,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
   vm.currentClass;
+  vm.currentStudentID;
 
 vm.goToParent = function(){
   console.log('click');
@@ -23,7 +24,7 @@ vm.goToParent = function(){
     }//end if
   };//end window onclick
 
-  httpService.getItem('auth').then(function(res){
+  hs.getItem('auth').then(function(res){
     if (res.data.name) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
@@ -59,9 +60,15 @@ vm.goToParent = function(){
   };//end add student
 
 
-  vm.editStudent = function(id){
+  vm.setId = function(id){
     console.log(id);
-  };//end edit student
+    vm.currentStudent = id;
+  };//end setID
+
+  vm.editStudent = function(){
+    console.log(vm.currentStudent);
+
+  };//end edit students
 
   vm.viewEmergency = function(id){
     console.log(id);
