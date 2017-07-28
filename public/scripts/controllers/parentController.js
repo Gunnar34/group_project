@@ -34,6 +34,20 @@ app.controller('ParentController', function(dataService, httpService, $location)
     }
   }; // end checkInStudent
 
+  vm.checkOutStudent = function(user) {
+    idx = dataService.studentArray.indexOf(user);
+    dataService.currentStudent = dataService.studentArray[idx];
+    dataService.index = idx;
+    // vm.go('/checkOut');
+    dataService.currentStudent.checkedIn = false;
+
+    id = dataService.currentStudent.studentID;
+    parentID = id.split('$', 1);
+    hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
+      console.log('in completeParentReview, res is:', res);
+    });
+  }; // end checkOutStudent
+
   vm.loadEmergencyInfo = function() {
     // load currentStudent data from service into vm to be edited
     vm.currentStudent = dataService.currentStudent;
@@ -75,26 +89,26 @@ app.controller('ParentController', function(dataService, httpService, $location)
     if (boolean) {
       vm.go('/pinPad');
     } else {
-      vm.completeParentReview();
+      vm.go('/complete');
     }
   }; // end usePin
 
   vm.enterPin = function(thingie, pin) {
     dataService.currentStudent.pin = pin;
     console.log('in enterPin', dataService.currentStudent);
-    vm.completeParentReview();
+    vm.go('/complete');
   }; // end enterPin
 
   vm.completeParentReview = function() {
     dataService.currentStudent.initialized = true;
     dataService.currentStudent.checkedIn = true;
+    vm.currentStudent = dataService.currentStudent;
 
     id = dataService.currentStudent.studentID;
     parentID = id.split('$', 1);
     hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
       console.log('in completeParentReview, res is:', res);
     });
-    vm.go('/complete');
   }; // end completeParentReview
 
 
