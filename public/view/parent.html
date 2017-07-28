@@ -1,5 +1,6 @@
 <div class="row" ng-init="pc.loadClassInfo()">
-  <table class="col l6">
+
+  <table class="col l6 s6 highlight">
     <thead>
       <tr>
         <th></th>
@@ -9,17 +10,36 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat='student in pc.studentArray' ng-click='pc.checkInStudent($index)'>
-        <td></td>
-        <td>{{student.firstName}} {{student.lastName}}</td>
-        <td ng-show="student.initialized" class="btn">Review Info</td>
+      <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
+        <td ng-click='pc.checkInStudent(student)'></td>
+        <td class="waves-effect waves-light btn"
+         ng-click='pc.checkInStudent(student)'>
+          {{student.firstName}} {{student.lastName}}
+        </td>
+        <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
       </tr>
     </tbody>
   </table>
-  <!-- <h1>Parent View</h1>
-  <ul>
-    <li ng-repeat='student in pc.studentArray' ng-click='pc.checkInStudent($index)'>
-      Check in:  {{student.firstName}} {{student.lastName}}
-    </li>
-  </ul> -->
+
+  <table class="col l6 s6 highlight">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Child name</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
+        <td ng-click='pc.checkInStudent(student)'></td>
+        <td class="waves-effect waves-light btn"
+         ng-click='pc.checkInStudent(student)'>
+          {{student.firstName}} {{student.lastName}}
+        </td>
+        <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
