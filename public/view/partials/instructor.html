@@ -1,1 +1,24 @@
-<div>on instructor.html</div>
+<div class="row" ng-init="inc.getInstructors()">
+  <div class="center-align">
+    <div ng-if='inc.admin' class="input-field col s6 offset-s1">
+      <input  ng-model=inc.email type="text" id="instructorEmail" value="">
+      <label for="instructorEmail">Instructors email</label>
+    </div>
+    <div class="col s3 center-align">
+      <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Add Instructor</button>
+    </div>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>Instructor Name</th>
+    <th>Instructor Email</th>
+    <th>Phone Number</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</table>

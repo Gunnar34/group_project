@@ -118,16 +118,6 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       });//end deleteItem
     };//end remove class
 
-    vm.addUser = function(){
-      console.log(vm.email);
-      let itemToSend = {
-        email: vm.email
-      };
-      httpService.postItem('private/instructor', itemToSend).then(function(res){
-        vm.email = undefined;
-      });
-    };
-
     vm.classView = function(x){
       console.log(x); //takes the class Id that was clicked and stores it
       localStorage.setItem('classID', x);
