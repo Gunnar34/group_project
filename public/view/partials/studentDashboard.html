@@ -19,7 +19,7 @@
         <tr ng-repeat='x in sc.studentsArray '>
           <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
-          <td><button ng-click='sc.viewEmergency(x.studentID)' class="btn">View Emergency Contact</button></td>
+          <td><button ng-click="sc.viewEmergency(x.studentID)" onclick="document.getElementById('showEmergency').style.display = 'block'" class="btn">View Emergency Contact</button></td>
           <td><button class="btn" onclick="document.getElementById('editStudent').style.display = 'block'">Edit</button></td>
           <td><button ng-click="sc.deletStudents(x.studentID)" class="btn">Delete</button></td>
         </tr>
@@ -90,6 +90,27 @@
           <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button>
         </div>
       </div>
+<!--show emergency modal  -->
+      <div id="showEmergency" class='modal'>
+        <div class="modal-content animate">
+          <div class="display">
+              <h3>{{sc.studentName}}</h3>
+            <div class="input-field">
+              <input ng-model='sc.emergencyName' type="text" name="" value="">
+              <label for="">Contact Name</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyName' type="text" name="" value="">
+              <label for="">Contact Relation</label>
+            </div>
+            <div class="input-field">
+              <input ng-model='sc.emergencyName' type="text" name="" value="">
+              <label for="">Contact Phone</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
