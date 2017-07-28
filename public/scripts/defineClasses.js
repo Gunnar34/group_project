@@ -1,7 +1,7 @@
 class Student {
 
   constructor(parentID, firstName, lastName, grade, emergencyName, emergencyPhone, emergencyRelation) {
-    this.studentID = parentID + '$' + new Date();//change to dat now
+    this.studentID = parentID + '$' + new Date();//change to date now
     this.firstName = firstName;
     this.lastName = lastName;
     this.grade = grade;
