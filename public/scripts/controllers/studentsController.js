@@ -9,6 +9,11 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
 
+vm.goToParent = function(){
+  console.log('click');
+  $location.path('/parent')
+};
+
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
     if (event.target.getAttribute("class") == 'modal') {
@@ -82,27 +87,5 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   };//end delete students
 
 });//end student controller
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //spacer
