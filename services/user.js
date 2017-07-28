@@ -38,13 +38,12 @@ var UserService = {
       $set: {
         googleId: id,
         googleToken: token,
-        googleName: name,
-        googleEmail: email
+        googleName: name
       }
     };
     User.findOneAndUpdate({
       googleEmail: email
-    }, user, function(err) {
+    }, user, function(err, user) {
       if (err) {
         return callback(err, null);
       }
