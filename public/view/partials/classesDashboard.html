@@ -22,7 +22,7 @@
           <th></th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
-          <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}  </span></td>
+          <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}{{$last ? '' : ', '}} </span></td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
           <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
