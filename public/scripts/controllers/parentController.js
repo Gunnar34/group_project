@@ -6,6 +6,18 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.currentID = localStorage.getItem('classID');
   vm.studentsArray = [];
   vm.currentStudent = dataService.currentStudent;
+
+  httpService.getItem('auth').then(function(res){
+    if (res.data.name) {
+      vm.admin = res.data.name.admin;
+      vm.name = res.data.name.googleName;
+    }
+    else {
+      alert('Please Login before viewing this page');
+      $location.path('/');
+    }
+  });
+
   // functions
   vm.go = function(path) {
     $location.url(path);
