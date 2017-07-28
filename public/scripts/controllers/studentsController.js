@@ -11,7 +11,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
 
 vm.goToParent = function(){
   console.log('click');
-  $location.path('/parent')
+  $location.path('/parent');
 };
 
   window.onclick = function(event) {
@@ -65,7 +65,7 @@ vm.goToParent = function(){
     console.log(id);
     httpService.getWithID('/private/students/emergencyInfo', id).then(function(res){
       console.log(res);
-    })
+    });
   };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {

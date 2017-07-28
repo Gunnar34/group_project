@@ -16,11 +16,13 @@
   <script src="/public/vendors/angular.min.js" charset="utf-8"></script>
   <script src="/public/vendors/angular-route.min.js" charset="utf-8"></script>
   <script src="/public/vendors/angular-cookies.min.js"></script>
+  <script src="/public/vendors/angular-chart.min.js" charset="utf-8"></script>
   <script src="/public/vendors/materialize.min.js" charset="utf-8"></script>
   <script src="/public/vendors/angular-materialize.min.js" charset="utf-8"></script>
   <script src="/public/vendors/materialize.clockpicker.js" charset="utf-8"></script>
   <script src="/public/vendors/angular-keypad.min.js"></script>
   <script src="/public/vendors/xeditable.min.js"></script>
+  <script src="/public/vendors/Chart.min.js" charset="utf-8"></script>
 
   <!-- Ng-App -->
   <script src="/public/scripts/app.js" charset="utf-8"></script>
@@ -35,6 +37,7 @@
   <script src="/public/scripts/controllers/classesController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/studentsController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/instructorController.js" charset="utf-8"></script>
+  <script src="/public/scripts/controllers/statsController.js" charset="utf-8"></script>
   <title>Abamath</title>
 </head>
 
@@ -65,6 +68,8 @@
         <li class="bold"><a href="#!instructor" ng-click='' class="waves-effect waves-grey"><span class="menuItem">Instructor Dashboard</span></a></li>
 
         <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
+
+        <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Logistics</span></a></li>
 
         <li tooltipped ng-show="ic.classSub" class="disabled" data-position="right" data-delay="100" data-tooltip="Please select class from dashboard to view this dropdown">
           <span>Class options</span>
