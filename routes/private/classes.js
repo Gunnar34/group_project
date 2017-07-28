@@ -30,11 +30,22 @@ router.get('/classes', function(req, res){
   });//end classes find
 });//end popClassess
 
+router.put('/classes/:id', function(req, res){
+  console.log('put hit', req.params.id);
+  classesModel.findOneAndUpdate({_id: req.params.id}, req.body).then(function(err){
+    if (!err){
+      res.send('something worked');
+    }else{
+      res.send('error');
+    }//end else
+  });
+});
+
 router.delete('/:id', function(req, res){
   console.log('delete hit', req.params.id);
   classesModel.remove({_id: req.params.id}).then(function(err){
     if (!err){
-      res.send('nudes');
+      res.send('something worked');
     }else{
       res.send('error');
     }//end else
