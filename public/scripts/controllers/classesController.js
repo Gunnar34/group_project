@@ -1,8 +1,23 @@
 app.controller('ClassesController', function (httpService, $location, dataService) {
   console.log('loaded CC');
+
+  //make sure its an authorized user
+  httpService.getItem('auth').then(function(res){
+    if (res.data.name) {
+      vm.admin = res.data.name.admin;
+      vm.name = res.data.name.googleName;
+    }
+    else {
+      alert('Please Login before viewing this page');
+      $location.path('/');
+    }
+  });
+
+  //vars
   var vm = this;
   vm.inputNumber = [0];
   var number = 1;
+  vm.instructorsUP;
   localStorage.setItem('classView', false);
 
   vm.addInput = function(){
@@ -35,6 +50,16 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       document.getElementById('editClass').style.display = 'block';
     };
 
+    vm.addEditInput = function(){
+      vm.instructorsUP.push({instructor: ''});
+    };
+
+    vm.subEditInput = function(){
+      if (vm.instructorsUP.length > 1) {
+        vm.instructorsUP.pop();
+      }
+    };
+
     vm.addClass = function(){
       let instructorsArray = [];
       for (var i = 0; i < vm.inputNumber.length; i++) {
@@ -55,14 +80,20 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       console.log(objectToSend);
       httpService.postItem('private/classes/classes', objectToSend).then(function(res){
         console.log(res);
-          vm.populateClasses(); //repopulate classes in table
+        vm.populateClasses(); //repopulate classes in table
       });//end then function
         document.getElementById('addClass').style.display = 'none'; //close modal
+        vm.inputNumber = [0];
     };//end addClass
 
     vm.populateClasses = function(){
       console.log('in populateClasses');
       httpService.getItem('private/classes/classes').then(function(res){
+        for (var i = 0; i < res.data[0].length; i++) {
+          for (var j = 0; j < res.data[0][i].instructors.length; j++) {
+            res.data[0][i].instructors[j] = {instructor: res.data[0][i].instructors[j]};
+          }
+        }
         vm.classesArray = res.data[0];
       });//end http get popClasses
     };//end populateClasses
@@ -73,17 +104,6 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         vm.populateClasses();
       });//end deleteItem
     };//end remove class
-
-    httpService.getItem('auth').then(function(res){
-      if (res.data.name) {
-        vm.admin = res.data.name.admin;
-        vm.name = res.data.name.googleName;
-      }
-      else {
-        alert('Please Login before viewing this page');
-        $location.path('/');
-      }
-    });
 
     vm.addUser = function(){
       console.log(vm.email);

@@ -27,7 +27,7 @@
           <th></th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
-          <td><span ng-repeat="instructor in x.instructors">{{instructor}}  </span></td>
+          <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}  </span></td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
           <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
@@ -155,10 +155,18 @@
         <input ng-model='cc.locationUP' type="text" id="locationUP" value="">
         <label for="locationUP">Location</label>
       </div>
-      <div class="input-field col l8 offset-l2 s12" ng-repeat="instructor in cc.instructorsUP">
+      <div class="input-field col l8 offset-l2 s12" ng-repeat="obj in cc.instructorsUP">
         <i class="material-icons prefix">person</i>
-        <input ng-model='$index' type="text" id="{{$index}}UP" value="">
+        <input ng-model='obj.instructor' type="text" id="{{$index}}UP" value="">
         <label for="{{$index}}UP">instructors</label>
+      </div>
+      <div class="col l2 s12">
+        <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
+          <i class="material-icons prefix">add</i>
+        </button>
+        <button tooltipped class="btn btn-floating" name="button" ng-click="cc.subEditInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
+          <i class="material-icons prefix">cancel</i>
+        </button>
       </div>
     </form>
     <div class="row">
