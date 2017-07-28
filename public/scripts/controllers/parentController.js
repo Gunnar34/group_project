@@ -6,16 +6,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.currentID = localStorage.getItem('classID');
   vm.studentsArray = [];
 
-  // dataService.currentStudent = dataService.currentStudent;
-  // vm.currentStudent = {};
-  // vm.studentObjectToSend = {
-  //   // selfCheck: Boolean,
-  //   // receiveTexts: Boolean,
-  //   // usePin: Boolean,
-  //   // pin: 0
-  // };
-
-
   // functions
   vm.go = function(path) {
     $location.url(path);
@@ -28,18 +18,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
     hs.getWithID('/private/students', vm.currentID).then(function(res){
       vm.studentArray = res.data.students;
       dataService.studentArray = vm.studentArray;
-      console.log(vm.studentArray);
-      console.log('call made');
-      console.log('response: ',res);
     });//end get withId
   }; // end loadClassInfo
 
-  vm.checkInStudent = function(index) {
-    dataService.currentStudent = dataService.studentArray[index];
-    dataService.index = index;
-    // eventually, put in a call (to server?) to get currentStudent from class array
-    // dataService.currentStudent = dataService.studentArray[index];
-    console.log('in checkInStudent', dataService.currentStudent);
+  vm.checkInStudent = function(user) {
+
+    idx = dataService.studentArray.indexOf(user);
+    dataService.currentStudent = dataService.studentArray[idx];
+    dataService.index = idx;
     if(dataService.currentStudent.initialized == true) {
       // if the student has been checked in on previous days, skip emergencyContact page
       vm.go('/selfCheckout');
@@ -100,14 +86,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
   }; // end enterPin
 
   vm.completeParentReview = function() {
-    console.log('in completeParentReview, currentStudent is:', dataService.currentStudent);
-
     dataService.currentStudent.initialized = true;
-    // dataService.studentArray[dataService.index] = dataService.currentStudent;
+    dataService.currentStudent.checkedIn = true;
 
     id = dataService.currentStudent.studentID;
     parentID = id.split('$', 1);
-    console.log('parentid', parentID);
     hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
       console.log('in completeParentReview, res is:', res);
     });
