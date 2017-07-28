@@ -50,6 +50,10 @@ app.config(function($routeProvider) {
     templateUrl: 'public/view/parentQuestions/5-complete.html',
     controller: 'ParentController',
     controllerAs: 'pc'
+  }).when('/stats', {
+    templateUrl: 'public/view/partials/stats.html',
+    controller: 'StatsController',
+    controllerAs: 'sc'
   });
 
 }); //end config
