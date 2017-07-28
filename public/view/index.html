@@ -34,6 +34,7 @@
   <script src="/public/scripts/controllers/parentController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/classesController.js" charset="utf-8"></script>
   <script src="/public/scripts/controllers/studentsController.js" charset="utf-8"></script>
+  <script src="/public/scripts/controllers/instructorController.js" charset="utf-8"></script>
   <title>Abamath</title>
 </head>
 
@@ -55,11 +56,14 @@
           <img ng-src="public/assets/images/abamath.png" class="brand-logo right navLogo" />
         </div>
       </div>
+
     </nav>
     <!-- end topNav -->
 
       <!-- start sideNav -->
       <ul id="nav" class="side-nav">
+        <li class="bold"><a href="#!instructor" ng-click='' class="waves-effect waves-grey"><span class="menuItem">Instructor Dashboard</span></a></li>
+
         <li class="bold"><a href="#!classes" class="waves-effect waves"><span class="menuItem">Classes Dashboard</span></a></li>
 
         <li tooltipped ng-show="ic.classSub" class="disabled" data-position="right" data-delay="100" data-tooltip="Please select class from dashboard to view this dropdown">
@@ -86,10 +90,6 @@
     <!-- end sideNav -->
 
     <ng-view></ng-view>
-
-
-
-    <!-- ben test section (remove if merging) -->
 
 
   </main>
