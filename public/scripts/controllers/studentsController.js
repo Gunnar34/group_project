@@ -9,10 +9,11 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
 
-  vm.goToParent = function(){
-    console.log('click');
-    $location.path('/parent')
-  };
+vm.goToParent = function(){
+  console.log('click');
+  $location.path('/parent');
+};
+
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
@@ -65,12 +66,14 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.viewEmergency = function(id){
     console.log(id);
     httpService.getWithID('/private/students/emergencyInfo', id).then(function(res){
+
       console.log(res.data);
       vm.studentName = res.data.firstName;
       vm.emergencyName = res.data.emergencyName;
       vm.emergencyRelation = res.data.emergencyRelation;
       vm.emergencyPhone = res.data.emergencyPhone;
     });//end .then
+
   };//end viewEmrgency
 
   hs.getItem('/private/students').then(function (response) {
