@@ -34,7 +34,7 @@ router.delete('/:id', function(req, res){
   console.log('delete hit', req.params.id);
   classesModel.remove({_id: req.params.id}).then(function(err){
     if (!err){
-      res.send('nudes');
+      res.send('something worked');
     }else{
       res.send('error');
     }//end else
