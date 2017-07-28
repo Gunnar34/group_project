@@ -39,6 +39,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     };//end window.onclick //allows clicking outside the modal to close
 
     vm.editClass = function(index){
+      vm.id = vm.classesArray[index]._id;
       vm.gradesUP = vm.classesArray[index].grades;
       vm.subjectUP = vm.classesArray[index].subject;
       vm.startDateUP = vm.classesArray[index].startDate;
@@ -60,11 +61,28 @@ app.controller('ClassesController', function (httpService, $location, dataServic
       }
     };
 
+    vm.saveEdit = function(){
+      let itemToSend = {
+        grades: vm.gradesUP,
+        subject: vm.subjectUP,
+        startDate: vm.startDateUP,
+        endDate: vm.endDateUP,
+        startTime: vm.startTimeUP,
+        endTime: vm.endTimeUP,
+        location: vm.locationUP,
+        instructors: vm.instructorsUP
+      };
+      httpService.putItem('/private/classes/classes', vm.id, itemToSend).then(function(res){
+        vm.populateClasses();
+        document.getElementById('editClass').style.display = 'none';
+      });
+    };
+
     vm.addClass = function(){
       let instructorsArray = [];
       for (var i = 0; i < vm.inputNumber.length; i++) {
-        let instructor = vm.instructor[i];
-        instructorsArray.push(instructor);
+        let instructorName = vm.instructor[i];
+        instructorsArray.push({instructor: instructorName});
       }
       let objectToSend = {
         grades: vm.grades,
@@ -89,11 +107,6 @@ app.controller('ClassesController', function (httpService, $location, dataServic
     vm.populateClasses = function(){
       console.log('in populateClasses');
       httpService.getItem('private/classes/classes').then(function(res){
-        for (var i = 0; i < res.data[0].length; i++) {
-          for (var j = 0; j < res.data[0][i].instructors.length; j++) {
-            res.data[0][i].instructors[j] = {instructor: res.data[0][i].instructors[j]};
-          }
-        }
         vm.classesArray = res.data[0];
       });//end http get popClasses
     };//end populateClasses
