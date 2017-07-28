@@ -8,10 +8,6 @@ function IndexController(httpService, AuthFactory, $window, $location, $interval
   const authFactory = AuthFactory;
   localStorage.setItem('classView', false);
 
-  vm.addInstructor = function() {
-    console.log('in vm.addInstructor');
-  };  // end addInstructor
-
   classView = $interval(function () {
     if (localStorage.getItem('classView') == 'true'){
       vm.classMenu = true;
