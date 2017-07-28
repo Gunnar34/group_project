@@ -3,6 +3,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
   const vm = this;
   const hs = httpService;
   vm.pinEntry = '';
+  vm.currentID = localStorage.getItem('classID');
+  vm.studentsArray = [];
+
   // dataService.currentStudent = dataService.currentStudent;
   // vm.currentStudent = {};
   // vm.studentObjectToSend = {
@@ -20,8 +23,15 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
   vm.loadClassInfo = function() {
     // load class info from service -- probably will change this in the future
-    vm.studentArray = dataService.studentArray;
-    console.log('in loadClassInfo, studentArray is:', dataService.studentArray);
+    // vm.studentArray = dataService.studentArray;
+    // console.log('in loadClassInfo, studentArray is:', dataService.studentArray);
+    hs.getWithID('/private/students', vm.currentID).then(function(res){
+      vm.studentArray = res.data.students;
+      dataService.studentArray = vm.studentArray;
+      console.log(vm.studentArray);
+      console.log('call made');
+      console.log('response: ',res);
+    });//end get withId
   }; // end loadClassInfo
 
   vm.checkInStudent = function(index) {
@@ -90,11 +100,16 @@ app.controller('ParentController', function(dataService, httpService, $location)
   }; // end enterPin
 
   vm.completeParentReview = function() {
+    console.log('in completeParentReview, currentStudent is:', dataService.currentStudent);
 
     dataService.currentStudent.initialized = true;
     // dataService.studentArray[dataService.index] = dataService.currentStudent;
+
     id = dataService.currentStudent.studentID;
-    hs.putItem('/students/init', id, dataService.currentStudent).then(function(res){
+    parentID = id.split('$', 1);
+    console.log('parentid', parentID);
+    hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
+      console.log('in completeParentReview, res is:', res);
     });
     vm.go('/complete');
   }; // end completeParentReview

@@ -9,6 +9,11 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
 
+vm.goToParent = function(){
+  console.log('click');
+  $location.path('/parent')
+};
+
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
     if (event.target.getAttribute("class") == 'modal') {
@@ -43,7 +48,9 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   // adds student to class array in db
   vm.addStudent = function(){
     //creates item to send
-    var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyInfo);
+
+    var itemToSend = new Student(vm.currentID, vm.firstName,  vm.lastName,  vm.grade,  vm.emergencyName,  vm.emergencyPhone,  vm.emergencyRelation);
+
 
     console.log(itemToSend);
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
@@ -84,27 +91,5 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   };//end delete students
 
 });//end student controller
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //spacer
