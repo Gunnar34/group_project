@@ -77,7 +77,7 @@
             <div class="input-field">
               <input ng-model='sc.emergencyName' type="text" name="" value="">
               <label for="">Emergency Contact</label>
-            </div>
+             </div>
             <div class="input-field">
               <input ng-model='sc.emergencyPhone' type="text" name="" value="">
               <label for="">Phone</label>
@@ -95,18 +95,11 @@
         <div class="modal-content animate">
           <div class="display">
               <h3>{{sc.studentName}}</h3>
-            <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" name="" value="">
-              <label for="">Contact Name</label>
-            </div>
-            <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" name="" value="">
-              <label for="">Contact Relation</label>
-            </div>
-            <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" name="" value="">
-              <label for="">Contact Phone</label>
-            </div>
+              <p>{{sc.emergencyName}}</p>
+              <p>{{sc.emergencyRelation}}</p>
+              <p>{{sc.emergencyPhone}}</p>
+
+            <button onclick="document.getElementById('showEmergency').style.display = 'none'; document.getElementById('editStudent').style.display = 'block'" class='btn' type="button" name="button">Update Information</button>
           </div>
         </div>
       </div>
