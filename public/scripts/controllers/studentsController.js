@@ -8,6 +8,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.studentsArray = [];
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
+  vm.currentClass;
 
 vm.goToParent = function(){
   console.log('click');
@@ -38,8 +39,7 @@ vm.goToParent = function(){
     hs.getWithID('/private/students', vm.currentID).then(function(res){
       vm.studentsArray = res.data.students;
       console.log(vm.studentsArray);
-      console.log('call made');
-      console.log('response: ',res);
+      vm.currentClass = res.data;
     });//end get withId
   };//end displayClass
 
