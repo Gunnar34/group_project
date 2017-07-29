@@ -55,6 +55,7 @@ vm.goToParent = function(){
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
       vm.displayClass();
+      document.getElementById('addStudentForm').reset();
       document.getElementById('addStudent').style.display = 'none';
     });
   };//end add student
