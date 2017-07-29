@@ -1,9 +1,12 @@
-<div class="" ng-init="pc.loadPinInfo">
-  <div ng-if="pc.currentStudent.usePin">
-    WE GOT A PIN ALREADY
+<div class="container" ng-init="pc.loadPinInfo">
+  <div class="row">
+    <div class="col s12">
+      <div ng-if="pc.currentStudent.usePin">
+        WE GOT A PIN ALREADY
+      </div>
+      <h3 class='center-align'>Would you like to use a PIN to check out the student?</h3>
+      <button class="btn" ng-click='pc.usePin(true)' type="button" name="button">Yes</button>
+      <button class="btn" ng-click='pc.usePin(false)' type="button" name="button">No</button>
+    </div>
   </div>
-  <h3>Would you like to use a PIN to check out the student?</h3>
-  <button class="btn" ng-click='pc.usePin(true)' type="button" name="button">Yes</button>
-  <button class="btn" ng-click='pc.usePin(false)' type="button" name="button">No</button>
-
 </div>

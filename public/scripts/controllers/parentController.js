@@ -24,9 +24,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
   }; // end go
 
   vm.loadClassInfo = function() {
-    // load class info from service -- probably will change this in the future
-    // vm.studentArray = dataService.studentArray;
-    // console.log('in loadClassInfo, studentArray is:', dataService.studentArray);
     hs.getWithID('/private/students', vm.currentID).then(function(res){
       vm.studentArray = res.data.students;
       dataService.studentArray = vm.studentArray;
