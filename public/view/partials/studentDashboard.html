@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col s12">
       <h4 class="center-align">Class Subject: {{sc.currentClass.subject}}</h4>
+      <h5 class='center-align'>{{ sc.currentClass.location }}</h5>
       <h5 class='center-align'>Date: {{sc.currentClass.startDate | date}} - {{sc.currentClass.endDate | date}}</h5>
       <button class="btn"ng-click="sc.goToParent()">Check-in View</button>
       <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button>
@@ -30,7 +31,7 @@
       <div id="addStudent" class="modal">
         <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
         <div class="modal-content animate">
-          <form ng-submit='sc.addStudent()' class="" action="index.html" method="post">
+          <form ng-submit='sc.addStudent()' id="addStudentForm" action="index.html" method="post">
             <div class="input-field">
               <input ng-model='sc.firstName' type="text" id='firstName' name="" value="">
               <label for="firstName">First Name</label>
