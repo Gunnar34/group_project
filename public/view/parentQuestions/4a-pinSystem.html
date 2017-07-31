@@ -10,3 +10,19 @@
     </div>
   </div>
 </div>
+
+
+<div id="keypad" class="modal">
+  <div class="modal-content animate">
+    <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
+    <bc-keypad
+    bc-number-model="pc.pinEntry"
+    bc-max-length="4"
+    bc-left-button="backspace"
+    bc-right-button="submit"
+    bc-right-button-method="pc.enterPin($event, numbers)"
+    ></bc-keypad>
+    <!-- <span class="close animate" onclick="document.getElementById('keypad').style.display = 'none'">&times;</span> -->
+    <button class='btn left' ng-click='pc.keypadClose()' type="button" name="button">Cancel</button>
+  </div>
+</div>

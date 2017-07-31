@@ -40,9 +40,11 @@
               <input ng-model='sc.lastName' type="text" id='lastName' name="" value="">
               <label for="lastName">Last Name</label>
             </div>
-            <div class="input-field">
-              <input ng-model='sc.grade' type="text" id='grade' name="" value="">
-              <label for="grade">Grade</label>
+            <div class='input-field' input-field>
+              <i class="material-icons prefix">grade</i>
+              <select class="" ng-model="sc.grade" material-select  watch>
+                <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
+              </select>
             </div>
             <div class="input-field">
               <input ng-model='sc.emergencyName' type="text" id='emergencyName' name="" value="">
@@ -66,27 +68,29 @@
         <div class="modal-content animate">
           <form ng-submit='sc.editStudent()' class="" action="index.html" method="post">
             <div class="input-field">
-              <input ng-model='sc.firstName' type="text" id='firstNameE' name="" value="">
-              <label for="firstNameE">First Name</label>
+              <input ng-model='sc.firstNameUp' type="text" id='firstNameUp' name="" value="">
+              <label for="firstNameUp">First Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.lastName' type="text" id='lastNameE' name="" value="">
+              <input ng-model='sc.lastNameUp' type="text" id='lastNameE' name="" value="">
               <label for="lastNameE">Last Name</label>
             </div>
-            <div class="input-field">
-              <input ng-model='sc.grade' type="text" id='gradeE' name="" value="">
-              <label for="gradeE">Grade</label>
+            <div class='input-field' input-field>
+              <i class="material-icons prefix">grade</i>
+              <select class="" ng-model="sc.gradeUp" material-select  watch>
+                <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
+              </select>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" id='contactE' name="" value="">
+              <input ng-model='sc.emergencyNameUp' type="text" id='contactE' name="" value="">
               <label for="contactE">Emergency Contact</label>
              </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyPhone' type="text" id='phoneE' name="" value="">
+              <input ng-model='sc.emergencyPhoneUp' type="text" id='phoneE' name="" value="">
               <label for="phoneE">Phone</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyRelation' type="text" id='emergencyRelationE' name="" value="">
+              <input ng-model='sc.emergencyRelationUp' type="text" id='emergencyRelationE' name="" value="">
               <label for="emergencyRelationE">Emergency Relation</label>
             </div>
           </form>
