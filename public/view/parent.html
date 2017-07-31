@@ -1,47 +1,48 @@
 <div class="row" ng-init="pc.loadClassInfo()">
-
-  <table class="col l6 s6 highlight">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Child name</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
-        <td ng-click='pc.checkInStudent(student)'></td>
-        <td class="waves-effect waves-light btn"
-         ng-click='pc.checkInStudent(student)'>
-          {{student.firstName}} {{student.lastName}}
-        </td>
-        <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="col l6 s6 highlight">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Child name</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
-        <td ng-click='pc.checkInStudent(student)'></td>
-        <td class="waves-effect waves-light btn"
-         ng-click='pc.checkOutStudent(student)'>
-          {{student.firstName}} {{student.lastName}}
-        </td>
-        <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <!-- checkedout -->
+  <div class="col l6 s6 highlight">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <h3>Not Checked-in Students</h3></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
+          <td ng-click='pc.checkInStudent(student)'></td>
+          <td class="waves-effect waves-light btn" ng-click='pc.checkInStudent(student)'>
+            {{student.firstName}} {{student.lastName}}
+          </td>
+          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- checkedin -->
+  <div class="col l6 s6 highlight">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <h3>Checked-in Students</h3></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
+          <td ng-click='pc.checkInStudent(student)'></td>
+          <td class="waves-effect waves-light btn" ng-click='pc.checkOutStudent(student)'>
+            {{student.firstName}} {{student.lastName}}
+          </td>
+          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div id="keypad" class="modal">
