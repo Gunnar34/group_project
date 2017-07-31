@@ -70,7 +70,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
       let numAttempts = attempts();
-      alert('Sweet Alert! That was not correct. Please try again');
+      swal({
+        title: 'That PIN was incorrect!',
+        text: "Please enter the correct PIN",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
       console.log(numAttempts);
       vm.pinEntry = '';
       if (numAttempts >= 3) {

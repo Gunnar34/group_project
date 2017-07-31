@@ -21,6 +21,7 @@
     "passport-google": "^0.3.0",
     "passport-google-oauth": "^1.0.0",
     "passport-google-oauth2": "^0.1.6",
+    "sweetalert2": "^6.6.6",
     "twilio": "^3.6.1"
   }
 }
