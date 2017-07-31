@@ -16,13 +16,15 @@ app.use('/public', express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 database();
-app.use(session({
-  secret: configs.sessionVars.secret,
-  key: 'user',
-  resave: 'true',
-  saveUninitialized: false,
-  cookie: { maxage: 60000, secure: false },
-}));
+app.use(
+	session({
+		secret: configs.sessionVars.secret,
+		key: 'user',
+		resave: 'true',
+		saveUninitialized: false,
+		cookie: { maxage: 60000, secure: false }
+	})
+);
 app.use(passport.initialize());
 app.use(passport.session());
 //use routes
@@ -30,7 +32,6 @@ app.use('/auth', auth);
 app.use('/private', isLoggedIn, private);
 app.use('/', index);
 
-
-app.listen( port, function(){
-  console.log('server 3000');
+app.listen(port, function() {
+	console.log('server 3000');
 });
