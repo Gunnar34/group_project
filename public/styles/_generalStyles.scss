@@ -45,7 +45,7 @@ td {
 
 .modal-container {
   min-height: 10vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .modal-content {
@@ -54,7 +54,7 @@ td {
     margin: 5px auto;
     border: 1px solid #888;
     width: 80vw;
-    overflow-y: hidden;
+    overflow-y: auto;
      -webkit-overflow-scrolling: touch;
      min-height: 10%;
      max-height: 100vh;
