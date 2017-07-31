@@ -19,11 +19,31 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 	};
 
 	vm.deleteInsctructor = function(index) {
-		console.log(vm.users[index]);
-		httpService.deleteItem('private/instructor', vm.users[index]._id).then(function() {
-			vm.getInstructors();
+		swal({
+			title: 'Are you sure you want to delete this instructor?',
+			text: "You won't be able to undo this!",
+			imageUrl: 'public/assets/images/abamath.png',
+			imageWidth: 150,
+			imageHeight: 150,
+			animation: false,
+			showCancelButton: true,
+			confirmButtonColor: '#2196f3',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then(function() {
+			httpService.deleteItem('private/instructor', vm.users[index]._id).then(function() {
+				vm.getInstructors();
+				swal({
+					title: 'Deleted!',
+					text: "The class was deleted",
+					imageUrl: 'public/assets/images/abamath.png',
+					imageWidth: 150,
+					imageHeight: 150,
+					animation: false
+				});
+			})
 		})
-	}
+	};
 
 	httpService.getItem('auth').then(function(res) {
 		if (res.data.name) {
