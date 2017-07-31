@@ -84,7 +84,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
     id = studentArrayToCheckout[0].studentID;
     parentID = id.split('$', 1);
     hs.putItem('private/students/checkoutAllStudents', parentID[0], dataService.studentArray).then(function(res){
-      // console.log('in completeParentReview, res is:', res);
+      console.log('in checkoutAllStudents, res is:', res);
     });
   }; // end checkoutAllStudents
 
