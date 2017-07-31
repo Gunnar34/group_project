@@ -14,7 +14,14 @@ app.controller('ClassesController', function(httpService, $location) {
         }, 600);
       }
     } else {
-      alert('Please Login before viewing this page');
+      swal({
+        title: 'Oops!',
+        text: "Please login to continue",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
       $location.path('/');
     }
   });
