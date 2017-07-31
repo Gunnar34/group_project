@@ -12,7 +12,9 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   console.log('id hit', req.params.id);
-  classesModel.findOne({_id: req.params.id}).then(function(err, data) {
+  classesModel.findOne({
+    _id: req.params.id
+  }).then(function(err, data) {
     if (!err) {
       res.send(data);
     } else {
@@ -22,23 +24,26 @@ router.get('/:id', function(req, res) {
 }); //end find one student
 
 //gets emergencyInfo with id
-router.get('/emergencyInfo/:id', function(req, res){
+router.get('/emergencyInfo/:id', function(req, res) {
   var id = req.params.id;
   parentID = id.split('$', 1);
 
-  classesModel.findOne({'_id': parentID[0], 'students.studentID': req.params.id}).then(function(data, err){
+  classesModel.findOne({
+    '_id': parentID[0],
+    'students.studentID': req.params.id
+  }).then(function(data, err) {
     if (err) {
       console.log('err', err);
       res.send(err)
     } else {
       for (var i = 0; i < data.students.length; i++) {
-        if (data.students[i].studentID == id){
+        if (data.students[i].studentID == id) {
           res.send(data.students[i]);
         }
-      }//end for loop
+      } //end for loop
     } //end else
-  });//end find one studentID
-});//end emergencyInfo
+  }); //end find one studentID
+}); //end emergencyInfo
 
 //adds students to db
 router.put('/:id', function(req, res) {
@@ -122,41 +127,68 @@ router.put('/init/:id', function(req, res) {
 router.put('/checkoutAllStudents/:id', function(req, res) {
   console.log('in checkoutAllStudents, req.body is:', req.body);
 
-  // var myQuery = {
-  //   '_id': req.params.id,
-  //   'students.studentID': req.body.studentID
-  // };
-  // //
-  // var newValues = {
-  //   $set: {
-  //     'students.$': {
-  //       studentID: req.body.studentID,
-  //       firstName: req.body.firstName,
-  //       lastName: req.body.lastName,
-  //       grade: req.body.grade,
-  //       selfCheck: req.body.selfCheck,
-  //       receiveTexts: req.body.receiveTexts,
-  //       usePin: req.body.usePin,
-  //       pin: req.body.pin,
-  //       checkedIn: req.body.checkedIn,
-  //       initialized: req.body.initialized,
-  //       emergencyName: req.body.emergencyName,
-  //       emergencyPhone: req.body.emergencyPhone,
-  //       emergencyRelation: req.body.emergencyRelation
-  //     }
-  //   } //end $set
-  // };
-  // console.log('new notes: ', newValues);
-  // classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
-  //   console.log('Did we make it in?');
-  //   if (!err) {
-  //     res.send('added to class');
-  //   } else {
-  //     res.send('error');
-  //   } //end else
-  // }); //end findOne and update
-}); //end put
+  var query = classesModel.where({
+    _id: req.params.id
+  });
+  query.findOne(function(err, data) {
+    if (!err) {
 
+      console.log('data is:', data);
+      for (var i = 0; i < data.students.length; i++) {
+        var search = {
+          '_id': req.params.id,
+          'students.studentID': data.students[i].studentID
+        };
+        console.log('search is', search);
+        console.log('i is: ', i);
+        var newValues = {
+          $set: {
+            checkedIn: false
+          } //end $set
+        };
+        classesModel.findOneAndUpdate(search, newValues, {new: true}, function(err, doc) {
+          if (!err) {
+            console.log(doc);
+            console.log('updated');
+          } else {
+            console.log('err is', err);
+          }
+        });
+      } // end for loop?
+    } else {
+        console.log('error is:', err);
+    }
+  }).then(function(data, err){
+    if(data){
+      res.send('success');
+    } else {
+      res.send('oops');
+    }
+  });
+}); // end put
+
+
+
+
+
+// // res.send(data);
+// }
+// else {
+//   console.log('poop');
+//   // res.send(err);
+// } //end else
+// // console.log('new notes: ', newValues);
+// });
+// // classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
+// //   console.log('Class is over, trying to check everyone out...', err);
+// //   if (!err) {
+// //     res.send('All checked out!');
+// //   } else {
+// //     res.send('Error');
+// //   } //end else
+// // }); //end findOne and update
+// }); //end put
+//
 
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
