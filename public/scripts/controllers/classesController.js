@@ -1,28 +1,31 @@
-app.controller('ClassesController', function(
-	httpService,
-	$location,
-	dataService
-) {
+app.controller('ClassesController', function(httpService, $location) {
 	console.log('loaded CC');
 
 	//make sure its an authorized user
 	httpService.getItem('auth').then(function(res) {
 		if (res.data.name) {
+			console.log(res.data.name);
 			vm.admin = res.data.name.admin;
 			vm.name = res.data.name.googleName;
+			vm.userId = res.data.name._id;
+			if (!res.data.name.phone) {
+				setTimeout(function() {
+					document.getElementById('addPhoneNumber').style.display = 'block';
+				}, 600);
+			}
 		} else {
 			alert('Please Login before viewing this page');
 			$location.path('/');
 		}
 	});
 
-  //vars
-  var vm = this;
-  vm.inputNumber = [0];
-  var number = 1;
-  vm.instructorsUP;
-  localStorage.setItem('classView', false);
-  vm.gradesRange = [1,2,3,4,5,6,7,8,9];
+	//vars
+	var vm = this;
+	vm.inputNumber = [0];
+	var number = 1;
+	vm.instructorsUP;
+	localStorage.setItem('classView', false);
+	vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 	vm.addInput = function() {
 		vm.inputNumber.push(number);
@@ -36,11 +39,21 @@ app.controller('ClassesController', function(
 	}; //end subInput //allows removing an instructor input
 
 	window.onclick = function(event) {
-		id = event.target.getAttribute('id');
+		let id = event.target.getAttribute('id');
 		if (event.target.getAttribute('class') == 'modal') {
 			document.getElementById(id).style.display = 'none';
 		}
 	}; //end window.onclick //allows clicking outside the modal to close
+
+	vm.savePhone = function() {
+		let its = {
+			phone: vm.phone
+		}
+		httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
+			console.log(res);
+			document.getElementById('addPhoneNumber').style.display = 'none';
+		});
+	};
 
 	vm.editClass = function(index) {
 		vm.id = vm.classesArray[index]._id;
@@ -55,60 +68,64 @@ app.controller('ClassesController', function(
 		document.getElementById('editClass').style.display = 'block';
 	};
 
-    vm.addEditInput = function(){
-      vm.instructorsUP.push({instructor: ''});
-    };//end addEditInput
+	vm.addEditInput = function() {
+		vm.instructorsUP.push({
+			instructor: ''
+		});
+	}; //end addEditInput
 
-    vm.subEditInput = function(){
-      if (vm.instructorsUP.length > 1) {
-        vm.instructorsUP.pop();
-      };
-    };//end subEditInput
+	vm.subEditInput = function() {
+		if (vm.instructorsUP.length > 1) {
+			vm.instructorsUP.pop();
+		}
+	}; //end subEditInput
 
-    vm.saveEdit = function(){
-      let itemToSend = {
-        grades: vm.gradesUP,
-        subject: vm.subjectUP,
-        startDate: vm.startDateUP,
-        endDate: vm.endDateUP,
-        startTime: vm.startTimeUP,
-        endTime: vm.endTimeUP,
-        location: vm.locationUP,
-        instructors: vm.instructorsUP
-      };
-      httpService.putItem('/private/classes/classes', vm.id, itemToSend).then(function(res){
-        vm.populateClasses();
-        document.getElementById('editClass').style.display = 'none';
-      });
-    };//end saveEdit
+	vm.saveEdit = function() {
+		let itemToSend = {
+			grades: vm.gradesUP,
+			subject: vm.subjectUP,
+			startDate: vm.startDateUP,
+			endDate: vm.endDateUP,
+			startTime: vm.startTimeUP,
+			endTime: vm.endTimeUP,
+			location: vm.locationUP,
+			instructors: vm.instructorsUP
+		};
+		httpService.putItem('/private/classes/classes', vm.id, itemToSend).then(function() {
+			vm.populateClasses();
+			document.getElementById('editClass').style.display = 'none';
+		});
+	}; //end saveEdit
 
-    vm.addClass = function(){
+	vm.addClass = function() {
 
-      let instructorsArray = [];
-      for (var i = 0; i < vm.inputNumber.length; i++) {
-        let instructorName = vm.instructor[i];
-        instructorsArray.push({instructor: instructorName});
-      }
-      let objectToSend = {
-        grades: vm.gradesArray,
-        location: vm.location,
-        subject: vm.subject,
-        startDate: vm.startDate,
-        endDate: vm.endDate,
-        startTime: vm.startTime,
-        endTime: vm.endTime,
-        instructors: instructorsArray,
-        students: []
-      };
-      console.log(objectToSend);
-      httpService.postItem('private/classes/classes', objectToSend).then(function(res){
-        console.log(res);
-        vm.populateClasses(); //repopulate classes in table
-      });//end then function
-        document.getElementById('addClass').style.display = 'none'; //close modal
-        document.getElementById('addClassForm').reset();
-        vm.inputNumber = [0];
-    };//end addClass
+		let instructorsArray = [];
+		for (var i = 0; i < vm.inputNumber.length; i++) {
+			let instructorName = vm.instructor[i];
+			instructorsArray.push({
+				instructor: instructorName
+			});
+		}
+		let objectToSend = {
+			grades: vm.gradesArray,
+			location: vm.location,
+			subject: vm.subject,
+			startDate: vm.startDate,
+			endDate: vm.endDate,
+			startTime: vm.startTime,
+			endTime: vm.endTime,
+			instructors: instructorsArray,
+			students: []
+		};
+		console.log(objectToSend);
+		httpService.postItem('private/classes/classes', objectToSend).then(function(res) {
+			console.log(res);
+			vm.populateClasses(); //repopulate classes in table
+		}); //end then function
+		document.getElementById('addClass').style.display = 'none'; //close modal
+		document.getElementById('addClassForm').reset();
+		vm.inputNumber = [0];
+	}; //end addClass
 
 	vm.populateClasses = function() {
 		console.log('in populateClasses');
