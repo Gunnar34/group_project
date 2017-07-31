@@ -45,7 +45,6 @@ vm.goToParent = function(){
       vm.currentClass = res.data;
       console.log(vm.currentClass);
       vm.gradesRange = vm.currentClass.grades.split(',')
-      console.log(vm.gradesRange);
     });//end get withId
   };//end displayClass
 
