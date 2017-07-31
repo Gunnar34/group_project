@@ -29,4 +29,18 @@ router.post('/', function(req, res) {
 	}); //end creat user
 }); //end post
 
+router.put('/:id', function(req, res) {
+	console.log(req.params.id);
+	console.log(req.body);
+	var newValue = {
+			phone: req.body.phone
+	};
+	User.findOneAndUpdate({ _id: req.params.id }, newValue, function(err, user) {
+		if (err) {
+			res.send(err);
+		}
+		res.send(user);
+	});
+});
+
 module.exports = router;

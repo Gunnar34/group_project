@@ -23,7 +23,7 @@
     <td><input ng-if="inc.edit" class="center-align" type="text" ng-model="user.phone" value=""><span ng-if="inc.notEdit">{{user.phone}}</span</td>
     <td>
       <button ng-if="inc.notEdit" ng-click="inc.editB($index)" type="button" class="btn">Edit</button>
-      <button ng-if="inc.edit" ng-click="inc.editB($index)" type="button" class="btn">Save</button>
+      <button ng-if="inc.edit" ng-click="inc.save($index)" type="button" class="btn">Save</button>
     </td>
   </tr>
 </table>

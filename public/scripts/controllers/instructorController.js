@@ -10,6 +10,16 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 		vm.notEdit = !vm.notEdit;
 	};
 
+	vm.save = function(index) {
+		vm.editB();
+		let user = vm.users[index];
+		httpService
+			.putItem('private/instructor', user._id, { phone: user.phone })
+			.then(function(res) {
+				console.log(res);
+			});
+	};
+
 	httpService.getItem('auth').then(function(res) {
 		if (res.data.name) {
 			vm.admin = res.data.name.admin;
