@@ -11,9 +11,8 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
   vm.currentClass;
-  console.log(vm.currentClass);
   vm.currentStudentID;
-  vm.gradesRange = [1,2,3,4,5,6,7,8,9]
+  vm.gradesRange = []
 vm.goToParent = function(){
   console.log('click');
   $location.path('/parent');
@@ -44,6 +43,9 @@ vm.goToParent = function(){
       vm.studentsArray = res.data.students;
       console.log(vm.studentsArray);
       vm.currentClass = res.data;
+      console.log(vm.currentClass);
+      vm.gradesRange = vm.currentClass.grades.split(',')
+      console.log(vm.gradesRange);
     });//end get withId
   };//end displayClass
 
