@@ -1,7 +1,6 @@
-
-
-
-var config = require('/../../config/auth');
+var express = require('express');
+var router = express.Router();
+var config = require('../../config/auth.js');
 var nodemailer = require('nodemailer');
 var twilio = require('twilio');
 
@@ -60,12 +59,12 @@ router.post('/text', function(req, res) {
 });
 
 // to make a call
-router.post('/', function(req, res) {
+router.post('/call', function(req, res) {
   console.log("req body: ", req.body);
   client.calls.create({
     url: "http://demo.twilio.com/docs/voice.xml",
-    to: "numberGoesHere",
-    from: "numberGoesHere"
+    to: req.body.phone,
+    from: config.numberSRC
   }, function(err, call) {
     if (call) {
       console.log('call ', call);
