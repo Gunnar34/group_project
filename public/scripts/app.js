@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
 		templateUrl: 'public/view/partials/login.html',
 		controller: 'AuthController',
 		controllerAs: 'auth',
+	}).when('/failure', {
+		templateUrl: 'public/view/partials/failure.html',
+		controller: 'AuthController',
+		controllerAs: 'auth',
 	}).when('/classes', {
 		templateUrl: 'public/view/partials/classesDashboard.html',
 		controller: 'ClassesController',
