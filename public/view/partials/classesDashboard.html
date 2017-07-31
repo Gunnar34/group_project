@@ -19,7 +19,9 @@
           <th>End Date</th>
           <th>Time</th>
           <th>Grades</th>
-          <th></th>
+          <th>View class</th>
+          <th>Delete class</th>
+          <th>Edit class</th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
           <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}{{$last ? '' : ', '}} </span></td>
@@ -31,17 +33,17 @@
           <td>{{x.startTime}} - {{x.endTime}}</td>
           <td>{{ x.grades }}</td>
           <td>
-            <button tooltipped class="btn" ng-click="cc.classView(x._id)"  data-position="top" data-delay="50" data-tooltip="View Students">
+            <button class="btn" ng-click="cc.classView(x._id)">
               <i class="small material-icons">people</i>
             </button>
           </td>
           <td>
-            <button tooltipped class="btn" ng-click="cc.removeClass(x._id)" data-position="top" data-delay="50" data-tooltip="Delete Class">
+            <button class="btn" ng-click="cc.removeClass(x._id)">
               <i class="small material-icons">delete</i>
             </button>
           </td>
           <td>
-            <button tooltipped class="btn" ng-click="cc.editClass($index)" data-position="top" data-delay="50" data-tooltip="Edit Class">
+            <button class="btn" ng-click="cc.editClass($index)">
               <i class="small material-icons">create</i>
             </button>
           </td>
