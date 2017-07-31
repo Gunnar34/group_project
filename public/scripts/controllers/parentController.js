@@ -23,6 +23,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
     $location.url(path);
   }; // end go
 
+  var attempts = (function () {
+      var counter = 0;
+      return function () {return counter += 1;};
+  })();
+
   vm.loadClassInfo = function() {
     hs.getWithID('/private/students', vm.currentID).then(function(res){
       vm.studentArray = res.data.students;
@@ -63,6 +68,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
       });
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
+      let numAttempts = attempts();
+      console.log(numAttempts);
+      if(numAttempts >= 3){
+        $location.path('/checkoutError');
+      }
     }
   }; // end enterCheckoutPin
 
