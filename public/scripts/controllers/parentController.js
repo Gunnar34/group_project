@@ -75,9 +75,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
         objectToSend = {
           phone: "+16124301051"
         };
-        hs.postItem('/private/comm/call', objectToSend).then(function(res) {
-
-        });
+        // hs.postItem('/private/comm/call', objectToSend).then(function(res) {
+        //
+        // });
         $location.path('/checkoutError');
       }
     }
