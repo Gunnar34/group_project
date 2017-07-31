@@ -19,6 +19,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
   var number = 1;
   vm.instructorsUP;
   localStorage.setItem('classView', false);
+  vm.gradesRange = [1,2,3,4,5,6,7,8,9]
 
   vm.addInput = function(){
     vm.inputNumber.push(number);
@@ -53,13 +54,13 @@ app.controller('ClassesController', function (httpService, $location, dataServic
 
     vm.addEditInput = function(){
       vm.instructorsUP.push({instructor: ''});
-    };
+    };//end addEditInput
 
     vm.subEditInput = function(){
       if (vm.instructorsUP.length > 1) {
         vm.instructorsUP.pop();
-      }
-    };
+      };
+    };//end subEditInput
 
     vm.saveEdit = function(){
       let itemToSend = {
@@ -76,16 +77,17 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         vm.populateClasses();
         document.getElementById('editClass').style.display = 'none';
       });
-    };
+    };//end saveEdit
 
     vm.addClass = function(){
+
       let instructorsArray = [];
       for (var i = 0; i < vm.inputNumber.length; i++) {
         let instructorName = vm.instructor[i];
         instructorsArray.push({instructor: instructorName});
       }
       let objectToSend = {
-        grades: vm.grades,
+        grades: vm.gradesArray,
         location: vm.location,
         subject: vm.subject,
         startDate: vm.startDate,
