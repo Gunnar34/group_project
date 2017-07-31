@@ -11,6 +11,7 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
   vm.currentClass;
+  console.log(vm.currentClass);
   vm.currentStudentID;
   vm.gradesRange = [1,2,3,4,5,6,7,8,9]
 vm.goToParent = function(){
@@ -57,6 +58,7 @@ vm.goToParent = function(){
     hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
       //call to update
       vm.displayClass();
+      document.getElementById('addStudentForm').reset();
       document.getElementById('addStudent').style.display = 'none';
     });
   };//end add student
@@ -82,11 +84,18 @@ vm.goToParent = function(){
       grade: vm.gradeUp,
       emergencyName: vm.emergencyNameUp,
       emergencyPhone: vm.emergencyPhoneUp,
-      emergencyRelation: vm.emergencyRelationUp
+      emergencyRelation: vm.emergencyRelationUp,
+      checkedIn: vm.currentStudent.checkedIn,
+      selfCheck: vm.currentStudent.selfCheck,
+      usePin: vm.currentStudent.usePin,
+      pin: vm.currentStudent.pin,
+      receiveTexts: vm.currentStudent.receiveTexts,
+      initialized: vm.currentStudent.initialized
     };
     console.log(objectToSend);
     hs.putItem('/private/students/edit', objectToSend.id, objectToSend);
     document.getElementById('editStudent').style.display = 'none';
+    vm.displayClass();
   };//end edit students
 
   vm.viewEmergency = function(id){

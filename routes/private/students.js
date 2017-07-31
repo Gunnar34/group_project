@@ -146,7 +146,40 @@ router.put('/edit/:id', function (req, res){
   console.log('edit id hit');
   console.log(req.params.id, 'body', req.body);
   classId = req.params.id.split('$', 1);
-  classesModel.findOneAndUpdate({_id: classId[0]})
+  var myQuery = {
+    '_id': classId[0],
+    'students.studentID': req.body.id
+  };
+  console.log(myQuery);
+  var newValues = {
+    '$set': {
+      'students.$': {
+        studentID: req.body.id,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        grade: req.body.grade,
+        selfCheck: req.body.selfCheck,
+        receiveTexts: req.body.receiveTexts,
+        usePin: req.body.usePin,
+        pin: req.body.pin,
+        checkedIn: req.body.checkedIn,
+        initialized: req.body.initialized,
+        emergencyName: req.body.emergencyName,
+        emergencyPhone: req.body.emergencyPhone,
+        emergencyRelation: req.body.emergencyRelation
+      }
+    } //end $set
+  }
+  classesModel.findOneAndUpdate(myQuery, newValues, function(err){
+    if(!err){
+      console.log('nice');
+      res.send('nice')
+    }else{
+      console.log(err);
+      res.send(err)
+    }//end else
+  }//end findOneAndUpdate function
+);// end findOneAndUpdate
 
 
 });//end put edit
