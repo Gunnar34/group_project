@@ -65,7 +65,6 @@ app.config(function($routeProvider) {
 
 app.filter('tel', function() {
 	return function(tel) {
-		console.log(tel);
 		if (!tel) {
 			return '';
 		}
