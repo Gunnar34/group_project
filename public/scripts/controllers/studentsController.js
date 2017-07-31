@@ -121,14 +121,28 @@ vm.goToParent = function(){
   });//end displayClass
 
   vm.deletStudents = function(id){
-    hs.deleteItem('/private/students', id).then(function(res){
-      console.log('back from deleteItem');
-      vm.displayClass();
-    });//end deleteItem
+    swal({
+      title: 'Are you sure you want to delete this student?',
+      text: "You won't be able to undo this!",
+      imageUrl: 'public/assets/images/abamath.png',
+      imageWidth: 150,
+      imageHeight: 150,
+      animation: true,
+      showCancelButton: true,
+      confirmButtonColor: '#2196f3',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      allowOutsideClick: true
+    }).then(function(){
+      hs.deleteItem('/private/students', id).then(function(res){
+        console.log('back from deleteItem');
+        vm.displayClass();
+      });//end deleteItem
+    });
   };//end delete students
 
-});//end student controller
 
+});//end student controller
 
 
 
