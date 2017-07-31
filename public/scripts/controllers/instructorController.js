@@ -2,23 +2,28 @@ app.controller('InstructorController', InstuctorController);
 
 function InstuctorController(httpService, AuthFactory, $window, $location) {
 	const vm = this;
-	vm.edit = false;
-	vm.notEdit = true;
 
-	vm.editB = function() {
-		vm.edit = !vm.edit;
-		vm.notEdit = !vm.notEdit;
+	vm.editB = function(i) {
+		vm.users[i].edit = !vm.users[i].edit;
+		vm.users[i].notEdit = !vm.users[i].notEdit;
 	};
 
 	vm.save = function(index) {
-		vm.editB();
+		vm.editB(index);
 		let user = vm.users[index];
-		httpService
-			.putItem('private/instructor', user._id, { phone: user.phone })
-			.then(function(res) {
-				console.log(res);
-			});
+		httpService.putItem('private/instructor', user._id, {
+			phone: user.phone
+		}).then(function(res) {
+			console.log(res);
+		});
 	};
+
+	vm.deleteInsctructor = function(index) {
+		console.log(vm.users[index]);
+		httpService.deleteItem('private/instructor', vm.users[index]._id).then(function() {
+			vm.getInstructors();
+		})
+	}
 
 	httpService.getItem('auth').then(function(res) {
 		if (res.data.name) {
@@ -48,6 +53,10 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 	vm.getInstructors = function() {
 		httpService.getItem('private/instructor').then(function(res) {
 			vm.users = res.data;
+			for (var i = 0; i < vm.users.length; i++) {
+				vm.users[i].edit = false;
+				vm.users[i].notEdit = true;
+			}
 		});
 	};
 } //end InstuctorController
