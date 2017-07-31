@@ -146,7 +146,7 @@ router.put('/edit/:id', function (req, res){
   console.log('edit id hit');
   console.log(req.params.id, 'body', req.body);
   classId = req.params.id.split('$', 1);
-  classesModel.findOneAndUpdate({_id: classId[]})
+  classesModel.findOneAndUpdate({_id: classId[0]})
 
 
 });//end put edit
