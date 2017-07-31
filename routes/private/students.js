@@ -76,7 +76,7 @@ router.put('/:id', function(req, res) {
   }); //end findOne and update
 }); //end put
 
-//edits students to db
+//edits students to db from the parent controller
 router.put('/init/:id', function(req, res) {
   console.log('db notes update', req.body);
 
@@ -119,8 +119,6 @@ router.put('/init/:id', function(req, res) {
 }); //end put
 
 
-
-
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
   var newValues = {
@@ -144,4 +142,32 @@ router.delete('/:id', function(req, res) {
   }); // end update
 }); //end router.delete
 
+router.put('/edit/:id', function (req, res){
+  console.log('edit id hit');
+  console.log(req.params.id, 'body', req.body);
+  classId = req.params.id.split('$', 1);
+  classesModel.findOneAndUpdate({_id: classId[0]})
+
+
+});//end put edit
+
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//spacer

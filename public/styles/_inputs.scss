@@ -60,3 +60,7 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
 .picker__day.picker__day--today, .picker__close, .picker__today {
   color: $pickerText !important;
 }
+
+.input-field {
+  margin-top: 0rem; 
+}
