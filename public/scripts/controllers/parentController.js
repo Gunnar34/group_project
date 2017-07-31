@@ -50,15 +50,24 @@ app.controller('ParentController', function(dataService, httpService, $location)
     idx = dataService.studentArray.indexOf(user);
     dataService.currentStudent = dataService.studentArray[idx];
     dataService.index = idx;
-    // vm.go('/checkOut');
-    dataService.currentStudent.checkedIn = false;
 
-    id = dataService.currentStudent.studentID;
-    parentID = id.split('$', 1);
-    hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
-      console.log('in completeParentReview, res is:', res);
-    });
+    document.getElementById('keypad').style.display = 'block';
   }; // end checkOutStudent
+
+  vm.enterCheckoutPin = function(thingie, pin) {
+    if (pin == dataService.currentStudent.pin) {
+      console.log('PIN matches!');
+      document.getElementById('keypad').style.display = 'none';
+      dataService.currentStudent.checkedIn = false;
+      id = dataService.currentStudent.studentID;
+      parentID = id.split('$', 1);
+      hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
+        console.log('in completeParentReview, res is:', res);
+      });
+    } else {
+      console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
+    }
+  }; // end enterCheckoutPin
 
   vm.loadEmergencyInfo = function() {
     // load currentStudent data from service into vm to be edited
@@ -99,7 +108,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
     dataService.currentStudent.usePin = boolean;
     console.log('in usePin', dataService.currentStudent);
     if (boolean) {
-      vm.go('/pinPad');
+      // vm.go('/pinPad');  // old design, now using modal
+      document.getElementById('keypad').style.display = 'block';
     } else {
       vm.go('/complete');
     }
@@ -108,8 +118,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.enterPin = function(thingie, pin) {
     dataService.currentStudent.pin = pin;
     console.log('in enterPin', dataService.currentStudent);
+    document.getElementById('keypad').style.display = 'none';
     vm.go('/complete');
   }; // end enterPin
+
+  vm.keypadClose = function() {
+    document.getElementById('keypad').style.display = 'none';
+    vm.pinEntry = '';
+  }; // end keypadClose
 
   vm.completeParentReview = function() {
     dataService.currentStudent.initialized = true;
