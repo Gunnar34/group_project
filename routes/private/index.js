@@ -3,6 +3,7 @@ var router  = express.Router();
 var classes = require('./classes');
 var students = require('./students');
 var instructor = require('./instructor');
+// var comm = require('./communication');
 
 
 /** ---------- SUBROUTES ---------- **/
@@ -10,6 +11,7 @@ var instructor = require('./instructor');
 router.use('/classes', classes);
 router.use('/students', students);
 router.use('/instructor', instructor);
+// router.use('/comm', comm);
 
 
 /**
