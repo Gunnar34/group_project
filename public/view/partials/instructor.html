@@ -21,7 +21,10 @@
   <tr ng-repeat="user in inc.users">
     <td>{{user.googleName}}</td>
     <td>{{user.googleEmail}}</td>
-    <td><input ng-if="user.edit" class="center-align" type="text" ng-model="user.phone" value=""><p ng-if="user.notEdit">{{user.phone}}</p</td>
+    <td>
+      <input phone-input ng-if="user.edit" class="center-align" type="text" ng-model="user.phone" value="">
+      <p ng-if="user.notEdit">{{user.phone | tel}}</p>
+      </td>
     <td>
       <button ng-if="user.notEdit" ng-click="inc.editB($index)" type="button" class="btn">Edit</button>
       <button ng-if="user.edit" ng-click="inc.save($index)" type="button" class="btn">Save</button>
