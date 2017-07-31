@@ -118,7 +118,44 @@ router.put('/init/:id', function(req, res) {
   }); //end findOne and update
 }); //end put
 
+// route to check-out all students
+router.put('/checkoutAllStudents/:id', function(req, res) {
+  console.log('in checkoutAllStudents, req.body is:', req.body);
 
+  // var myQuery = {
+  //   '_id': req.params.id,
+  //   'students.studentID': req.body.studentID
+  // };
+  // //
+  // var newValues = {
+  //   $set: {
+  //     'students.$': {
+  //       studentID: req.body.studentID,
+  //       firstName: req.body.firstName,
+  //       lastName: req.body.lastName,
+  //       grade: req.body.grade,
+  //       selfCheck: req.body.selfCheck,
+  //       receiveTexts: req.body.receiveTexts,
+  //       usePin: req.body.usePin,
+  //       pin: req.body.pin,
+  //       checkedIn: req.body.checkedIn,
+  //       initialized: req.body.initialized,
+  //       emergencyName: req.body.emergencyName,
+  //       emergencyPhone: req.body.emergencyPhone,
+  //       emergencyRelation: req.body.emergencyRelation
+  //     }
+  //   } //end $set
+  // };
+  // console.log('new notes: ', newValues);
+  // classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
+  //   console.log('Did we make it in?');
+  //   if (!err) {
+  //     res.send('added to class');
+  //   } else {
+  //     res.send('error');
+  //   } //end else
+  // }); //end findOne and update
+}); //end put
 
 
 router.delete('/:id', function(req, res) {
