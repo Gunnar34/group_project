@@ -70,11 +70,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
       let numAttempts = attempts();
+      alert('Sweet Alert! That was not correct. Please try again');
       console.log(numAttempts);
+      vm.pinEntry = '';
       if (numAttempts >= 3) {
         objectToSend = {
           phone: "+16124301051"
         };
+        vm.pinEntry = '';
         // hs.postItem('/private/comm/call', objectToSend).then(function(res) {
         //
         // });
