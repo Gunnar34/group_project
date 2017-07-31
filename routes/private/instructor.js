@@ -33,14 +33,27 @@ router.put('/:id', function(req, res) {
 	console.log(req.params.id);
 	console.log(req.body);
 	var newValue = {
-			phone: req.body.phone
+		phone: req.body.phone
 	};
-	User.findOneAndUpdate({ _id: req.params.id }, newValue, function(err, user) {
+	User.findOneAndUpdate({
+		_id: req.params.id
+	}, newValue, function(err, user) {
 		if (err) {
 			res.send(err);
 		}
 		res.send(user);
 	});
 });
+
+router.delete('/:id', function(req, res) {
+	User.findOneAndRemove({
+		_id: req.params.id
+	}, function(err, user) {
+		if (err) {
+			res.send(err);
+		}
+		res.send(user);
+	})
+})
 
 module.exports = router;
