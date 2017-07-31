@@ -1,22 +1,25 @@
-<div class="" ng-init="pc.loadEmergencyInfo()">
-  <h3>Emergency Contact Info</h3>
-  <span>Please review this information and make any changes.</span>
-  <div class="card hoverable">
-    <p editable-text="pc.currentStudent.emergencyName">
-      Name:  {{pc.currentStudent.emergencyName || 'empty' }}
-    </p>
-    <p editable-text="pc.currentStudent.emergencyPhone">
-      Phone:  {{pc.currentStudent.emergencyPhone || 'empty' }}
-    </p>
-    <p editable-text="pc.currentStudent.emergencyRelation">
-      Relation:  {{pc.currentStudent.emergencyRelation || 'empty' }}
-    </p>
+<div class="container">
+  <div class="row">
+    <div class="col s12" ng-init="pc.loadEmergencyInfo()">
+      <h3>Emergency Contact Info</h3>
+      <span>Please review this information and make any changes.</span>
+      <div class="card hoverable">
+        <p editable-text="pc.currentStudent.emergencyName">
+          Name: {{pc.currentStudent.emergencyName || 'empty' }}
+        </p>
+        <p editable-text="pc.currentStudent.emergencyPhone">
+          Phone: {{pc.currentStudent.emergencyPhone || 'empty' }}
+        </p>
+        <p editable-text="pc.currentStudent.emergencyRelation">
+          Relation: {{pc.currentStudent.emergencyRelation || 'empty' }}
+        </p>
+      </div>
+      <p>Is this information correct?</p>
+      <button class="btn" ng-click='pc.emergencySubmit()' type="button" name="button">Yes</button>
+      <button class="btn" ng-click='pc.emergencyAlert()' type="button" name="button">No</button>
+    </div>
   </div>
-  <p>Is this information correct?</p>
-  <button class="btn" ng-click='pc.emergencySubmit()' type="button" name="button">Yes</button>
-  <button class="btn" ng-click='pc.emergencyAlert()' type="button" name="button">No</button>
 </div>
-
 <!-- emergencyContact page will use x-editable,
  doesn't need a function as I currently understand it.
 Use a sweetAlert to stop people from moving on if they hit No,

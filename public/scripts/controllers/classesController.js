@@ -101,6 +101,7 @@ app.controller('ClassesController', function (httpService, $location, dataServic
         vm.populateClasses(); //repopulate classes in table
       });//end then function
         document.getElementById('addClass').style.display = 'none'; //close modal
+        document.getElementById('addClassForm').reset();
         vm.inputNumber = [0];
     };//end addClass
 
