@@ -5,7 +5,11 @@
       <h5 class='center-align'>{{ sc.currentClass.location }}</h5>
       <h5 class='center-align'>Date: {{sc.currentClass.startDate | date}} - {{sc.currentClass.endDate | date}}</h5>
       <button class="btn"ng-click="sc.goToParent()">Check-in View</button>
-      <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button>
+      <!-- <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button> -->
+      <button tooltipped class="btn" onclick="document.getElementById('addStudent').style.display = 'block'"
+      data-position="top" data-delay="50" data-tooltip="Add Student to this Class">
+        <i class="small material-icons">person_add</i>
+      </button>
       </div>
   </div>
   <div class="row">
