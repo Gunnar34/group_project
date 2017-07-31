@@ -44,8 +44,8 @@
             </div>
             <div class='input-field' input-field>
               <i class="material-icons prefix">grade</i>
-              <select class="" ng-model="sc.grade" material-select  watch>
-                <option disabled>Grade</option>
+              <select class="" ng-model="sc.grade" material-select watch>
+                <option value="" disabled selected style="display: none;">Grade</option>
                 <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
               </select>
             </div>
@@ -86,6 +86,7 @@
             <div class='input-field' input-field>
               <i class="material-icons prefix">grade</i>
               <select class="" ng-model="sc.gradeUp" material-select watch>
+                <option value="" disabled selected style="display: none;">Grade</option>
                 <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
               </select>
             </div>
