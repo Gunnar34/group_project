@@ -32,7 +32,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.loadClassInfo = function() {
     hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentArray = res.data.students;
+      console.log('got class info');
       dataService.studentArray = vm.studentArray;
+      for (var i = 0; i < dataService.studentArray.length; i++) {
+        console.log(vm.studentArray[i].checkedIn);
+      }
 
     });//end getWithId
 };
@@ -96,6 +100,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.checkoutAllStudents = function(studentArrayToCheckout) {
     console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
       'and arg.array:', studentArrayToCheckout);
+      for( let x in dataService.studentArray){
+        x.checkedIn = false;
+      }
     id = studentArrayToCheckout[0].studentID;
     parentID = id.split('$', 1);
     hs.putItem('private/students/checkoutAllStudents', parentID[0], dataService.studentArray).then(function(res){
