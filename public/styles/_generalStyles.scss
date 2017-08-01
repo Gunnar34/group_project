@@ -172,3 +172,20 @@ td {
     -o-transform: translate(0, 4px);
     transform: translate(0, 4px);
 }
+
+.editable-input.editable-has-buttons {
+  width: none;
+  font-size: 2.28rem;
+}
+
+.margin {
+  margin-bottom: 40px;
+}
+
+.card {
+  padding: 20px !important;
+}
+
+button:focus {
+  background-color: #90caf9 !important;
+}

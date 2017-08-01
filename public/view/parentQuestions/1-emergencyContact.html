@@ -1,23 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col s12" ng-init="pc.loadEmergencyInfo()">
-      <h3>Emergency Contact Info</h3>
-      <span>Please review this information and make any changes.</span>
-      <div class="card hoverable">
-        <p editable-text="pc.currentStudent.emergencyName">
-          Name: {{pc.currentStudent.emergencyName || 'empty' }}
-        </p>
-        <p editable-text="pc.currentStudent.emergencyPhone">
-          Phone: {{pc.currentStudent.emergencyPhone || 'empty' }}
-        </p>
-        <p editable-text="pc.currentStudent.emergencyRelation">
-          Relation: {{pc.currentStudent.emergencyRelation || 'empty' }}
-        </p>
-      </div>
-      <p>Is this information correct?</p>
-      <button class="btn" ng-click='pc.emergencySubmit()' type="button" name="button">Yes</button>
-      <button class="btn" ng-click='pc.emergencyAlert()' type="button" name="button">No</button>
+    <div class="col s12 center-align" ng-init="pc.loadEmergencyInfo()">
+      <h2>Emergency Contact Info</h2>
+      <h5>Please review this information and make any changes.</h5>
     </div>
+    <div class="col s12">
+      <div class="card">
+        <h4 class="margin" editable-text="pc.currentStudent.emergencyName">
+          Name: {{pc.currentStudent.emergencyName || 'empty' }}
+        </h4>
+        <h4 class="margin" editable-text="pc.currentStudent.emergencyPhone">
+          Phone: {{pc.currentStudent.emergencyPhone || 'empty' }}
+        </h4>
+        <h4 class="margin" editable-text="pc.currentStudent.emergencyRelation">
+          Relation: {{pc.currentStudent.emergencyRelation || 'empty' }}
+        </h4>
+      </div>
+    </div>
+      <h5 class="center-align">Is this information correct?</h5>
+      <div class="row">
+        <div class="col s12 center-align">
+          <a class="parentBtn" href ng-click='pc.emergencySubmit()' type="button" name="button"><span>Yes</span></a>
+          <a class="parentBtn" href ng-click='pc.emergencyAlert()' type="button" name="button"><span>No</span></a>
+        </div>
+      </div>
   </div>
 </div>
 <!-- emergencyContact page will use x-editable,
