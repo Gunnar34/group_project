@@ -123,6 +123,57 @@ router.put('/init/:id', function(req, res) {
   }); //end findOne and update
 }); //end put
 
+// route to check-in all students
+router.put('/checkInAllStudents/:id', function(req, res) {
+  var query = classesModel.where({
+    _id: req.params.id
+  });
+  //finds the correct class
+  query.findOne(
+    function(err, doc) {
+      if (!err) {
+        console.log('doc', doc.students.length);
+        //iterates through students array and updates individually
+        for (var i = 0; i < doc.students.length; i++) {
+          query = {
+            _id: doc._id,
+            students: {
+              $elemMatch: {
+                studentID: doc.students[i].studentID,
+                usePin: {
+                  $ne: true
+                },
+                checkedIn: {
+                  $ne: "false"
+                }
+              }
+            }
+          }; //end query
+          classesModel.findOneAndUpdate(query, {
+            $set: {
+              "students.$.checkedIn": "true"
+            }
+          }, function(err, doc) {
+            if (!err) {
+              console.log('updated');
+            } else {
+              console.log('err is', err);
+            }
+          });
+        }
+      } else {
+        console.log('err', err);
+      }
+    }).then(function(doc, err) {
+    if (err) {
+      res.send('err');
+    } else {
+      console.log(doc);
+      res.send('safe');
+    }
+  }); //end promise
+});//end checkedIn put
+
 // route to check-out all students
 router.put('/checkoutAllStudents/:id', function(req, res) {
   var query = classesModel.where({
