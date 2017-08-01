@@ -62,15 +62,11 @@ td {
 
 .close {
     position: absolute;
-    right: 5vh;
+    right: 5vw;
     top: 5vh;
-    color: #000;
-    font-size: 7rem;
-    font-weight: bold;
 }
 
 .close:hover, .close:focus {
-    color: red;
     cursor: pointer;
 }
 
@@ -84,7 +80,8 @@ td {
 }
 
 #phoneNumberModal{
-  width: 40vw;
+  width: 60vw;
+  height: 80vh;
 }
 
 /* button styling */
@@ -92,19 +89,23 @@ td {
   background-color: $buttonColor !important;
 }
 
-// .checkInBtn {
-//   min-width: 20vw;
-// }
-//
-// .parentTR {
-//   min-width: 30vw;
-//   white-space: nowrap;
-// }
-//
-// .parentTD {
-//   padding: 2px !important;
-//   vertical-align: bottom;
-// }
+.cancel {
+  background-color: $cancelButtonColor !important;
+}
+
+.checkInBtn {
+  min-width: 20vw;
+}
+
+.parentTR {
+  min-width: 30vw;
+  white-space: nowrap;
+}
+
+.parentTD {
+  padding: 2px !important;
+  vertical-align: bottom;
+}
 
 .verticalDivider {
      border-right:1px solid #16222c;
