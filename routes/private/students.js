@@ -123,7 +123,6 @@ router.put('/init/:id', function(req, res) {
   }); //end findOne and update
 }); //end put
 
-<<<<<<< HEAD
 // route to check-out all students
 router.put('/checkoutAllStudents/:id', function(req, res) {
   var query = classesModel.where({
@@ -171,8 +170,6 @@ router.put('/checkoutAllStudents/:id', function(req, res) {
     }
   }); //end promise
 });//end checkedIn put
-=======
->>>>>>> master
 
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
@@ -224,14 +221,14 @@ router.put('/edit/:id', function (req, res){
         emergencyRelation: req.body.emergencyRelation
       }
     } //end $set
-  }
+  };
   classesModel.findOneAndUpdate(myQuery, newValues, function(err){
     if(!err){
       console.log('nice');
-      res.send('nice')
+      res.send('nice');
     }else{
       console.log(err);
-      res.send(err)
+      res.send(err);
     }//end else
   }//end findOneAndUpdate function
 );// end findOneAndUpdate
@@ -241,21 +238,3 @@ router.put('/edit/:id', function (req, res){
 
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//spacer
