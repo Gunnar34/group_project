@@ -36,7 +36,7 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
   font-size: 4rem;
 }
 .picker {
-  line-height: 1.4;
+  line-height: 1.2;
 }
 .picker__box, .picker__date-display, .picker__weekday-display, .picker__month-display,
 .picker__day-display, .picker__year-display, .picker__calendar-container {
@@ -72,4 +72,8 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
 
 .bc-keypad__key {
   height: 15vh !important;
+}
+
+.picker__nav--prev:hover, .picker__nav--next:hover {
+  background: $pickerBody !important;
 }
