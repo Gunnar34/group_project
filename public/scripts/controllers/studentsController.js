@@ -138,6 +138,14 @@ vm.goToParent = function(){
       hs.deleteItem('/private/students', id).then(function(res){
         console.log('back from deleteItem');
         vm.displayClass();
+        swal({
+  				title: 'Deleted!',
+  				text: "The student was deleted",
+  				imageUrl: 'public/assets/images/abamath.png',
+          animation: true,
+  				imageWidth: 150,
+  				imageHeight: 150,
+  			});
       });//end deleteItem
     });
   };//end delete students
