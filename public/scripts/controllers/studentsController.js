@@ -18,6 +18,9 @@ vm.goToParent = function(){
   $location.path('/parent');
 };
 
+  var showToast =  function(message, duration){
+    Materialize.toast(message, duration);
+  };//end showtoast function
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
@@ -138,6 +141,15 @@ vm.goToParent = function(){
       hs.deleteItem('/private/students', id).then(function(res){
         console.log('back from deleteItem');
         vm.displayClass();
+        // swal({
+  			// 	title: 'Deleted!',
+  			// 	text: "The student was deleted",
+  			// 	imageUrl: 'public/assets/images/abamath.png',
+        //   animation: true,
+  			// 	imageWidth: 150,
+  			// 	imageHeight: 150,
+  			// });
+        showToast('Student Deleted', 2000)
       });//end deleteItem
     });
   };//end delete students
