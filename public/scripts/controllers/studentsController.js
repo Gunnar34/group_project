@@ -153,7 +153,7 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 		});
 	}; //end delete students
 
-	vm.checkInAll = function(studentArrayToCheckIn){
+	vm.checkInAll = function(studentArrayToCheckIn) {
 
 		// for(let x in studentsArray){
 		// 	console.log(x);
@@ -165,7 +165,7 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 			console.log('in checkoutAllStudents, res is:', res);
 			vm.displayClass();
 		});
-	};//end checkinall
+	}; //end checkinall
 
 	vm.checkoutAllStudents = function(studentArrayToCheckout) {
 		console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
@@ -196,7 +196,7 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 			console.log('in checkoutAllStudents, res is:', res);
 			vm.displayClass();
 		});
-	};//end forceCheckout
+	}; //end forceCheckout
 
 }); //end student controller
 
