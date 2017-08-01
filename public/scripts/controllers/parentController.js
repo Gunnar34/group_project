@@ -33,12 +33,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
     hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentArray = res.data.students;
       dataService.studentArray = vm.studentArray;
-<<<<<<< HEAD
+
     });//end getWithId
-=======
-    }); //end get withId
->>>>>>> master
-  }; // end loadClassInfo
+};
 
   vm.checkInStudent = function(user) {
     idx = dataService.studentArray.indexOf(user);
@@ -67,13 +64,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
       dataService.currentStudent.checkedIn = false;
       id = dataService.currentStudent.studentID;
       parentID = id.split('$', 1);
-<<<<<<< HEAD
-      hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
-        // console.log('in completeParentReview, res is:', res);
-=======
       hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
         console.log('in completeParentReview, res is:', res);
->>>>>>> master
       });
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);

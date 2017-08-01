@@ -128,23 +128,3 @@ vm.goToParent = function(){
   };//end delete students
 
 });//end student controller
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//spacer
