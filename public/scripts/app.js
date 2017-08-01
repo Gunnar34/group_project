@@ -44,11 +44,7 @@ app.config(function($routeProvider) {
 		controller: 'ParentController',
 		controllerAs: 'pc'
 	}).when('/pinSystem', {
-		templateUrl: 'public/view/parentQuestions/4a-pinSystem.html',
-		controller: 'ParentController',
-		controllerAs: 'pc'
-	}).when('/pinPad', {
-		templateUrl: 'public/view/parentQuestions/4b-pinPad.html',
+		templateUrl: 'public/view/parentQuestions/4-pinSystem.html',
 		controller: 'ParentController',
 		controllerAs: 'pc'
 	}).when('/complete', {
