@@ -34,6 +34,10 @@ app.controller('ClassesController', function(httpService, $location) {
 	localStorage.setItem('classView', false);
 	vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+	var showToast = function(message, duration){
+		Materialize.toast(message, duration);
+	};//end showToast
+
 	vm.addInput = function() {
 		vm.inputNumber.push(number);
 		number++;
@@ -59,6 +63,7 @@ app.controller('ClassesController', function(httpService, $location) {
 		httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
 			console.log(res);
 			document.getElementById('addPhoneNumber').style.display = 'none';
+			showToast('Saved', 1500);
 		});
 	};
 
@@ -101,6 +106,7 @@ app.controller('ClassesController', function(httpService, $location) {
 		httpService.putItem('/private/classes/classes', vm.id, itemToSend).then(function() {
 			vm.populateClasses();
 			document.getElementById('editClass').style.display = 'none';
+			showToast('Edit Saved', 1500);
 		});
 	}; //end saveEdit
 
@@ -148,7 +154,7 @@ app.controller('ClassesController', function(httpService, $location) {
 			imageUrl: 'public/assets/images/abamath.png',
 			imageWidth: 150,
 			imageHeight: 150,
-			animation: false,
+			animation: true,
 			showCancelButton: true,
 			confirmButtonColor: '#2196f3',
 			cancelButtonColor: '#d33',
@@ -158,14 +164,15 @@ app.controller('ClassesController', function(httpService, $location) {
 				console.log('deleted', res);
 				vm.populateClasses();
 			}); //end deleteItem
-			swal({
-				title: 'Deleted!',
-				text: "The class was deleted",
-				imageUrl: 'public/assets/images/abamath.png',
-				imageWidth: 150,
-				imageHeight: 150,
-				animation: false
-			});
+			// swal({
+			// 	title: 'Deleted!',
+			// 	text: "The class was deleted",
+			// 	imageUrl: 'public/assets/images/abamath.png',
+			// 	imageWidth: 150,
+			// 	imageHeight: 150,
+			// 	animation: false
+			// });
+			showToast('Class Deleted', 2000);
 		});
 	}; //end remove class
 
