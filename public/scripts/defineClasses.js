@@ -12,7 +12,7 @@ class Student {
     this.receiveTexts = false;
     this.usePin = false;
     this.pin = null;
-    this.checkedIn = false;
+    this.checkedIn = 'false';
     this.initialized = false;
 
   } // end constructor
