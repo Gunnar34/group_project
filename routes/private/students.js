@@ -140,11 +140,8 @@ router.put('/checkInAllStudents/:id', function(req, res) {
             students: {
               $elemMatch: {
                 studentID: doc.students[i].studentID,
-                usePin: {
-                  $ne: true
-                },
                 checkedIn: {
-                  $ne: "false"
+                  $ne: "true"
                 }
               }
             }
@@ -155,7 +152,7 @@ router.put('/checkInAllStudents/:id', function(req, res) {
             }
           }, function(err, doc) {
             if (!err) {
-              console.log('updated');
+              console.log('make true');
             } else {
               console.log('err is', err);
             }
@@ -195,7 +192,7 @@ router.put('/checkoutAllStudents/:id', function(req, res) {
                   $ne: true
                 },
                 checkedIn: {
-                  $ne: "true"
+                  $ne: "false"
                 }
               }
             }
@@ -242,7 +239,7 @@ router.put('/forceCheckout/:id', function(req, res) {
               $elemMatch: {
                 studentID: doc.students[i].studentID,
                 checkedIn: {
-                  $ne: "true"
+                  $ne: "false"
                 }
               }
             }
