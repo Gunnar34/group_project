@@ -69,3 +69,7 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
   overflow: scroll;
   max-height: 30vh !important;
 }
+
+.bc-keypad__key {
+  height: 15vh !important;
+}
