@@ -11,12 +11,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
-          <td ng-click='pc.checkInStudent(student)'></td>
-          <td class="waves-effect waves-light btn" ng-click='pc.checkInStudent(student)'>
+        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
+          <td class="parentTD" ng-click='pc.checkInStudent(student)'>
+            <i class="material-icons">check_box_outline_blank</i>
+          </td>
+          <td class="waves-effect waves-light btn checkInBtn" ng-click='pc.checkInStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Info</td>
         </tr>
       </tbody>
     </table>
@@ -33,16 +35,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
-          <td ng-click='pc.checkInStudent(student)'></td>
-          <td class="waves-effect waves-light btn" ng-click='pc.checkOutStudent(student)'>
+        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
+          <td class="parentTD" ng-click='pc.checkOutStudent(student)'>
+            <i class="material-icons">check_box</i>
+          </td>
+          <td class="waves-effect waves-light btn checkInBtn" ng-click='pc.checkOutStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Review Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Info</td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="center">
+  <button class='btn' ng-click='pc.checkoutAllStudents(pc.studentArray)' type="button" name="button">Check-out All Students</button>
 </div>
 
 <div id="keypad" class="modal">

@@ -91,3 +91,17 @@ td {
 .btn {
   background-color: $buttonColor !important;
 }
+
+.checkInBtn {
+  min-width: 20vw;
+}
+
+.parentTR {
+  min-width: 30vw;
+  white-space: nowrap;
+}
+
+.parentTD {
+  padding: 2px !important;
+  vertical-align: bottom;
+}

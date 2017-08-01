@@ -33,11 +33,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
     hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentArray = res.data.students;
       dataService.studentArray = vm.studentArray;
-    }); //end get withId
-  }; // end loadClassInfo
+
+    });//end getWithId
+};
 
   vm.checkInStudent = function(user) {
-
     idx = dataService.studentArray.indexOf(user);
     dataService.currentStudent = dataService.studentArray[idx];
     dataService.index = idx;
@@ -53,7 +53,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
     idx = dataService.studentArray.indexOf(user);
     dataService.currentStudent = dataService.studentArray[idx];
     dataService.index = idx;
-
+    // load modal to enter PIN for checkout
     document.getElementById('keypad').style.display = 'block';
   }; // end checkOutStudent
 
@@ -92,6 +92,17 @@ app.controller('ParentController', function(dataService, httpService, $location)
       }
     }
   }; // end enterCheckoutPin
+
+  vm.checkoutAllStudents = function(studentArrayToCheckout) {
+    console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
+      'and arg.array:', studentArrayToCheckout);
+    id = studentArrayToCheckout[0].studentID;
+    parentID = id.split('$', 1);
+    hs.putItem('private/students/checkoutAllStudents', parentID[0], dataService.studentArray).then(function(res){
+      console.log('in checkoutAllStudents, res is:', res);
+      vm.loadClassInfo();
+    });
+  }; // end checkoutAllStudents
 
   vm.loadEmergencyInfo = function() {
     // load currentStudent data from service into vm to be edited
