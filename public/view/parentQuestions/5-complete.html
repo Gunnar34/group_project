@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col s12" ng-init="pc.completeParentReview()">
-      <h3 class="center-align">Great!  {{pc.currentStudent.firstName}} has been checked in!</h3>
-      <button class="btn" ng-click='pc.go("/parent")' type="button" name="button">yoooooo</button>
+    <div class="col s12 center-align" ng-init="pc.completeParentReview()">
+      <h3 class="">Great!  {{pc.currentStudent.firstName}} has been checked in!</h3>
+      <a class="parentBtn" href ng-click='pc.go("/parent")' type="button" name="button"><span>Complete</span></a>
     </div>
   </div>
 </div>

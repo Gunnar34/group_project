@@ -32,6 +32,7 @@ app.controller('ClassesController', function(httpService, $location) {
 	var number = 1;
 	vm.instructorsUP;
 	localStorage.setItem('classView', false);
+	localStorage.setItem('notParentView', true);
 	vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 	vm.addInput = function() {
