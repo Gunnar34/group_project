@@ -1,5 +1,4 @@
-
-app.controller('StudentsController', function ($http, dataService, httpService, $location) {
+app.controller('StudentsController', function($http, dataService, httpService, $location) {
   console.log('loaded sc');
   //conts
   const vm = this;
@@ -13,62 +12,61 @@ app.controller('StudentsController', function ($http, dataService, httpService, 
   vm.currentClass;
   vm.currentStudentID;
   vm.gradesRange = []
-vm.goToParent = function(){
-  console.log('click');
-  $location.path('/parent');
-};
+  vm.goToParent = function() {
+    console.log('click');
+    $location.path('/parent');
+  };
 
-  var showToast =  function(message, duration){
+  var showToast = function(message, duration) {
     Materialize.toast(message, duration);
-  };//end showtoast function
+  }; //end showtoast function
 
   window.onclick = function(event) {
     id = event.target.getAttribute("id");
     if (event.target.getAttribute("class") == 'modal') {
       document.getElementById(id).style.display = 'none';
-    }//end if
-  };//end window onclick
+    } //end if
+  }; //end window onclick
 
-  hs.getItem('auth').then(function(res){
+  hs.getItem('auth').then(function(res) {
     if (res.data.name) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
-    }
-    else {
+    } else {
       alert('Please Login before viewing this page');
       $location.path('/');
     }
-  });//end httpService get item
+  }); //end httpService get item
 
-  vm.displayClass = function(){
+  vm.displayClass = function() {
     console.log('before', vm.currentID);
-    hs.getWithID('/private/students', vm.currentID).then(function(res){
+    hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentsArray = res.data.students;
       console.log(vm.studentsArray);
       vm.currentClass = res.data;
       console.log(vm.currentClass);
       vm.gradesRange = vm.currentClass.grades.split(',')
-    });//end get withId
-  };//end displayClass
+    }); //end get withId
+  }; //end displayClass
 
   //ng-init display call
   vm.displayClass();
 
   // adds student to class array in db
-  vm.addStudent = function(){
+  vm.addStudent = function() {
     //creates item to send
-    var itemToSend = new Student(vm.currentID, vm.firstName,  vm.lastName,  vm.grade,  vm.emergencyName,  vm.emergencyPhone,  vm.emergencyRelation);
+    var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyName, vm.emergencyPhone, vm.emergencyRelation);
     console.log(itemToSend);
-    hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res){
+    hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res) {
       //call to update
       vm.displayClass();
       document.getElementById('addStudentForm').reset();
       document.getElementById('addStudent').style.display = 'none';
     });
-  };//end add student
+  }; //end add student
 
 
-  vm.setId = function(id){
+  vm.setId = function(id) {
     vm.currentStudent = id;
     console.log(id);
     vm.id = vm.currentStudent.studentID;
@@ -78,9 +76,9 @@ vm.goToParent = function(){
     vm.emergencyNameUp = vm.currentStudent.emergencyName;
     vm.emergencyPhoneUp = vm.currentStudent.emergencyPhone;
     vm.emergencyRelationUp = vm.currentStudent.emergencyRelation;
-  };//end setID
+  }; //end setID
 
-  vm.editStudent = function(){
+  vm.editStudent = function() {
     let objectToSend = {
       id: vm.id,
       firstName: vm.firstNameUp,
@@ -100,31 +98,31 @@ vm.goToParent = function(){
     hs.putItem('/private/students/edit', objectToSend.id, objectToSend);
     document.getElementById('editStudent').style.display = 'none';
     vm.displayClass();
-  };//end edit students
+  }; //end edit students
 
-  vm.viewEmergency = function(id){
+  vm.viewEmergency = function(id) {
     console.log(id);
-    httpService.getWithID('/private/students/emergencyInfo', id).then(function(res){
+    httpService.getWithID('/private/students/emergencyInfo', id).then(function(res) {
       console.log(res.data);
       vm.studentName = res.data.firstName;
       vm.emergencyName = res.data.emergencyName;
       vm.emergencyRelation = res.data.emergencyRelation;
       vm.emergencyPhone = res.data.emergencyPhone;
-    });//end .then
+    }); //end .then
 
-  };//end viewEmrgency
+  }; //end viewEmrgency
 
-  hs.getItem('/private/students').then(function (response) {
+  hs.getItem('/private/students').then(function(response) {
     if (response.data.err) {
       vm.data = 'Sorry, you are not logged in!';
     } else {
       vm.data = response.data.message;
-    }//end else
+    } //end else
     console.log(vm.data);
-  });//end displayClass
+  }); //end displayClass
 
 
-  vm.deletStudents = function(id){
+  vm.deletStudents = function(id) {
     swal({
       title: 'Are you sure you want to delete this student?',
       text: "You won't be able to undo this!",
@@ -137,66 +135,55 @@ vm.goToParent = function(){
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
       allowOutsideClick: true
-    }).then(function(){
-      hs.deleteItem('/private/students', id).then(function(res){
+    }).then(function() {
+      hs.deleteItem('/private/students', id).then(function(res) {
         console.log('back from deleteItem');
         vm.displayClass();
         // swal({
-  			// 	title: 'Deleted!',
-  			// 	text: "The student was deleted",
-  			// 	imageUrl: 'public/assets/images/abamath.png',
+        // 	title: 'Deleted!',
+        // 	text: "The student was deleted",
+        // 	imageUrl: 'public/assets/images/abamath.png',
         //   animation: true,
-  			// 	imageWidth: 150,
-  			// 	imageHeight: 150,
-  			// });
+        // 	imageWidth: 150,
+        // 	imageHeight: 150,
+        // });
         showToast('Student Deleted', 2000)
-      });//end deleteItem
+      }); //end deleteItem
     });
-  };//end delete students
+  }; //end delete students
 
   vm.checkoutAllStudents = function(studentArrayToCheckout) {
     console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
       'and arg.array:', studentArrayToCheckout);
-    // if(){
-      for( let x in studentArrayToCheckout){
-        x.checkedIn = false;
-      }
-    //   }
-    // };
+
+    for (let x in studentArrayToCheckout) {
+      x.checkedIn = false;
+    }
+
     id = studentArrayToCheckout[0].studentID;
     parentID = id.split('$', 1);
-    hs.putItem('private/students/checkoutAllStudents', parentID[0], studentArrayToCheckout).then(function(res){
+    hs.putItem('private/students/checkoutAllStudents', parentID[0], studentArrayToCheckout).then(function(res) {
       console.log('in checkoutAllStudents, res is:', res);
       vm.displayClass();
     });
-
-    vm.forceCheckout = function(){
-      console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
-        'and arg.array:', studentArrayToCheckout);
-      // if(){
-        for( let x in studentArrayToCheckout){
-          x.checkedIn = false;
-        }
-      //   }
-      // };
-      id = studentArrayToCheckout[0].studentID;
-      parentID = id.split('$', 1);
-      hs.putItem('private/students/forceCheckout', parentID[0], studentArrayToCheckout).then(function(res){
-        console.log('in checkoutAllStudents, res is:', res);
-        vm.displayClass();
-      });
-    };
   }; // end checkoutAllStudents
-});//end student controller
+  vm.forceCheckout = function() {
+    console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
+      'and arg.array:', studentArrayToCheckout);
 
+    for (let x in studentArrayToCheckout) {
+      x.checkedIn = false;
+    }
 
+    id = studentArrayToCheckout[0].studentID;
+    parentID = id.split('$', 1);
+    hs.putItem('private/students/forceCheckout', parentID[0], studentArrayToCheckout).then(function(res) {
+      console.log('in checkoutAllStudents, res is:', res);
+      vm.displayClass();
+    });
+  };
 
-
-
-
-
-
-
+}); //end student controller
 
 
 

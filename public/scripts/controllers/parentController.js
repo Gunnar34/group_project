@@ -5,6 +5,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.pinEntry = '';
   vm.currentID = localStorage.getItem('classID');
   vm.studentsArray = [];
+  localStorage.setItem('notParentView', false);
   vm.currentStudent = dataService.currentStudent;
 
   httpService.getItem('auth').then(function(res) {
