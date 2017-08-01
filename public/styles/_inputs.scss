@@ -62,7 +62,7 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
 }
 
 .input-field {
-  margin-top: 0rem;
+  margin-top: 0px !important;
 }
 
 .dropdown-content, select-dropdown, active {

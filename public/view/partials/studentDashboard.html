@@ -5,7 +5,11 @@
       <h5 class='center-align'>Location: {{ sc.currentClass.location }}</h5>
       <h5 class='center-align'>Date: {{sc.currentClass.startDate | date}} - {{sc.currentClass.endDate | date}}</h5>
       <button class="btn"ng-click="sc.goToParent()">Check-in View</button>
-      <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button>
+      <!-- <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button> -->
+      <button tooltipped class="btn" onclick="document.getElementById('addStudent').style.display = 'block'"
+      data-position="top" data-delay="50" data-tooltip="Add Student to this Class">
+        <i class="small material-icons">person_add</i>
+      </button>
       </div>
   </div>
   <div class="row">
@@ -22,6 +26,7 @@
           <td>{{ x.firstName }} {{ x.lastName }}</td>
           <td>{{ x.grade }}</td>
           <td><button ng-click="sc.viewEmergency(x.studentID)" onclick="document.getElementById('showEmergency').style.display = 'block'" class="btn">View Emergency Contact</button></td>
+
           <td><button ng-click="sc.setId(x)" class="btn" onclick="document.getElementById('editStudent').style.display = 'block'">
             <i class="small material-icons">create</i>
           </button></td>

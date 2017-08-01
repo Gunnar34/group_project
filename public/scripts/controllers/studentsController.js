@@ -120,6 +120,7 @@ vm.goToParent = function(){
     console.log(vm.data);
   });//end displayClass
 
+
   vm.deletStudents = function(id){
     swal({
       title: 'Are you sure you want to delete this student?',
