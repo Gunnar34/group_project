@@ -174,6 +174,53 @@ router.put('/checkoutAllStudents/:id', function(req, res) {
   }); //end promise
 });//end checkedIn put
 
+router.put('/forceCheckout/:id', function(req, res) {
+  var query = classesModel.where({
+    _id: req.params.id
+  });
+  //finds the correct class
+  query.findOne(
+    function(err, doc) {
+      if (!err) {
+        console.log('doc', doc.students.length);
+        //iterates through students array and updates individually
+        for (var i = 0; i < doc.students.length; i++) {
+          query = {
+            _id: doc._id,
+            students: {
+              $elemMatch: {
+                studentID: doc.students[i].studentID,
+                checkedIn: {
+                  $ne: "true"
+                }
+              }
+            }
+          }; //end query
+          classesModel.findOneAndUpdate(query, {
+            $set: {
+              "students.$.checkedIn": "false"
+            }
+          }, function(err, doc) {
+            if (!err) {
+              console.log('updated');
+            } else {
+              console.log('err is', err);
+            }
+          });
+        }
+      } else {
+        console.log('err', err);
+      }
+    }).then(function(doc, err) {
+    if (err) {
+      res.send('err');
+    } else {
+      console.log(doc);
+      res.send('safe');
+    }
+  }); //end promise
+});//end checkedIn put
+
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
   var newValues = {
