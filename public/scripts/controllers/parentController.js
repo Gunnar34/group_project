@@ -65,7 +65,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
     if (pin == dataService.currentStudent.pin) {
       console.log('PIN matches!');
       document.getElementById('keypad').style.display = 'none';
-      dataService.currentStudent.checkedIn = false;
+      dataService.currentStudent.checkedIn = 'false';
       id = dataService.currentStudent.studentID;
       parentID = id.split('$', 1);
       hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
@@ -97,7 +97,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
     }
   }; // end enterCheckoutPin
 
-  
+
 
   vm.loadEmergencyInfo = function() {
     // load currentStudent data from service into vm to be edited
