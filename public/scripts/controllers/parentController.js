@@ -55,11 +55,21 @@ app.controller('ParentController', function(dataService, httpService, $location)
   }; // end checkInStudent
 
   vm.checkOutStudent = function(user) {
-    idx = dataService.studentArray.indexOf(user);
-    dataService.currentStudent = dataService.studentArray[idx];
-    dataService.index = idx;
-    // load modal to enter PIN for checkout
-    document.getElementById('keypad').style.display = 'block';
+    if (user.usePin) {
+      idx = dataService.studentArray.indexOf(user);
+      dataService.currentStudent = dataService.studentArray[idx];
+      dataService.index = idx;
+      // load modal to enter PIN for checkout
+      document.getElementById('keypad').style.display = 'block';
+    } else {
+      dataService.currentStudent.checkedIn = 'false';
+      id = dataService.currentStudent.studentID;
+      parentID = id.split('$', 1);
+      hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
+        console.log('in completeParentReview, res is:', res);
+        vm.loadClassInfo();
+      });
+    }
   }; // end checkOutStudent
 
   vm.enterCheckoutPin = function(thingie, pin) {
@@ -70,7 +80,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
       id = dataService.currentStudent.studentID;
       parentID = id.split('$', 1);
       hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
-        console.log('in completeParentReview, res is:', res);
+        console.log('in enterCheckoutPin, res is:', res);
       });
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
