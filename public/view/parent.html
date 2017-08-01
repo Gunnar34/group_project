@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="!student.checkedIn">
+        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'false'">
           <td class="parentTD" ng-click='pc.checkInStudent(student)'>
             <i class="material-icons">check_box_outline_blank</i>
           </td>
@@ -44,7 +44,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn">
+        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == true">
           <td class="parentTD" ng-click='pc.checkOutStudent(student)'>
             <i class="material-icons">check_box</i>
           </td>
