@@ -1,6 +1,12 @@
+<div class="row center-align">
+  <div class="col s12 center-align">
+      <button class='btn' ng-click='pc.checkoutAllStudents(pc.studentArray)' type="button" name="button">Check-out All Students</button>
+  </div>
+</div>
+
 <div class="row" ng-init="pc.loadClassInfo()">
   <!-- checkedout -->
-  <div class="col l6 s6 highlight">
+  <div class="col l6 s6">
     <table>
       <thead>
         <tr>
@@ -23,8 +29,11 @@
       </tbody>
     </table>
   </div>
+  <div class="col verticalDivider">
+
+  </div>
   <!-- checkedin -->
-  <div class="col l6 s6 highlight">
+  <div class="col l5 s5">
     <table>
       <thead>
         <tr>
@@ -47,10 +56,6 @@
       </tbody>
     </table>
   </div>
-</div>
-
-<div class="center">
-  <button class='btn' ng-click='pc.checkoutAllStudents(pc.studentArray)' type="button" name="button">Check-out All Students</button>
 </div>
 
 <div id="keypad" class="modal">
