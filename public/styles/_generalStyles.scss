@@ -85,6 +85,7 @@ td {
 
 #phoneNumberModal{
   width: 40vw;
+  height: 50vh;
 }
 
 /* button styling */
@@ -92,19 +93,19 @@ td {
   background-color: $buttonColor !important;
 }
 
-// .checkInBtn {
-//   min-width: 20vw;
-// }
-//
-// .parentTR {
-//   min-width: 30vw;
-//   white-space: nowrap;
-// }
-//
-// .parentTD {
-//   padding: 2px !important;
-//   vertical-align: bottom;
-// }
+.checkInBtn {
+  min-width: 20vw;
+}
+
+.parentTR {
+  min-width: 30vw;
+  white-space: nowrap;
+}
+
+.parentTD {
+  padding: 2px !important;
+  vertical-align: bottom;
+}
 
 .verticalDivider {
      border-right:1px solid #16222c;
