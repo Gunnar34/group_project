@@ -2,10 +2,12 @@ app.controller('InstructorController', InstuctorController);
 
 function InstuctorController(httpService, AuthFactory, $window, $location) {
 	const vm = this;
+	localStorage.setItem('notParentView', true);
+	localStorage.setItem('classView', false);
 
-	var showToast =  function(message, duration){
+	var showToast = function(message, duration) {
 		Materialize.toast(message, duration);
-	};//end showtoast function
+	}; //end showtoast function
 
 	vm.editB = function(i) {
 		vm.users[i].edit = !vm.users[i].edit;
