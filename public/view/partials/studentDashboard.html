@@ -15,6 +15,7 @@
       data-position="top" data-delay="50" data-tooltip="Add Student to this Class">
       <i class="small material-icons">person_add</i>
       </button>
+      <button class='btn' ng-click='sc.checkInAll(sc.studentsArray)' type="button" name="button">Check-in all Students</button>
       <button class='btn' ng-click='sc.checkoutAllStudents(sc.studentsArray)' type="button" name="button">Check-out no PIN</button>
       <button class='btn' ng-click='sc.forceCheckout(sc.studentsArray)' type="button" name="button">Check-out All Students</button>
     </div>
@@ -31,7 +32,7 @@
       <tr ng-repeat='x in sc.studentsArray'>
         <td>
           <span ng-if="x.checkedIn == 'false'">OUT</span>
-          <span ng-if="x.checkedIn == true">IN</span>
+          <span ng-if="x.checkedIn == 'true'">IN</span>
         </td>
         <td>{{ x.firstName }} {{ x.lastName }}</td>
         <td>{{ x.grade }}</td>
