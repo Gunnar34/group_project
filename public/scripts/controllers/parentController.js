@@ -30,6 +30,10 @@ app.controller('ParentController', function(dataService, httpService, $location)
     };
   })();
 
+  var showToast = function(message, duration){
+		Materialize.toast(message, duration);
+	};//end showToast
+
   vm.loadClassInfo = function() {
     hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentArray = res.data.students;
@@ -56,18 +60,21 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
   vm.checkOutStudent = function(user) {
     if (user.usePin) {
+      // check if the current student has selected to use a PIN
       idx = dataService.studentArray.indexOf(user);
       dataService.currentStudent = dataService.studentArray[idx];
       dataService.index = idx;
       // load modal to enter PIN for checkout
       document.getElementById('keypad').style.display = 'block';
     } else {
+      // if no PIN is required, check-out a student
       dataService.currentStudent.checkedIn = 'false';
       id = dataService.currentStudent.studentID;
       parentID = id.split('$', 1);
       hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
         console.log('in completeParentReview, res is:', res);
         vm.loadClassInfo();
+        showToast('Checked Out!', 2000);
       });
     }
   }; // end checkOutStudent
