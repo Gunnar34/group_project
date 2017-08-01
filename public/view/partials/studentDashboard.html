@@ -32,7 +32,7 @@
       <tr ng-repeat='x in sc.studentsArray'>
         <td>
           <span ng-if="x.checkedIn == 'false'">OUT</span>
-          <span ng-if="x.checkedIn == true">IN</span>
+          <span ng-if="x.checkedIn == 'true'">IN</span>
         </td>
         <td>{{ x.firstName }} {{ x.lastName }}</td>
         <td>{{ x.grade }}</td>
