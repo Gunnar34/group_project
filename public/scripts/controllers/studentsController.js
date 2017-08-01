@@ -120,7 +120,7 @@ vm.goToParent = function(){
     console.log(vm.data);
   });//end displayClass
 
-  vm.deletStudents = function(id){
+  vm.deleteStudents = function(id){
     hs.deleteItem('/private/students', id).then(function(res){
       console.log('back from deleteItem');
       vm.displayClass();
