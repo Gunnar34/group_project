@@ -8,6 +8,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
   localStorage.setItem('notParentView', false);
   vm.currentStudent = dataService.currentStudent;
 
+  vm.textOrEmail = ['Text Message', 'E-mail'];
+
   httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
       vm.admin = res.data.name.admin;

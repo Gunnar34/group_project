@@ -8,3 +8,13 @@
     </div>
   </div>
 </div>
+
+
+<form id="textOrEmailForm" class="row">
+  <div class='input-field col l6 s12' input-field>
+    <i class="material-icons prefix">grade</i>
+    <select class="" ng-model="pc.textOrEmailOption" material-select multiple watch>
+      <option ng-repeat='x in pc.textOrEmail'>{{x}}</option>
+    </select>
+  </div>
+</form>
