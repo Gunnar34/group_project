@@ -1,6 +1,6 @@
 <div class="row" ng-init="inc.getInstructors()">
   <div class="center-align">
-    <div ng-if='inc.admin' class="input-field col s6 offset-s1">
+    <div ng-if='inc.admin' class="input-field col s5 offset-s2">
       <input  ng-model=inc.email type="text" id="instructorEmail" value="">
       <label for="instructorEmail">Instructors email</label>
     </div>
@@ -16,14 +16,21 @@
     <th>Instructor Email</th>
     <th>Phone Number</th>
     <th>Edit</th>
+    <th>Delete</th>
   </tr>
   <tr ng-repeat="user in inc.users">
     <td>{{user.googleName}}</td>
     <td>{{user.googleEmail}}</td>
-    <td><input ng-if="inc.edit" class="center-align" type="text" ng-model="user.phone" value=""><span ng-if="inc.notEdit">{{user.phone}}</span</td>
     <td>
-      <button ng-if="inc.notEdit" ng-click="inc.editB($index)" type="button" class="btn">Edit</button>
-      <button ng-if="inc.edit" ng-click="inc.editB($index)" type="button" class="btn">Save</button>
+      <input phone-input ng-if="user.edit" class="center-align" type="text" ng-model="user.phone" value="">
+      <p ng-if="user.notEdit">{{user.phone | tel}}</p>
+      </td>
+    <td>
+      <button ng-if="user.notEdit" ng-click="inc.editB($index)" type="button" class="btn">Edit</button>
+      <button ng-if="user.edit" ng-click="inc.save($index)" type="button" class="btn">Save</button>
+    </td>
+    <td>
+      <button ng-click="inc.deleteInsctructor($index)" type="button" class="btn"><i class="small material-icons">delete</i></button>
     </td>
   </tr>
 </table>

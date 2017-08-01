@@ -14,12 +14,10 @@ var passport = require('../auth/passport');
  * (aka the permissions/APIs app will need). User will be prompted
  * to select a Google account.
  */
-router.get('/google', passport.authenticate('google',
-  {
-    scope: ['openid', 'email'],
-    prompt: 'select_account',
-  })
-);
+router.get('/google', passport.authenticate('google', {
+	scope: ['openid', 'email'],
+	prompt: 'select_account',
+}));
 /**
  * GET /auth/google/callback
  *
@@ -29,10 +27,9 @@ router.get('/google', passport.authenticate('google',
  * IMPORTANT: URL--the first parameter below--must match
  * callbackUrl in {@link config/auth}.
  */
-router.get('/google/callback', passport.authenticate('google',
-  {
-    successRedirect: '/#!/classes', // take them to their private data
-    failureRedirect: '/' // take them back home to try again})
+router.get('/google/callback', passport.authenticate('google', {
+	successRedirect: '/#!/classes', // take them to their private data
+	failureRedirect: '/#!/failure' // take them to failure to try again})
 }));
 /**
  * GET /auth
@@ -41,12 +38,17 @@ router.get('/google/callback', passport.authenticate('google',
  *
  * @return JSON object with status (true or false) and, if true, user's name
  */
-router.get('/', function (req, res) {
-  if (req.isAuthenticated()) {
-    res.json({ status: true, name: req.user });
-  } else {
-    res.json({ status: false });
-  }
+router.get('/', function(req, res) {
+	if (req.isAuthenticated()) {
+		res.json({
+			status: true,
+			name: req.user
+		});
+	} else {
+		res.json({
+			status: false
+		});
+	}
 
 });
 /**
@@ -56,9 +58,9 @@ router.get('/', function (req, res) {
  *
  * @return 200 - OK
  */
-router.get('/logout', function (req, res) {
-  req.logout();
-  res.sendStatus(200); // they made it!
+router.get('/logout', function(req, res) {
+	req.logout();
+	res.sendStatus(200); // they made it!
 });
 
 module.exports = router;
