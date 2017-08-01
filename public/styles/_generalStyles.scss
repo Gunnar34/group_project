@@ -92,16 +92,23 @@ td {
   background-color: $buttonColor !important;
 }
 
-.checkInBtn {
-  min-width: 20vw;
-}
+// .checkInBtn {
+//   min-width: 20vw;
+// }
+//
+// .parentTR {
+//   min-width: 30vw;
+//   white-space: nowrap;
+// }
+//
+// .parentTD {
+//   padding: 2px !important;
+//   vertical-align: bottom;
+// }
 
-.parentTR {
-  min-width: 30vw;
-  white-space: nowrap;
-}
-
-.parentTD {
-  padding: 2px !important;
-  vertical-align: bottom;
+.verticalDivider {
+     border-right:1px solid #16222c;
+     border-left:1px solid #16222c;
+     height: 100vh;
+     width: 1px;
 }
