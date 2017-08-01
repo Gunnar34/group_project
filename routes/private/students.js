@@ -140,6 +140,9 @@ router.put('/checkoutAllStudents/:id', function(req, res) {
             students: {
               $elemMatch: {
                 studentID: doc.students[i].studentID,
+                usePin: {
+                  $ne: true
+                },
                 checkedIn: {
                   $ne: "true"
                 }
