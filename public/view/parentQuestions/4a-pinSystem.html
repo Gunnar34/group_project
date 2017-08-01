@@ -1,28 +1,29 @@
 <div class="container" ng-init="pc.loadPinInfo">
   <div class="row">
-    <div class="col s12">
+    <div class="col s12 center-align">
       <div ng-if="pc.currentStudent.usePin">
         WE GOT A PIN ALREADY
       </div>
-      <h3 class='center-align'>Would you like to use a PIN to check out the student?</h3>
-      <button class="btn" ng-click='pc.usePin(true)' type="button" name="button">Yes</button>
-      <button class="btn" ng-click='pc.usePin(false)' type="button" name="button">No</button>
+      <h3>Would you like to use a PIN to check out the student?</h3>
+      <a class="parentBtn" href ng-click='pc.usePin(true)' type="button" name="button"><span>Yes</span></a>
+      <a class="parentBtn" href ng-click='pc.usePin(false)' type="button" name="button"><span>No</span></a>
     </div>
   </div>
 </div>
 
 
 <div id="keypad" class="modal">
-  <div class="modal-content animate">
-    <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
-    <bc-keypad
-    bc-number-model="pc.pinEntry"
-    bc-max-length="4"
-    bc-left-button="backspace"
-    bc-right-button="submit"
-    bc-right-button-method="pc.enterPin($event, numbers)"
-    ></bc-keypad>
-    <!-- <span class="close animate" onclick="document.getElementById('keypad').style.display = 'none'">&times;</span> -->
-    <button class='btn left' ng-click='pc.keypadClose()' type="button" name="button">Cancel</button>
+  <div class="modal-container">
+    <button class='btn-floating btn left cancel close' ng-click='pc.keypadClose()' type="button" name="button"><i class="material-icons large">cancel</i></button>
+    <div id="phoneNumberModal" class="modal-content animate">
+      <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
+      <bc-keypad
+      bc-number-model="pc.pinEntry"
+      bc-max-length="4"
+      bc-left-button="backspace"
+      bc-right-button="submit"
+      bc-right-button-method="pc.enterCheckoutPin($event, numbers)"
+      ></bc-keypad>
+    </div>
   </div>
 </div>
