@@ -20,8 +20,8 @@
           <th>Time</th>
           <th>Grades</th>
           <th>View class</th>
-          <th>Delete class</th>
           <th>Edit class</th>
+          <th>Delete class</th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
           <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}{{$last ? '' : ', '}} </span></td>
@@ -38,15 +38,16 @@
             </button>
           </td>
           <td>
-            <button class="btn" ng-click="cc.removeClass(x._id)">
-              <i class="small material-icons">delete</i>
-            </button>
-          </td>
-          <td>
             <button class="btn" ng-click="cc.editClass($index)">
               <i class="small material-icons">create</i>
             </button>
           </td>
+          <td>
+            <button class="btn" ng-click="cc.removeClass(x._id)">
+              <i class="small material-icons">delete</i>
+            </button>
+          </td>
+
 
         </tr>
       </table>
@@ -108,8 +109,11 @@
         </div>
       </form>
       <div class="row">
-        <div class="col s12 center-align">
+        <!-- <div class="col s12 center-align">
           <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
+        </div> -->
+        <div class="input-field col s4">
+          <a class="waves-effect waves-light btn" ng-click='cc.addClass()' message="Class Saved" duration="1500" toast='click'>Save Class</a>
         </div>
       </div>
     </div>
@@ -170,8 +174,11 @@
         </div>
       </form>
       <div class="row">
-        <div class="col s12 center-align">
+        <!-- <div class="col s12 center-align">
           <button class='btn' ng-click='cc.saveEdit()' type="button" name="button">Save Class</button>
+        </div> -->
+        <div class="input-field col s4">
+          <a class="waves-effect waves-light btn" ng-click='cc.saveEdit()' message="Edit Saved" duration="1500" toast='click'>Save Changes</a>
         </div>
       </div>
     </div>
