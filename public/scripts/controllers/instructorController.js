@@ -3,6 +3,10 @@ app.controller('InstructorController', InstuctorController);
 function InstuctorController(httpService, AuthFactory, $window, $location) {
 	const vm = this;
 
+	var showToast =  function(message, duration){
+		Materialize.toast(message, duration);
+	};//end showtoast function
+
 	vm.editB = function(i) {
 		vm.users[i].edit = !vm.users[i].edit;
 		vm.users[i].notEdit = !vm.users[i].notEdit;
@@ -33,15 +37,16 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 		}).then(function() {
 			httpService.deleteItem('private/instructor', vm.users[index]._id).then(function() {
 				vm.getInstructors();
-				swal({
-					title: 'Deleted!',
-					text: "The class was deleted",
-					imageUrl: 'public/assets/images/abamath.png',
-					imageWidth: 150,
-					imageHeight: 150,
-					animation: false
-				});
-			})
+				// swal({
+				// 	title: 'Deleted!',
+				// 	text: "The class was deleted",
+				// 	imageUrl: 'public/assets/images/abamath.png',
+				// 	imageWidth: 150,
+				// 	imageHeight: 150,
+				// 	animation: false
+				// });
+				showToast('Instuctor Deleted', 2000);
+			});
 		})
 	};
 
@@ -63,6 +68,7 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 			httpService.postItem('private/instructor', itemToSend).then(function() {
 				vm.email = undefined;
 				vm.getInstructors();
+				showToast('Instuctor Added', 1500);
 			});
 		} else {
 			//end if
