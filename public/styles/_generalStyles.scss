@@ -62,15 +62,11 @@ td {
 
 .close {
     position: absolute;
-    right: 5vh;
+    right: 5vw;
     top: 5vh;
-    color: #000;
-    font-size: 7rem;
-    font-weight: bold;
 }
 
 .close:hover, .close:focus {
-    color: red;
     cursor: pointer;
 }
 
@@ -84,13 +80,17 @@ td {
 }
 
 #phoneNumberModal{
-  width: 40vw;
-  height: 50vh;
+  width: 60vw;
+  height: 80vh;
 }
 
 /* button styling */
 .btn {
   background-color: $buttonColor !important;
+}
+
+.cancel {
+  background-color: $cancelButtonColor !important;
 }
 
 .checkInBtn {
