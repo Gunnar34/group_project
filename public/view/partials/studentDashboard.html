@@ -19,9 +19,8 @@
           <th>Name</th>
           <th>Grade</th>
           <th>Emergency Contact</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
         <tr ng-repeat='x in sc.studentsArray '>
           <td>{{ x.firstName }} {{ x.lastName }}</td>
@@ -37,26 +36,34 @@
         <div class="modal-content animate">
           <form ng-submit='sc.addStudent()' id="addStudentForm" action="index.html" method="post">
             <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
               <input ng-model='sc.firstName' type="text" id='firstName' name="" value="">
               <label for="firstName">First Name</label>
             </div>
             <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
               <input ng-model='sc.lastName' type="text" id='lastName' name="" value="">
               <label for="lastName">Last Name</label>
             </div>
-            <div class="input-field">
-              <input ng-model='sc.grade' type="text" id='grade' name="" value="">
-              <label for="grade">Grade</label>
+            <div class='input-field' input-field>
+              <i class="material-icons prefix">grade</i>
+              <select class="" ng-model="sc.grade" material-select watch>
+                <option value="" disabled selected style="display: none;">Grade</option>
+                <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
+              </select>
             </div>
             <div class="input-field">
+              <i class="material-icons prefix">contacts</i>
               <input ng-model='sc.emergencyName' type="text" id='emergencyName' name="" value="">
               <label for="emergencyName">Emergency Contact</label>
             </div>
             <div class="input-field">
+              <i class="material-icons prefix">contact_phone</i>
               <input ng-model='sc.emergencyPhone' type="text" id='phone' name="" value="">
               <label for="phone">Phone</label>
             </div>
             <div class="input-field">
+              <i class="material-icons prefix">people</i>
               <input ng-model='sc.emergencyRelation' type="text" id='emergencyRelation' name="" value="">
               <label for="emergencyRelation">Emergency Relation</label>
             </div>
@@ -69,28 +76,36 @@
         <span class="close animate" onclick="document.getElementById('editStudent').style.display = 'none'">&times;</span>
         <div class="modal-content animate">
           <form ng-submit='sc.editStudent()' class="" action="index.html" method="post">
-            <div class="input-field">
-              <input ng-model='sc.firstName' type="text" id='firstNameE' name="" value="">
-              <label for="firstNameE">First Name</label>
+            <div class="input-field" input-field>
+              <i class="material-icons prefix">account_circle</i>
+              <input ng-model='sc.firstNameUp' type="text" id='firstNameUp' name="" value="">
+              <label for="firstNameUp">First Name</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.lastName' type="text" id='lastNameE' name="" value="">
+              <i class="material-icons prefix">account_circle</i>
+              <input ng-model='sc.lastNameUp' type="text" id='lastNameE' name="" value="">
               <label for="lastNameE">Last Name</label>
             </div>
-            <div class="input-field">
-              <input ng-model='sc.grade' type="text" id='gradeE' name="" value="">
-              <label for="gradeE">Grade</label>
+            <div class='input-field' input-field>
+              <i class="material-icons prefix">grade</i>
+              <select class="" ng-model="sc.gradeUp" material-select watch>
+                <option value="" disabled selected style="display: none;">Grade</option>
+                <option ng-repeat='grades in sc.gradesRange'>{{grades}}</option>
+              </select>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyName' type="text" id='contactE' name="" value="">
+              <i class="material-icons prefix">contacts</i>
+              <input ng-model='sc.emergencyNameUp' type="text" id='contactE' name="" value="">
               <label for="contactE">Emergency Contact</label>
              </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyPhone' type="text" id='phoneE' name="" value="">
+              <i class="material-icons prefix">contact_phone</i>
+              <input ng-model='sc.emergencyPhoneUp' type="text" id='phoneE' name="" value="">
               <label for="phoneE">Phone</label>
             </div>
             <div class="input-field">
-              <input ng-model='sc.emergencyRelation' type="text" id='emergencyRelationE' name="" value="">
+              <i class="material-icons prefix">people</i>
+              <input ng-model='sc.emergencyRelationUp' type="text" id='emergencyRelationE' name="" value="">
               <label for="emergencyRelationE">Emergency Relation</label>
             </div>
           </form>

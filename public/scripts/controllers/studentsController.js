@@ -1,16 +1,18 @@
 
 app.controller('StudentsController', function ($http, dataService, httpService, $location) {
   console.log('loaded sc');
+  //conts
   const vm = this;
   const ds = dataService;
   const hs = httpService;
+  //vm's
   vm.data = '';
   vm.studentsArray = [];
   vm.currentID = localStorage.getItem('classID');
   vm.emergencyInfo = [];
   vm.currentClass;
   vm.currentStudentID;
-
+  vm.gradesRange = []
 vm.goToParent = function(){
   console.log('click');
   $location.path('/parent');
@@ -41,6 +43,8 @@ vm.goToParent = function(){
       vm.studentsArray = res.data.students;
       console.log(vm.studentsArray);
       vm.currentClass = res.data;
+      console.log(vm.currentClass);
+      vm.gradesRange = vm.currentClass.grades.split(',')
     });//end get withId
   };//end displayClass
 
@@ -62,19 +66,42 @@ vm.goToParent = function(){
 
 
   vm.setId = function(id){
-    console.log(id);
     vm.currentStudent = id;
+    console.log(id);
+    vm.id = vm.currentStudent.studentID;
+    vm.firstNameUp = vm.currentStudent.firstName;
+    vm.lastNameUp = vm.currentStudent.lastName;
+    vm.gradeUp = vm.currentStudent.grade;
+    vm.emergencyNameUp = vm.currentStudent.emergencyName;
+    vm.emergencyPhoneUp = vm.currentStudent.emergencyPhone;
+    vm.emergencyRelationUp = vm.currentStudent.emergencyRelation;
   };//end setID
 
   vm.editStudent = function(){
-    console.log(vm.currentStudent);
-
+    let objectToSend = {
+      id: vm.id,
+      firstName: vm.firstNameUp,
+      lastName: vm.lastNameUp,
+      grade: vm.gradeUp,
+      emergencyName: vm.emergencyNameUp,
+      emergencyPhone: vm.emergencyPhoneUp,
+      emergencyRelation: vm.emergencyRelationUp,
+      checkedIn: vm.currentStudent.checkedIn,
+      selfCheck: vm.currentStudent.selfCheck,
+      usePin: vm.currentStudent.usePin,
+      pin: vm.currentStudent.pin,
+      receiveTexts: vm.currentStudent.receiveTexts,
+      initialized: vm.currentStudent.initialized
+    };
+    console.log(objectToSend);
+    hs.putItem('/private/students/edit', objectToSend.id, objectToSend);
+    document.getElementById('editStudent').style.display = 'none';
+    vm.displayClass();
   };//end edit students
 
   vm.viewEmergency = function(id){
     console.log(id);
     httpService.getWithID('/private/students/emergencyInfo', id).then(function(res){
-
       console.log(res.data);
       vm.studentName = res.data.firstName;
       vm.emergencyName = res.data.emergencyName;
@@ -101,3 +128,23 @@ vm.goToParent = function(){
   };//end delete students
 
 });//end student controller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//spacer

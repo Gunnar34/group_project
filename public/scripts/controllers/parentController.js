@@ -7,12 +7,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
   vm.studentsArray = [];
   vm.currentStudent = dataService.currentStudent;
 
-  httpService.getItem('auth').then(function(res){
+  httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
-    }
-    else {
+    } else {
       alert('Please Login before viewing this page');
       $location.path('/');
     }
@@ -23,23 +22,29 @@ app.controller('ParentController', function(dataService, httpService, $location)
     $location.url(path);
   }; // end go
 
-  var attempts = (function () {
-      var counter = 0;
-      return function () {return counter += 1;};
+  var attempts = (function() {
+    var counter = 0;
+    return function() {
+      return counter += 1;
+    };
   })();
 
   vm.loadClassInfo = function() {
-    hs.getWithID('/private/students', vm.currentID).then(function(res){
+    hs.getWithID('/private/students', vm.currentID).then(function(res) {
       vm.studentArray = res.data.students;
       dataService.studentArray = vm.studentArray;
+<<<<<<< HEAD
     });//end getWithId
+=======
+    }); //end get withId
+>>>>>>> master
   }; // end loadClassInfo
 
   vm.checkInStudent = function(user) {
     idx = dataService.studentArray.indexOf(user);
     dataService.currentStudent = dataService.studentArray[idx];
     dataService.index = idx;
-    if(dataService.currentStudent.initialized == true) {
+    if (dataService.currentStudent.initialized == true) {
       // if the student has been checked in on previous days, skip emergencyContact page
       vm.go('/selfCheckout');
     } else {
@@ -62,14 +67,35 @@ app.controller('ParentController', function(dataService, httpService, $location)
       dataService.currentStudent.checkedIn = false;
       id = dataService.currentStudent.studentID;
       parentID = id.split('$', 1);
+<<<<<<< HEAD
       hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
         // console.log('in completeParentReview, res is:', res);
+=======
+      hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
+        console.log('in completeParentReview, res is:', res);
+>>>>>>> master
       });
     } else {
       console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
       let numAttempts = attempts();
+      swal({
+        title: 'That PIN was incorrect!',
+        text: "Please enter the correct PIN",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
       console.log(numAttempts);
-      if(numAttempts >= 3){
+      vm.pinEntry = '';
+      if (numAttempts >= 3) {
+        objectToSend = {
+          phone: "+16124301051"
+        };
+        vm.pinEntry = '';
+        // hs.postItem('/private/comm/call', objectToSend).then(function(res) {
+        //
+        // });
         $location.path('/checkoutError');
       }
     }
@@ -151,7 +177,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
     id = dataService.currentStudent.studentID;
     parentID = id.split('$', 1);
-    hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res){
+    hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
       console.log('in completeParentReview, res is:', res);
     });
   }; // end completeParentReview
