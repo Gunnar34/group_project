@@ -8,7 +8,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	vm.data = '';
 	vm.studentsArray = [];
 	vm.currentID = localStorage.getItem('classID');
-	localStorage.setItem('classView', true);
 	localStorage.setItem('notParentView', true);
 	vm.emergencyInfo = [];
 	vm.currentClass;
@@ -157,34 +156,42 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	vm.checkoutAllStudents = function(studentArrayToCheckout) {
 		console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
 			'and arg.array:', studentArrayToCheckout);
-		// if(){
+
 		for (let x in studentArrayToCheckout) {
 			x.checkedIn = false;
 		}
-		//   }
-		// };
+
 		id = studentArrayToCheckout[0].studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/checkoutAllStudents', parentID[0], studentArrayToCheckout).then(function(res) {
 			console.log('in checkoutAllStudents, res is:', res);
 			vm.displayClass();
 		});
-
-		vm.forceCheckout = function() {
-			console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
-				'and arg.array:', studentArrayToCheckout);
-			// if(){
-			for (let x in studentArrayToCheckout) {
-				x.checkedIn = false;
-			}
-			//   }
-			// };
-			id = studentArrayToCheckout[0].studentID;
-			parentID = id.split('$', 1);
-			hs.putItem('private/students/forceCheckout', parentID[0], studentArrayToCheckout).then(function(res) {
-				console.log('in checkoutAllStudents, res is:', res);
-				vm.displayClass();
-			});
-		};
 	}; // end checkoutAllStudents
+	vm.forceCheckout = function() {
+		console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
+			'and arg.array:', studentArrayToCheckout);
+
+		for (let x in studentArrayToCheckout) {
+			x.checkedIn = false;
+		}
+
+		id = studentArrayToCheckout[0].studentID;
+		parentID = id.split('$', 1);
+		hs.putItem('private/students/forceCheckout', parentID[0], studentArrayToCheckout).then(function(res) {
+			console.log('in checkoutAllStudents, res is:', res);
+			vm.displayClass();
+		});
+	};
+
 }); //end student controller
+
+
+
+
+
+
+
+
+
+//spacer
