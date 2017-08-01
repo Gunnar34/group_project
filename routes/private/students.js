@@ -34,7 +34,7 @@ router.get('/emergencyInfo/:id', function(req, res) {
   }).then(function(data, err) {
     if (err) {
       console.log('err', err);
-      res.send(err)
+      res.send(err);
     } else {
       for (var i = 0; i < data.students.length; i++) {
         if (data.students[i].studentID == id) {
@@ -125,70 +125,51 @@ router.put('/init/:id', function(req, res) {
 
 // route to check-out all students
 router.put('/checkoutAllStudents/:id', function(req, res) {
-  console.log('in checkoutAllStudents, req.body is:', req.body);
-
   var query = classesModel.where({
     _id: req.params.id
   });
-  query.findOne(function(err, data) {
-    if (!err) {
-
-      console.log('data is:', data);
-      for (var i = 0; i < data.students.length; i++) {
-        var search = {
-          '_id': req.params.id,
-          'students.studentID': data.students[i].studentID
-        };
-        console.log('search is', search);
-        console.log('i is: ', i);
-        var newValues = {
-          $set: {
-            checkedIn: false
-          } //end $set
-        };
-        classesModel.findOneAndUpdate(search, newValues, {new: true}, function(err, doc) {
-          if (!err) {
-            console.log(doc);
-            console.log('updated');
-          } else {
-            console.log('err is', err);
-          }
-        });
-      } // end for loop?
+  //finds the correct class
+  query.findOne(
+    function(err, doc) {
+      if (!err) {
+        console.log('doc', doc.students.length);
+        //iterates through students array and updates individually
+        for (var i = 0; i < doc.students.length; i++) {
+          query = {
+            _id: doc._id,
+            students: {
+              $elemMatch: {
+                studentID: doc.students[i].studentID,
+                checkedIn: {
+                  $ne: "true"
+                }
+              }
+            }
+          }; //end query
+          classesModel.findOneAndUpdate(query, {
+            $set: {
+              "students.$.checkedIn": "false"
+            }
+          }, function(err, doc) {
+            if (!err) {
+              console.log('updated');
+            } else {
+              console.log('err is', err);
+            }
+          });
+        }
+      } else {
+        console.log('err', err);
+      }
+    }).then(function(doc, err) {
+    if (err) {
+      res.send('err');
     } else {
-        console.log('error is:', err);
+      console.log(doc);
+      res.send('safe');
     }
-  }).then(function(data, err){
-    if(data){
-      res.send('success');
-    } else {
-      res.send('oops');
-    }
-  });
-}); // end put
-
-
-
-
-
-// // res.send(data);
-// }
-// else {
-//   console.log('poop');
-//   // res.send(err);
-// } //end else
-// // console.log('new notes: ', newValues);
-// });
-// // classesModel.findOneAndUpdate(myQuery, newValues, function(err) {
-// //   console.log('Class is over, trying to check everyone out...', err);
-// //   if (!err) {
-// //     res.send('All checked out!');
-// //   } else {
-// //     res.send('Error');
-// //   } //end else
-// // }); //end findOne and update
-// }); //end put
-//
+  }); //end promise
+});//end checkedIn put
 
 router.delete('/:id', function(req, res) {
   console.log('db student delete', req.params.id);
