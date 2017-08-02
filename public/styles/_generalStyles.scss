@@ -49,6 +49,10 @@ html {
   background-color: $buttonColor;
 }
 
+.whiteText {
+  color: #FFF;
+}
+
 /*table styles*/
 
 .tb {
@@ -128,4 +132,9 @@ td {
 #phoneNumberModal{
   width: 40vw;
   height: auto;
+}
+
+#emergency {
+  min-width: 10vw;
+  max-width: 39vw;
 }

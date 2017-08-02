@@ -19,9 +19,9 @@
   <div class="col s7">
     <a class='dropdown-button btn right' href data-activates='dropdownStud' dropdown data-hover="true">Check in options</a>
     <ul id='dropdownStud' class='dropdown-content'>
-        <li><a href ng-click='sc.checkInAll(sc.studentsArray)' >Check-in all Students</a></li>
-        <li><a href ng-click='sc.checkoutAllStudents(sc.studentsArray)'>Check-out no PIN</a></li>
-        <li><a href ng-click='sc.forceCheckout(sc.studentsArray)'>Check-out All Students</a></li>
+        <li><a href ng-click='sc.checkInAll(sc.studentsArray)' >Check-in Students</a></li>
+        <li><a href ng-click='sc.checkoutAllStudents(sc.studentsArray)'>Check-out Students</a></li>
+        <li><a href ng-click='sc.forceCheckout(sc.studentsArray)'>Force Check-out All Students</a></li>
     </ul>
     </div>
   </div>
@@ -152,12 +152,12 @@
     </div>
     <!--show emergency modal  -->
     <div id="showEmergency" class='modal'>
-      <div class="modal-content animate">
-        <div class="display">
-          <h3>{{sc.studentName}}</h3>
-          <p>{{sc.emergencyName}}</p>
-          <p>{{sc.emergencyRelation}}</p>
-          <p>{{sc.emergencyPhone | tel}}</p>
+      <div id="emergency" class="modal-content animate">
+        <div class="display center-align">
+          <h3>{{sc.studentName | uppercase}}</h3>
+          <h5>Emergency Contact: {{sc.emergencyName}}</h5>
+          <h5>Phone Number: {{sc.emergencyPhone | tel}}</h5>
+          <h5>Relation: {{sc.emergencyRelation}}</h5>
           <button onclick="document.getElementById('showEmergency').style.display = 'none'; document.getElementById('editStudent').style.display = 'block'" class='btn' type="button" name="button">Update Information</button>
           <button class="btn cancel" onclick="document.getElementById('showEmergency').style.display = 'none'">cancel</button>
         </div>
