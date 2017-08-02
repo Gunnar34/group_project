@@ -10,14 +10,14 @@ function IndexController(httpService, AuthFactory, $window, $location, $interval
 	localStorage.setItem('notParentView', true);
 
 	classView = $interval(function() {
-		if (localStorage.getItem('classView') == 'true') {
-			vm.classMenu = true;
-			vm.classSub = false;
-		}
-		if (localStorage.getItem('classView') == 'false') {
-			vm.classMenu = false;
-			vm.classSub = true;
-		}
+		// if (localStorage.getItem('classView') == 'true') {
+		// 	vm.classMenu = true;
+		// 	vm.classSub = false;
+		// }
+		// if (localStorage.getItem('classView') == 'false') {
+		// 	vm.classMenu = false;
+		// 	vm.classSub = true;
+		// }
 		if (localStorage.getItem('notParentView') == 'true') {
 			vm.notParentView = true;
 		}

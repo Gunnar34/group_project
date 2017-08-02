@@ -1,8 +1,13 @@
 /*Variable styles*/
 $htmlBackground: #f2f2f2;
 $navColor: #4fc3f7;
+<<<<<<< HEAD
 $sideNavColor: white;
 $navCollapse: #4fc3f7;
+=======
+$sideNavColor: #FFF;
+$navCollapse: #f2f2f2;
+>>>>>>> master
 $inputColor:  #4fc3f7;
 $buttonColor: #4fc3f7;
 $cancelButtonColor: #f44336;
@@ -17,9 +22,12 @@ $complimentaryColor: #ffcc80;
 @import 'generalStyles';
 @import 'buttonStyles';
 @import 'inputs';
+<<<<<<< HEAD
 
 
 #attend{
   height: 30vh !important;
   width: 30vh !important;
 }
+=======
+>>>>>>> master
