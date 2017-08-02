@@ -1,5 +1,5 @@
 //angular module
-var app = angular.module('myApp', ['ui.materialize', 'ngRoute', 'bc.AngularKeypad', 'xeditable']);
+var app = angular.module('myApp', ['ui.materialize', 'ngRoute', 'bc.AngularKeypad', 'xeditable',"chart.js"]);
 
 app.run(function(editableOptions) {
 	editableOptions.theme = 'default'; // bootstrap3 theme. Can be also 'bs2', 'default'
