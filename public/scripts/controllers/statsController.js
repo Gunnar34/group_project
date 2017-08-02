@@ -1,13 +1,16 @@
 app.controller('StatsController', function($http, dataService, httpService, $location) {
   console.log('loaded sc');
-  localStorage.setItem('notParentView', false);
+  localStorage.setItem('notParentView', true);
   const vm = this;
   const ds = dataService;
   const hs = httpService;
-	var attend = document.getElementById("attend");
-  var attendctx = attend.getContext('2d');
+
   Chart.defaults.global.defaultFontSize = 36;
   vm.classesArray = [];
+  var pin = 0;
+  var noPin = 0;
+  vm.pinDataArr = [pin, noPin];
+  vm.pinLabelArr = ['True', 'False'];
 
   httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
@@ -22,23 +25,38 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   vm.populateClasses = function() {
     console.log('in populateClasses');
     httpService.getItem('private/classes/classes').then(function(res) {
+      var pin = 0;
+      var noPin = 0;
       vm.classesArray = res.data[0];
-			console.log(vm.classesArray);
-			for (var i = 0; i < vm.classesArray.length; i++) {
-				console.log(vm.classesArray[i].location);
-				vm.attendLabelArr.push(vm.classesArray[i].location);
-				console.log(vm.classesArray[i].students.length);
-				vm.attendDataArr.push(vm.classesArray[i].students.length);
-			}
-    }); //end http get popClasses
-  }; //end populateClasses
+      console.log(vm.classesArray);
+      for (var i = 0; i < vm.classesArray.length; i++) {
+        //attend donut
+        vm.attendLabelArr.push(vm.classesArray[i].location);
+        vm.attendDataArr.push(vm.classesArray[i].students.length);
+        console.log('length', vm.classesArray[i].students.length);
+      }
+      for (var j = 0; j < vm.classesArray.students.length; i++) {
+        for (var k = 0; k < vm.classesArray[j].students.length; i++) {
+          if (vm.classesArray[j].students[k].usePin == true) {
+            pin++;
+            console.log('pin', pin);
+          } else {
+            noPin++;
+            console.log('nopin', noPin);
+          }
+        }
+      }
+    });
+
+  }; //end http get popClasses
+  //end populateClasses
 
   vm.populateClasses();
 
-	  //for donut graph
-	  vm.attendDataArr = [];
-	  vm.attendLabelArr = [];
+  //for donut graph
+  vm.attendDataArr = [];
+  vm.attendLabelArr = [];
 
-//
-// window.dispatchEvent(new Event('resize'));
+  //
+  // window.dispatchEvent(new Event('resize'));
 });
