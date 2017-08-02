@@ -2,16 +2,6 @@ html {
   background-image: url("../assets/images/abstract.jpg");
 }
 
-.login {
-  background-color: $complimentaryColor;
-  margin: 0px;
-}
-
-.compliment {
-  background-color: $complimentaryColor;
-  margin: 0px;
-}
-
 .marginBottom {
   margin-bottom: 40px;
 }
@@ -29,9 +19,9 @@ html {
 }
 
 .verticalDivider {
-     border-right:3px solid $htmlBackground;
-     border-left:3px solid $htmlBackground;
-     background-color: $htmlBackground;
+     border-right:3px solid $buttonColor;
+     border-left:3px solid $buttonColor;
+     background-color: $buttonColor;
      height: 100%;
      position: absolute;
      top: 14vh;
