@@ -71,6 +71,16 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			dataService.currentStudent = dataService.studentArray[idx];
 			dataService.index = idx;
 			// if no PIN is required, check-out a student
+			if (dataService.currentStudent.receiveTexts == true ){
+				its = {
+					phone: dataService.currentStudent.emergencyPhone,
+					name: dataService.currentStudent.firstName
+				};
+				console.log('text ', its);
+				// hs.postItem('/private/comm/text', its ).then(function(){
+				//
+				// });
+			}
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;
 			parentID = id.split('$', 1);
