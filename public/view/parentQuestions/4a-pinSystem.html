@@ -1,0 +1,38 @@
+<div class="compliment" ng-init="pc.loadPinInfo">
+  <div class="row fullheight valign-wrapper" style="width: 100vw">
+    <div class="card col s10 offset-s1 background">
+      <div class="row">
+        <div ng-if="pc.currentStudent.usePin">
+          You have a registered pin
+        </div>
+        <div class="col s12 center-align">
+          <h3>Would you like to use a PIN to check out the student?</h3>
+        </div>
+        <div class="col s12 center-align">
+          <a class="parentBtn" href ng-click='pc.usePin(true)' type="button" name="button"><span>Yes</span></a>
+          <a class="parentBtn" href ng-click='pc.usePin(false)' type="button" name="button"><span>No</span></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="keypad" class="modal">
+  <div class="modal-container">
+    <div id="phoneNumberModal" class="modal-content animate">
+      <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
+      <bc-keypad
+      bc-number-model="pc.pinEntry"
+      bc-max-length="4"
+      bc-left-button="backspace"
+      bc-right-button="submit"
+      bc-right-button-method="pc.enterPin($event, numbers)"
+      ></bc-keypad>
+      <div class="row">
+        <div class="col s12 center-align">
+          <button class='btn cancel marginTop' ng-click='pc.keypadClose()' type="button" name="button"><i class="material-icons large">cancel</i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

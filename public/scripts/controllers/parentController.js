@@ -67,6 +67,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
       // load modal to enter PIN for checkout
       document.getElementById('keypad').style.display = 'block';
     } else {
+      idx = dataService.studentArray.indexOf(user);
+      dataService.currentStudent = dataService.studentArray[idx];
+      dataService.index = idx;
       // if no PIN is required, check-out a student
       dataService.currentStudent.checkedIn = 'false';
       id = dataService.currentStudent.studentID;
@@ -177,7 +180,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
   vm.completeParentReview = function() {
     dataService.currentStudent.initialized = true;
-    dataService.currentStudent.checkedIn = true;
+    dataService.currentStudent.checkedIn = 'true';
     vm.currentStudent = dataService.currentStudent;
 
     id = dataService.currentStudent.studentID;

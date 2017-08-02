@@ -155,10 +155,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 
 	vm.checkInAll = function(studentArrayToCheckIn) {
 
-		// for(let x in studentsArray){
-		// 	console.log(x);
-		// 	studentsArray[x].checkedIn = true;
-		// }
 		id = studentArrayToCheckIn[0].studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/checkInAllStudents', parentID[0], studentArrayToCheckIn).then(function(res) {
@@ -171,10 +167,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 		console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
 			'and arg.array:', studentArrayToCheckout);
 
-		for (let x in studentArrayToCheckout) {
-			x.checkedIn = false;
-		}
-
 		id = studentArrayToCheckout[0].studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/checkoutAllStudents', parentID[0], studentArrayToCheckout).then(function(res) {
@@ -185,10 +177,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	vm.forceCheckout = function(studentArrayToCheckout) {
 		console.log('in checkoutAllStudents, ds.array:', dataService.studentArray,
 			'and arg.array:', studentArrayToCheckout);
-
-		for (let x in studentArrayToCheckout) {
-			x.checkedIn = false;
-		}
 
 		id = studentArrayToCheckout[0].studentID;
 		parentID = id.split('$', 1);
