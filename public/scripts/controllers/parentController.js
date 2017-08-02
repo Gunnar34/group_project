@@ -1,5 +1,11 @@
 app.controller('ParentController', function(dataService, httpService, $location) {
 
+	if (performance.navigation.type == 1) {
+		console.info("This page is reloaded");
+		$location.path('/parent');
+		swal('Sorry, it seems you refreshed the page, please reselect your student from the list')
+	};
+
 	const vm = this;
 	const hs = httpService;
 	vm.pinEntry = '';
@@ -71,7 +77,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			dataService.currentStudent = dataService.studentArray[idx];
 			dataService.index = idx;
 			// if no PIN is required, check-out a student
-			if (dataService.currentStudent.receiveTexts == true ){
+			if (dataService.currentStudent.receiveTexts == true) {
 				its = {
 					phone: dataService.currentStudent.emergencyPhone,
 					name: dataService.currentStudent.firstName
