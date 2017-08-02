@@ -1,7 +1,7 @@
 /*Navigation styles*/
 
 .side-nav {
-  background-color: $navColor !important;
+  background-color: $sideNavColor !important;
 }
 
 .navButton {
@@ -36,7 +36,7 @@
 
 nav {
   height: 14vh;
-  background-color: $sideNavColor;
+  background-color: $navColor;
 }
 
 .title {
