@@ -18,3 +18,8 @@ $complimentaryColor: #f7834f;
 @import 'buttonStyles';
 @import 'inputs';
 @import 'studentsDash';
+
+#myChart {
+height: 10vh !important;
+width: 10vh !important;
+}
