@@ -111,7 +111,6 @@ app.controller('ClassesController', function(httpService, $location) {
     httpService.putItem('/private/classes/classes', vm.id, itemToSend).then(function() {
       vm.populateClasses();
       document.getElementById('editClass').style.display = 'none';
-      showToast('Edit Saved', 1500);
     });
   }; //end saveEdit
 
