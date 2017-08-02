@@ -7,6 +7,11 @@ html {
   margin: 0px;
 }
 
+.compliment {
+  background-color: $complimentaryColor;
+  margin: 0px;
+}
+
 .marginBottom {
   margin-bottom: 40px;
 }
@@ -24,9 +29,9 @@ html {
 }
 
 .verticalDivider {
-     border-right:1px solid $complimentaryColor;
-     border-left:1px solid $complimentaryColor;
-     background-color: $complimentaryColor;
+     border-right:3px solid $htmlBackground;
+     border-left:3px solid $htmlBackground;
+     background-color: $htmlBackground;
      height: 100%;
      position: absolute;
      top: 14vh;
@@ -35,6 +40,23 @@ html {
 
 .fullheight {
   height: 86vh;
+}
+
+.pagin {
+  height: 5vh;
+  width: 5vh;
+  margin-left: 10px;
+  margin-top: 20px;
+  border: 1px solid $buttonColor;
+  display: inline-block;
+}
+
+.paginFirst {
+  margin-left: 0px;
+}
+
+.paginFill {
+  background-color: $buttonColor;
 }
 
 /*table styles*/
