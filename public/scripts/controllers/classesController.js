@@ -28,31 +28,14 @@ app.controller('ClassesController', function(httpService, $location) {
 
   //vars
   var vm = this;
-  var canvas = document.getElementById("myChart");
-  var ctx = canvas.getContext('2d');
-  Chart.defaults.global.defaultFontSize = 200;
+
   vm.inputNumber = [0];
   var number = 1;
   vm.instructorsUP;
   localStorage.setItem('classView', false);
   localStorage.setItem('notParentView', true);
   vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-//for donut graph
-  var dataArr = [];
-  var labelArr = [];
-  var data = {
-    labels: labelArr,
-    pointLabelFontSize: 100,
-    scaleFontSize: 100,
-    datasets: [{
-      data: dataArr,
-      backgroundColor: colorArray,
-      borderColor: colorArray,
-      hoverBorderColor: colorArray
-    }],
-  };
-  var options = {};
-//end donut graph
+
 
 
 
@@ -166,19 +149,7 @@ app.controller('ClassesController', function(httpService, $location) {
     console.log('in populateClasses');
     httpService.getItem('private/classes/classes').then(function(res) {
       vm.classesArray = res.data[0];
-
-      for (var i = 0; i < vm.classesArray.length; i++) {
-        labelArr.push(vm.classesArray[i].location);
-        dataArr.push(vm.classesArray[i].students.length);
-      }
-      var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-      });
-    });
-
-    //end http get popClasses
+    });  //end http get popClasses
   }; //end populateClasses
 
   vm.removeClass = function(id) {
