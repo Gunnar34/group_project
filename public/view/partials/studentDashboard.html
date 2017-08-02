@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col s6 offset-s3">
-    <h2 class="center-align"><i><u>{{sc.currentClass.subject}}</u></i></h4>
-    <h5 class='left'>location: {{ sc.currentClass.location }}</h5>
-    <h5 class='right'>{{sc.currentClass.startDate | date}} - {{sc.currentClass.endDate | date}}</h5>
+  <div class="card col s6 offset-s3">
+    <h2 class="center-align"><i>{{sc.currentClass.subject}}</i></h4>
+    <h5 class='left'>{{ sc.currentClass.location }}</h5>
+    <h5 class='right'>{{sc.currentClass.startDate | date: 'MMM d'}} - {{sc.currentClass.endDate | date: 'MMM d'}}</h5>
     <!-- <button class="btn" onclick="document.getElementById('addStudent').style.display = 'block'">Add Student</button> -->
   </div>
 </div>
