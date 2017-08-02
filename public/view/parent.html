@@ -14,20 +14,16 @@
           <td class="waves-effect waves-light btn checkInBtn margin" ng-click='pc.checkInStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat margin">Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat margin">Info</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="col verticalDivider">
-
-  </div>
   <!-- checkedin -->
-  <div class="col l5 s5">
+  <div class="col l6 s6">
     <table>
       <thead>
         <tr>
-          <th></th>
           <th>
             <h3>Checked-in Students</h3></th>
           <th></th>
@@ -35,9 +31,6 @@
       </thead>
       <tbody>
         <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == true">
-          <td class="parentTD" ng-click='pc.checkOutStudent(student)'>
-            <i class="material-icons">check_box</i>
-          </td>
           <td class="waves-effect waves-light btn checkInBtn" ng-click='pc.checkOutStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
@@ -47,6 +40,8 @@
     </table>
   </div>
 </div>
+
+<div class="verticalDivider"></div>
 
 <div id="keypad" class="modal">
   <div class="modal-container">
