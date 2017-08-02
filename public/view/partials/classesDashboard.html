@@ -6,6 +6,8 @@
 <div class="row">
   <div class="col s12 center-align">
     <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+
+      <canvas id="myChart"></canvas>
   </div>
 </div>
   <div class="row">
@@ -168,7 +170,7 @@
           <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
             <i class="material-icons prefix">add</i>
           </button>
-          <button tooltipped class="btn btn-floating" name="button" ng-click="cc.subEditInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
+          <button tooltipped class="btn btn-floating cancel" name="button" ng-click="cc.subEditInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
             <i class="material-icons prefix">cancel</i>
           </button>
         </div>
