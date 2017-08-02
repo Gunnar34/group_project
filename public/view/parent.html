@@ -30,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == true">
+        <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'true'">
           <td class="waves-effect waves-light btn checkInBtn marginBottom" ng-click='pc.checkOutStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
