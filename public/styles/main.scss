@@ -1,7 +1,7 @@
 /*Variable styles*/
 $htmlBackground: #f2f2f2;
 $navColor: #4fc3f7;
-$sideNavColor: #f7834f;
+$sideNavColor: white;
 $navCollapse: #4fc3f7;
 $inputColor:  #4fc3f7;
 $buttonColor: #4fc3f7;
@@ -17,7 +17,7 @@ $complimentaryColor: #ffcc80;
 @import 'generalStyles';
 @import 'buttonStyles';
 @import 'inputs';
-@import 'studentsDash';
+
 
 #attend{
   height: 30vh !important;
