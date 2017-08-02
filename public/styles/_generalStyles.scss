@@ -2,13 +2,21 @@ html {
   background-color: $htmlBackground;
 }
 
-.login {
+.background {
+  background-color: $htmlBackground;
+}
+
+.compliment {
   background-color: $complimentaryColor;
   margin: 0px;
 }
 
-.margin {
-  margin-bottom: 40px;
+.whiteText {
+  color: white;
+}
+
+.marginBottom {
+  margin-bottom: 30px;
 }
 
 .marginTop {
@@ -24,15 +32,18 @@ html {
 }
 
 .verticalDivider {
-     border-right:1px solid $complimentaryColor;
-     border-left:1px solid $complimentaryColor;
-     background-color: $complimentaryColor;
+     border-right:2px solid $htmlBackground;
+     border-left:2px solid $htmlBackground;
+     background-color: $htmlBackground;
      height: 100%;
      position: absolute;
      top: 14vh;
      right: 50vw;
 }
 
+.fullheight {
+  height: 86vh;
+}
 /*table styles*/
 
 .tb {

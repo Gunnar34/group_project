@@ -17,10 +17,13 @@
     </button>
   </div>
   <div class="col s7">
-    <button class='btn right' ng-click='sc.checkInAll(sc.studentsArray)' type="button" name="button">Check-in all Students</button>
-    <button class='btn right' ng-click='sc.checkoutAllStudents(sc.studentsArray)' type="button" name="button">Check-out no PIN</button>
-    <button class='btn right' ng-click='sc.forceCheckout(sc.studentsArray)' type="button" name="button">Check-out All Students</button>
-  </div>
+    <a class='dropdown-button btn right' href data-activates='dropdownStud' dropdown data-hover="true">Check in options</a>
+    <ul id='dropdownStud' class='dropdown-content'>
+        <li><a href ng-click='sc.checkInAll(sc.studentsArray)' >Check-in all Students</a></li>
+        <li><a href ng-click='sc.checkoutAllStudents(sc.studentsArray)'>Check-out no PIN</a></li>
+        <li><a href ng-click='sc.forceCheckout(sc.studentsArray)'>Check-out All Students</a></li>
+    </ul>
+    </div>
   </div>
 </div>
   <div class="col s12">

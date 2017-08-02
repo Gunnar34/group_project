@@ -1,4 +1,4 @@
-<div class="row" ng-init="pc.loadClassInfo()">
+<div class="row compliment fullheight" ng-init="pc.loadClassInfo()">
   <!-- checkedout -->
   <div class="col l6 s6">
     <table>
@@ -11,10 +11,10 @@
       </thead>
       <tbody>
         <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'false'">
-          <td class="waves-effect waves-light btn checkInBtn margin" ng-click='pc.checkInStudent(student)'>
+          <td class="waves-effect waves-light btn checkInBtn marginBottom" ng-click='pc.checkInStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat margin">Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat marginBottom">Info</td>
         </tr>
       </tbody>
     </table>
@@ -31,10 +31,10 @@
       </thead>
       <tbody>
         <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == true">
-          <td class="waves-effect waves-light btn checkInBtn" ng-click='pc.checkOutStudent(student)'>
+          <td class="waves-effect waves-light btn checkInBtn marginBottom" ng-click='pc.checkOutStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat">Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat marginBottom">Info</td>
         </tr>
       </tbody>
     </table>
