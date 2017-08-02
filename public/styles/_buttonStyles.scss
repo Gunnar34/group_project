@@ -82,3 +82,7 @@
 .btn-flat {
   color: $buttonColor;
 }
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: $buttonColor;
+}
