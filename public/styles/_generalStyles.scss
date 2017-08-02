@@ -1,22 +1,14 @@
 html {
-  background-color: $htmlBackground;
+  background-image: url("../assets/images/abstract.jpg");
 }
 
-.background {
-  background-color: $htmlBackground;
-}
-
-.compliment {
+.login {
   background-color: $complimentaryColor;
   margin: 0px;
 }
 
-.whiteText {
-  color: white;
-}
-
-.marginBottom {
-  margin-bottom: 30px;
+.margin {
+  margin-bottom: 40px;
 }
 
 .marginTop {
@@ -32,35 +24,15 @@ html {
 }
 
 .verticalDivider {
-     border-right:2px solid $htmlBackground;
-     border-left:2px solid $htmlBackground;
-     background-color: $htmlBackground;
+     border-right:1px solid $complimentaryColor;
+     border-left:1px solid $complimentaryColor;
+     background-color: $complimentaryColor;
      height: 100%;
      position: absolute;
      top: 14vh;
      right: 50vw;
 }
 
-.fullheight {
-  height: 86vh;
-}
-
-.pagin {
-  margin-top: 30px;
-  margin-left: 20px;
-  width: 5vh;
-  height: 5vh;
-  border: 1px solid $buttonColor;
-  display: inline-block;
-}
-
-.paginFirst {
-  margin-left: 0px;
-}
-
-.paginFill {
-  background-color: $buttonColor;
-}
 /*table styles*/
 
 .tb {
