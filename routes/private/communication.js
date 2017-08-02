@@ -13,7 +13,7 @@ var transporter = nodemailer.createTransport({
 });
 
 var client = twilio(config.accountSid, config.authToken);
-// var tmClient = new TMClient('USERNAME', 'API KEY');
+
 
 
 
@@ -43,10 +43,11 @@ router.post('/email', function(req,res){
 // to send a text
 router.post('/text', function(req, res) {
   console.log("req body: ", req.body);
+  var d = new Date();
   client.messages.create({
-    to: req.body.toNumber,
+    to: '+1' + req.body.phone,
     from: config.numberSRC,
-    body: 'Your next appointment is on ' +  req.body.date[0] + ' at '+ req.body.time +'.  We can wait to see you then!', // plain text body,
+    body: 'From Abamath: Your student ' + req.body.name +', was checked out at '+ d.getHours() + ':' + d.getMinutes() + '.' // plain text body,
   }, function(err, message) {
     if (err) {
       console.log(err);
