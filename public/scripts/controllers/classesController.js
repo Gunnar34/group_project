@@ -37,54 +37,22 @@ app.controller('ClassesController', function(httpService, $location) {
   localStorage.setItem('classView', false);
   localStorage.setItem('notParentView', true);
   vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+//for donut graph
   var dataArr = [];
   var labelArr = [];
-
-  data = {
+  var data = {
     labels: labelArr,
     pointLabelFontSize: 100,
     scaleFontSize: 100,
     datasets: [{
       data: dataArr,
-      backgroundColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-        '#bad455',
-				'rgb(201, 40, 196)',
-				'rgb(247, 4, 4)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-        '#bad455'
-
-      ],
-      hoverBorderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-        '#bad455'
-      ]
+      backgroundColor: colorArray,
+      borderColor: colorArray,
+      hoverBorderColor: colorArray
     }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-
   };
-
-  options = {};
-
+  var options = {};
+//end donut graph
 
 
 
