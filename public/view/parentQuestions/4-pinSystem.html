@@ -1,7 +1,7 @@
 <div class="" ng-init="pc.loadPinInfo">
   <div class="row fullheight valign-wrapper" style="width: 100vw">
     <div class="card col s10 offset-s1 background">
-      <div class="row">
+      <div ng-if="pc.currentStudent.selfCheck == false" class="row">
         <div ng-if="pc.currentStudent.usePin">
           You have a registered pin
         </div>
@@ -17,6 +17,24 @@
             <a href="#!selfCheckout"><div class="circle pagin paginFirst paginFill"></div></a>
             <a href="#!receiveTexts" ><div class="circle pagin paginFill"></div></a>
             <div class="circle pagin paginFill"></div>
+            <div class="circle pagin"></div>
+          </div>
+        </div>
+      </div>
+      <div ng-if="pc.currentStudent.selfCheck == true" class="row">
+        <div class="col s12 center-align">
+          <h3>You chose that your child is checking themselves out, this means you have opted out of selecting a
+            pin to check your student out. Press accept to continue or cancel to navigate back to the selection</h3>
+        </div>
+        <div class="col s12 center-align">
+          <a class="parentBtn" href ng-click='pc.usePin(false)' type="button" name="button"><span>Accept</span></a>
+          <a class="parentBtn" href="#!selfCheckout"  type="button" name="button"><span>Cancel</span></a>
+        </div>
+        <div class="col s6 offset-s3">
+          <div class="center-align">
+            <a href="#!selfCheckout"><div class="circle pagin paginFirst paginFill"></div></a>
+            <div class="circle pagin paginFill"></div>
+            <div class="circle pagin"></div>
             <div class="circle pagin"></div>
           </div>
         </div>
