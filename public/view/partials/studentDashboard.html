@@ -60,7 +60,6 @@
   </div>
     <!-- addStudent Modal -->
     <div id="addStudent" class="modal">
-      <span class="close animate" onclick="document.getElementById('addStudent').style.display = 'none'">&times;</span>
       <div class="modal-content animate">
         <form ng-submit='sc.addStudent()' id="addStudentForm" action="index.html" method="post">
           <div class="input-field">
@@ -97,8 +96,9 @@
           </div>
         </form>
         <!-- <button class='btn' ng-click='sc.addStudent()' type="button" name="button">Save Student</button> -->
-        <div class="input-field col s4">
+        <div class="input-field col s12">
           <a class="waves-effect waves-light btn" ng-click='sc.addStudent()' message="Student Saved" duration="1000" toast='click'>Save Student</a>
+          <button class="btn cancel" onclick="document.getElementById('addStudent').style.display = 'none'">cancel</button>
         </div>
       </div>
     </div>
@@ -143,6 +143,7 @@
         <!-- <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button> -->
         <div class="input-field col s4">
           <a class="waves-effect waves-light btn" ng-click='sc.editStudent()' message="Student Edited" duration="1000" toast='click'>Save Edit</a>
+          <button class="btn cancel" onclick="document.getElementById('editStudent').style.display = 'none'">cancel</button>
         </div>
       </div>
     </div>
@@ -155,6 +156,7 @@
           <p>{{sc.emergencyRelation}}</p>
           <p>{{sc.emergencyPhone | tel}}</p>
           <button onclick="document.getElementById('showEmergency').style.display = 'none'; document.getElementById('editStudent').style.display = 'block'" class='btn' type="button" name="button">Update Information</button>
+          <button class="btn cancel" onclick="document.getElementById('showEmergency').style.display = 'none'">cancel</button>
         </div>
       </div>
     </div>
