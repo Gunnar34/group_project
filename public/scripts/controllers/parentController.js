@@ -134,7 +134,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	}; // end emergencySubmit
 
 	vm.emergencyAlert = function(boolean) {
-		alert('You can edit the info directly on this page.');
+		swal({
+			title: 'Before continuing...',
+			text: "You can click on incorrect information to edit",
+			imageUrl: 'public/assets/images/abamath.png',
+			imageWidth: 150,
+			imageHeight: 150,
+			animation: false
+		});
 	}; // end emergencyAlert
 
 	vm.selfCheckout = function(boolean) {
