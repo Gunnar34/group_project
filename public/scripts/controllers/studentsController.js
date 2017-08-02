@@ -105,7 +105,7 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 		console.log(id);
 		httpService.getWithID('/private/students/emergencyInfo', id).then(function(res) {
 			console.log(res.data);
-			vm.studentName = res.data.firstName;
+			vm.studentName = res.data.firstName + ' ' + res.data.lastName;
 			vm.emergencyName = res.data.emergencyName;
 			vm.emergencyRelation = res.data.emergencyRelation;
 			vm.emergencyPhone = res.data.emergencyPhone;

@@ -1,5 +1,11 @@
 app.controller('ParentController', function(dataService, httpService, $location) {
 
+	if (performance.navigation.type == 1) {
+		console.info("This page is reloaded");
+		$location.path('/parent');
+		swal('Sorry, it seems you refreshed the page, please reselect your student from the list')
+	};
+
 	const vm = this;
 	const hs = httpService;
 	vm.pinEntry = '';
@@ -71,6 +77,16 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			dataService.currentStudent = dataService.studentArray[idx];
 			dataService.index = idx;
 			// if no PIN is required, check-out a student
+			if (dataService.currentStudent.receiveTexts == true) {
+				its = {
+					phone: dataService.currentStudent.emergencyPhone,
+					name: dataService.currentStudent.firstName
+				};
+				console.log('text ', its);
+				// hs.postItem('/private/comm/text', its ).then(function(){
+				//
+				// });
+			}
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;
 			parentID = id.split('$', 1);
@@ -134,7 +150,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	}; // end emergencySubmit
 
 	vm.emergencyAlert = function(boolean) {
-		alert('You can edit the info directly on this page.');
+		swal({
+			title: 'Before continuing...',
+			text: "You can click on incorrect information to edit",
+			imageUrl: 'public/assets/images/abamath.png',
+			imageWidth: 150,
+			imageHeight: 150,
+			animation: false
+		});
 	}; // end emergencyAlert
 
 	vm.selfCheckout = function(boolean) {

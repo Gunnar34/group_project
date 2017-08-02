@@ -5,11 +5,11 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   const ds = dataService;
   const hs = httpService;
 
-  Chart.defaults.global.defaultFontSize = 36;
+  Chart.defaults.global.defaultFontSize = 24;
   vm.classesArray = [];
   var pin = 0;
   var noPin = 0;
-  vm.pinDataArr = [pin, noPin];
+  vm.pinDataArr = [];
   vm.pinLabelArr = ['True', 'False'];
 
   httpService.getItem('auth').then(function(res) {
@@ -35,17 +35,21 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
         vm.attendDataArr.push(vm.classesArray[i].students.length);
         console.log('length', vm.classesArray[i].students.length);
       }
-      for (var j = 0; j < vm.classesArray.students.length; i++) {
-        for (var k = 0; k < vm.classesArray[j].students.length; i++) {
+      for (var j = 0; j < vm.classesArray.length; j++) {
+        for (var k = 0; k < vm.classesArray[j].students.length; k++) {
           if (vm.classesArray[j].students[k].usePin == true) {
             pin++;
             console.log('pin', pin);
+						console.log('pin arr', vm.pinDataArr);
           } else {
             noPin++;
             console.log('nopin', noPin);
+						console.log('pin arr', vm.pinDataArr);
           }
         }
       }
+			vm.pinDataArr = [pin, noPin];
+			console.log( vm.pinDataArr);
     });
 
   }; //end http get popClasses
