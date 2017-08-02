@@ -6,7 +6,7 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   const hs = httpService;
 	var attend = document.getElementById("attend");
   var attendctx = attend.getContext('2d');
-  Chart.defaults.global.defaultFontSize = 72;
+  Chart.defaults.global.defaultFontSize = 36;
   vm.classesArray = [];
 
   httpService.getItem('auth').then(function(res) {
@@ -26,42 +26,19 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
 			console.log(vm.classesArray);
 			for (var i = 0; i < vm.classesArray.length; i++) {
 				console.log(vm.classesArray[i].location);
-				attendLabelArr.push(vm.classesArray[i].location);
+				vm.attendLabelArr.push(vm.classesArray[i].location);
 				console.log(vm.classesArray[i].students.length);
-				attendDataArr.push(vm.classesArray[i].students.length);
+				vm.attendDataArr.push(vm.classesArray[i].students.length);
 			}
     }); //end http get popClasses
   }; //end populateClasses
 
   vm.populateClasses();
 
-
-
-
-
-
 	  //for donut graph
-	  var attendDataArr = [];
-	  var attendLabelArr = [];
-	  var attendData = {
-	    labels: attendLabelArr,
-	    pointLabelFontSize: 100,
-	    scaleFontSize: 100,
-	    datasets: [{
-	      data: attendDataArr,
-	      backgroundColor: colorArray,
-	      borderColor: colorArray,
-	      hoverBorderColor: colorArray
-	    }],
-	  };
-	  var options = {};
-	  //end donut graph
+	  vm.attendDataArr = [];
+	  vm.attendLabelArr = [];
 
-  var myDoughnutChart = new Chart(attendctx, {
-    type: 'doughnut',
-    data: attendData,
-    options: options
-  });
-
-window.dispatchEvent(new Event('resize'));
+//
+// window.dispatchEvent(new Event('resize'));
 });
