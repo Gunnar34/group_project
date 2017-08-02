@@ -4,7 +4,6 @@
     <table>
       <thead>
         <tr>
-          <th></th>
           <th>
             <h3>Not Checked-in Students</h3></th>
           <th></th>
@@ -12,13 +11,10 @@
       </thead>
       <tbody>
         <tr class="parentTR" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'false'">
-          <td class="parentTD" ng-click='pc.checkInStudent(student)'>
-            <i class="material-icons">check_box_outline_blank</i>
-          </td>
-          <td class="waves-effect waves-light btn checkInBtn" ng-click='pc.checkInStudent(student)'>
+          <td class="waves-effect waves-light btn checkInBtn margin" ng-click='pc.checkInStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat">Info</td>
+          <td ng-show="student.initialized" class="waves-effect waves-teal btn-flat margin">Info</td>
         </tr>
       </tbody>
     </table>
@@ -54,7 +50,6 @@
 
 <div id="keypad" class="modal">
   <div class="modal-container">
-    <button class='btn-floating btn left cancel close' ng-click='pc.keypadClose()' type="button" name="button"><i class="material-icons large">cancel</i></button>
     <div id="phoneNumberModal" class="modal-content animate">
       <span>PIN is: <input type="password" data-ng-model="pc.pinEntry"></span>
       <bc-keypad
@@ -64,6 +59,11 @@
       bc-right-button="submit"
       bc-right-button-method="pc.enterCheckoutPin($event, numbers)"
       ></bc-keypad>
+      <div class="row">
+        <div class="col s12 center-align">
+          <button class='btn cancel marginTop' ng-click='pc.keypadClose()' type="button" name="button"><i class="material-icons large">cancel</i></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

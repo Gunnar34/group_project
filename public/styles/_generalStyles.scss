@@ -1,5 +1,9 @@
 /*table styles*/
 
+.tb {
+  background: $complimentaryColor;
+}
+
 table {
   color: #333;
   width: 90%;
@@ -12,6 +16,7 @@ td, th {
   border: 1px solid transparent;
   height: 30px;
   transition: all 0.3s;
+  border-radius: 0px;
 }
 
 th {
@@ -22,8 +27,12 @@ th {
 }
 
 td {
-  background: #FAFAFA;
+  background: #FFF;
   text-align: center;
+}
+
+html {
+  background-color: $htmlBackground;
 }
 
 /* modal styles */
@@ -70,8 +79,8 @@ td {
 }
 
 #phoneNumberModal{
-  width: 60vw;
-  height: 80vh;
+  width: 40vw;
+  height: auto;
 }
 
 /* button styling */
@@ -99,10 +108,10 @@ td {
 }
 
 .verticalDivider {
-     border-right:1px solid #16222c;
-     border-left:1px solid #16222c;
+     border-right:1px solid $complimentaryColor;
+     border-left:1px solid $complimentaryColor;
+     background-color: $complimentaryColor;
      height: 100vh;
-     width: 1px;
 }
 
 .parentBtn {
@@ -170,6 +179,14 @@ td {
 
 .margin {
   margin-bottom: 40px;
+}
+
+.marginTop {
+  margin-top: 40px;
+}
+
+.marginAuto {
+  margin: auto;
 }
 
 .card {

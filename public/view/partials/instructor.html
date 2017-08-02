@@ -1,22 +1,20 @@
-<div class="row" ng-init="inc.getInstructors()">
-  <div class="center-align">
-    <div ng-if='inc.admin' class="input-field col s5 offset-s2">
-      <input  ng-model=inc.email type="email" id="instructorEmail" value="">
-      <label for="instructorEmail">Instructors email</label>
-    </div>
-    <div class="col s3 center-align">
-      <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Add Instructor</button>
-    </div>
+<div class="row center-align marginTop" ng-init="inc.getInstructors()">
+  <div ng-if='inc.admin' class="input-field col s5 offset-s2">
+    <input  ng-model=inc.email type="email" id="instructorEmail" value="">
+    <label for="instructorEmail">Instructors email</label>
+  </div>
+  <div class="col s3 center-align">
+    <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Add Instructor</button>
   </div>
 </div>
 
 <table>
   <tr>
-    <th>Instructor Name</th>
-    <th>Instructor Email</th>
-    <th>Phone Number</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th class="tb">Instructor Name</th>
+    <th class="tb">Instructor Email</th>
+    <th class="tb">Phone Number</th>
+    <th class="tb">Edit</th>
+    <th class="tb">Delete</th>
   </tr>
   <tr ng-repeat="user in inc.users">
     <td>{{user.googleName}}</td>

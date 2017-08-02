@@ -7,21 +7,22 @@
   <div class="col s12 center-align">
     <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
   </div>
+</div>
   <div class="row">
     <div class="col s12">
       <table>
         <tr>
-          <th>Instructors</th>
-          <th>Name</th>
-          <th>District</th>
-          <th>Days</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Time</th>
-          <th>Grades</th>
-          <th>View class</th>
-          <th>Edit class</th>
-          <th>Delete class</th>
+          <th class="tb">Instructors</th>
+          <th class="tb">Name</th>
+          <th class="tb">District</th>
+          <th class="tb">Days</th>
+          <th class="tb">Start Date</th>
+          <th class="tb">End Date</th>
+          <th class="tb">Time</th>
+          <th class="tb">Grades</th>
+          <th class="tb">View class</th>
+          <th class="tb">Edit class</th>
+          <th class="tb">Delete class</th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
           <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}{{$last ? '' : ', '}} </span></td>
