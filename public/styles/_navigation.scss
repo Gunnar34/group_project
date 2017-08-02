@@ -37,6 +37,8 @@
 nav {
   height: 14vh;
   background-color: $navColor;
+  position: relative;
+  z-index: 10;
 }
 
 .title {
