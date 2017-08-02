@@ -14,7 +14,7 @@
           <td class="waves-effect waves-light btn checkInBtn marginBottom" ng-click='pc.checkInStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat marginBottom">Info</td>
+          <td tooltipped ng-show="student.initialized" class="waves-effect waves-blue btn-flat marginBottom">Info</td>
         </tr>
       </tbody>
     </table>
@@ -25,8 +25,8 @@
       <thead>
         <tr>
           <th>
-            <h3>Checked-in Students</h3></th>
-          <th></th>
+            <h3>Checked-in Students</h3>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +34,6 @@
           <td class="waves-effect waves-light btn checkInBtn marginBottom" ng-click='pc.checkOutStudent(student)'>
             {{student.firstName}} {{student.lastName}}
           </td>
-          <td ng-show="student.initialized" class="waves-effect waves-blue btn-flat marginBottom">Info</td>
         </tr>
       </tbody>
     </table>
