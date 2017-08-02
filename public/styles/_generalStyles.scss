@@ -2,12 +2,7 @@ html {
   background-image: url("../assets/images/abstract.jpg");
 }
 
-.login {
-  background-color: $complimentaryColor;
-  margin: 0px;
-}
-
-.margin {
+.marginBottom {
   margin-bottom: 40px;
 }
 
@@ -24,13 +19,34 @@ html {
 }
 
 .verticalDivider {
-     border-right:1px solid $complimentaryColor;
-     border-left:1px solid $complimentaryColor;
-     background-color: $complimentaryColor;
+     border-right:3px solid $buttonColor;
+     border-left:3px solid $buttonColor;
+     background-color: $buttonColor;
      height: 100%;
      position: absolute;
      top: 14vh;
      right: 50vw;
+}
+
+.fullheight {
+  height: 86vh;
+}
+
+.pagin {
+  height: 5vh;
+  width: 5vh;
+  margin-left: 10px;
+  margin-top: 20px;
+  border: 1px solid $buttonColor;
+  display: inline-block;
+}
+
+.paginFirst {
+  margin-left: 0px;
+}
+
+.paginFill {
+  background-color: $buttonColor;
 }
 
 /*table styles*/
@@ -64,16 +80,6 @@ th {
 td {
   background: #FFF;
   text-align: center;
-}
-
-.parentTR {
-  min-width: 30vw;
-  white-space: nowrap;
-}
-
-.parentTD {
-  padding: 2px !important;
-  vertical-align: bottom;
 }
 
 /* modal styles */
