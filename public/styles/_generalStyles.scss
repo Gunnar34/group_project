@@ -44,6 +44,23 @@ html {
 .fullheight {
   height: 86vh;
 }
+
+.pagin {
+  margin-top: 30px;
+  margin-left: 20px;
+  width: 5vh;
+  height: 5vh;
+  border: 1px solid $buttonColor;
+  display: inline-block;
+}
+
+.paginFirst {
+  margin-left: 0px;
+}
+
+.paginFill {
+  background-color: $buttonColor;
+}
 /*table styles*/
 
 .tb {
