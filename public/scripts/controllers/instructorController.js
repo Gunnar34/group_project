@@ -40,14 +40,6 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 		}).then(function() {
 			httpService.deleteItem('private/instructor', vm.users[index]._id).then(function() {
 				vm.getInstructors();
-				// swal({
-				// 	title: 'Deleted!',
-				// 	text: "The class was deleted",
-				// 	imageUrl: 'public/assets/images/abamath.png',
-				// 	imageWidth: 150,
-				// 	imageHeight: 150,
-				// 	animation: false
-				// });
 				showToast('Instuctor Deleted', 2000);
 			});
 		})
@@ -70,15 +62,21 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
     }
 	});
 
+	vm.closeModal = function(){
+		vm.instEmail = '';
+		vm.instName = undefined;
+		console.log(vm.instEmail, vm.instName);
+		document.getElementById('addInstructor').style.display = 'none'
+	}
+
 	vm.addUser = function() {
-		if (vm.email != undefined && vm.instName != undefined) {
+		if (vm.instEmail != undefined && vm.instName != undefined) {
 			let itemToSend = {
-				email: vm.email,
+				email: vm.instEmail,
 				name: vm.instName
 			};
 			httpService.postItem('private/instructor', itemToSend).then(function() {
-				vm.email = undefined;
-				vm.instName = undefined;
+				vm.closeModal();
 				vm.getInstructors();
 				showToast('Instuctor Added', 1500);
 			});
