@@ -77,3 +77,11 @@ input:focus+label, textarea:focus+label, .input-field .prefix.active {
 .picker__nav--prev:hover, .picker__nav--next:hover {
   background: $pickerBody !important;
 }
+
+.editInput {
+  margin: 0 !important;
+  padding: 1px !important;
+  height: 3.2rem !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
