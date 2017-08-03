@@ -111,7 +111,7 @@
         <!-- <div class="col s12 center-align">
           <button class='btn' ng-click='cc.addClass()' type="button" name="button">Save Class</button>
         </div> -->
-        <div class="col s12">
+        <div class="col s12 center-align">
           <a class="waves-effect waves-light btn" ng-click='cc.addClass()' message="Class Saved" duration="1500" toast='click'>Save Class</a>
           <a class="waves-effect cancel waves-light btn" onclick="document.getElementById('addClass').style.display = 'none'" message="Class Canceled" duration="1500" toast='click'>Cancel</a>
         </div>
@@ -176,7 +176,7 @@
         <!-- <div class="col s12 center-align">
           <button class='btn' ng-click='cc.saveEdit()' type="button" name="button">Save Class</button>
         </div> -->
-        <div class="col s12">
+        <div class="col s12 center-align">
           <a class="waves-effect waves-light btn" ng-click='cc.saveEdit()' message="Edit Saved" duration="1500" toast='click'>Save Changes</a>
           <a class="waves-effect cancel waves-light btn" onclick="document.getElementById('editClass').style.display = 'none'" message="Edit Canceled" duration="1500" toast='click'>Cancel</a>
         </div>
@@ -187,11 +187,19 @@
   <div id="addPhoneNumber" class="modal">
     <div id="phoneNumberModal" class="modal-content animate center-align">
       <h3>Please enter a phone number to continue</h3>
-      <div class="input-field">
-        <i class="material-icons prefix">phone</i>
-        <input phone-input ng-model="cc.phone"type="text" id="phone" name="phone">
-        <label for="phone">Phone Number</label>
-        <button class="btn" name="button" ng-click="cc.savePhone()">Save</button>
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <i class="material-icons prefix">phone</i>
+            <input phone-input ng-model="cc.phone"type="text" id="phone" name="phone">
+            <label for="phone">Phone Number</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center-align">
+            <button class="btn" name="button" ng-click="cc.savePhone()">Save</button>
+        </div>
       </div>
     </div>
   </div>
