@@ -54,7 +54,7 @@
           </button>
         </td>
         <td>
-          <button ng-click="sc.deletStudents(x.studentID)" class="btn">
+          <button ng-click="sc.deletStudents(x.studentID)" class="btn cancel">
             <i class="small material-icons">delete</i>
           </button>
         </td>
@@ -99,7 +99,7 @@
           </div>
         </form>
         <!-- <button class='btn' ng-click='sc.addStudent()' type="button" name="button">Save Student</button> -->
-        <div class="input-field col s12">
+        <div class="input-field col s12 center-align">
           <a class="waves-effect waves-light btn" ng-click='sc.addStudent()' message="Student Saved" duration="1000" toast='click'>Save Student</a>
           <button class="btn cancel" onclick="document.getElementById('addStudent').style.display = 'none'">cancel</button>
         </div>
@@ -144,7 +144,7 @@
           </div>
         </form>
         <!-- <button class='btn' ng-click='sc.editStudent()' type="button" name="button">Save Edits</button> -->
-        <div class="input-field col s4">
+        <div class="input-field col s4 center-align">
           <a class="waves-effect waves-light btn" ng-click='sc.editStudent()' message="Student Edited" duration="1000" toast='click'>Save Edit</a>
           <button class="btn cancel" onclick="document.getElementById('editStudent').style.display = 'none'">cancel</button>
         </div>
