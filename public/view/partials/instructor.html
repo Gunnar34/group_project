@@ -1,15 +1,5 @@
 <div class="row center-align marginTop" ng-init="inc.getInstructors()">
-  <div ng-if='inc.admin' class="input-field col s4">
-    <input  ng-model=inc.email type="email" id="instructorEmail" value="">
-    <label for="instructorEmail">Instructors email</label>
-  </div>
-  <div ng-if='inc.admin' class="input-field col s4">
-    <input  ng-model=inc.instName type="text" id="instructorName" value="">
-    <label for="instructorName">Instructors name</label>
-  </div>
-  <div class="col s3 center-align">
-    <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Add Instructor</button>
-  </div>
+  <a class="waves-effect waves-light btn" onclick="document.getElementById('addInstructor').style.display = 'block'">Add Instructor</a>
 </div>
 
 <table>
@@ -39,3 +29,21 @@
     </td>
   </tr>
 </table>
+
+<div id="addInstructor" class="modal">
+  <div id="" class="modal-content animate center-align">
+    <div ng-if='inc.admin' class="input-field col s12">
+      <input  ng-model=inc.instEmail type="email" id="instructorEmail" value="">
+      <label for="instructorEmail">Instructors email</label>
+    </div>
+    <div ng-if='inc.admin' class="input-field col s12">
+      <input  ng-model=inc.instName type="text" id="instructorName" value="">
+      <label for="instructorName">Instructors name</label>
+    </div>
+    <div class="col s12 center-align">
+      <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Save</button>
+      <a class="waves-effect cancel waves-light btn" ng-click="inc.closeModal()" message="Edit Canceled" duration="1500" toast='click'>Cancel</a>
+    </div>
+    </div>
+  </div>
+</div>
