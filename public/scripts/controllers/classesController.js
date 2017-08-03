@@ -35,9 +35,16 @@ app.controller('ClassesController', function(httpService, $location) {
   localStorage.setItem('classView', false);
   localStorage.setItem('notParentView', true);
   vm.gradesRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  vm.users = [];
 
-
-
+  vm.getInstructors = function() {
+		httpService.getItem('private/instructor').then(function(res) {
+			for (var i = 0; i < res.data.length; i++) {
+        vm.users.push({name: res.data[i].googleName, phone: res.data[i].phone})
+			}
+      console.log(vm.users);
+    });
+  }
 
   var showToast = function(message, duration) {
     Materialize.toast(message, duration);
@@ -73,6 +80,7 @@ app.controller('ClassesController', function(httpService, $location) {
   };
 
   vm.editClass = function(index) {
+    console.log(vm.classesArray[index]);
     vm.id = vm.classesArray[index]._id;
     vm.gradesUP = vm.classesArray[index].grades;
     vm.subjectUP = vm.classesArray[index].subject;
@@ -118,10 +126,9 @@ app.controller('ClassesController', function(httpService, $location) {
 
     let instructorsArray = [];
     for (var i = 0; i < vm.inputNumber.length; i++) {
-      let instructorName = vm.instructor[i];
-      instructorsArray.push({
-        instructor: instructorName
-      });
+      let index = vm.instructor[i];
+      console.log(index);
+      instructorsArray.push(vm.users[index]);
     }
     let objectToSend = {
       grades: vm.gradesArray,
