@@ -105,6 +105,11 @@ app.controller('ClassesController', function(httpService, $location) {
     }
   }; //end subEditInput
 
+  vm.cancelEdit = function(){
+    document.getElementById('editClass').style.display = 'none';
+    vm.populateClasses();
+  }
+
   vm.saveEdit = function() {
     let itemToSend = {
       grades: vm.gradesUP,
