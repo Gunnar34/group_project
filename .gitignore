@@ -3,4 +3,4 @@ node_modules
 *-log
 config/auth.js
 package-lock.json
-public/styles/main.min.css
+public/styles/sass/main.min.css
