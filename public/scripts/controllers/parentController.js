@@ -215,6 +215,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
 			console.log('in completeParentReview, res is:', res);
+			vm.loadClassInfo();
 		});
 	}; // end completeParentReview
 
