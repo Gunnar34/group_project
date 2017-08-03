@@ -1,11 +1,5 @@
 app.controller('ParentController', function(dataService, httpService, $location) {
 
-	if (performance.navigation.type == 1) {
-		console.info("This page is reloaded");
-		$location.path('/parent');
-		swal('Sorry, it seems you refreshed the page, please reselect your student from the list')
-	};
-
 	const vm = this;
 	const hs = httpService;
 	vm.pinEntry = '';
@@ -19,15 +13,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			vm.admin = res.data.name.admin;
 			vm.name = res.data.name.googleName;
 		} else {
-			swal({
-        title: 'Oops!',
-        text: "Please login to continue",
-        imageUrl: 'public/assets/images/abamath.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        animation: false
-      });
-      $location.path('/');
+			alert('Please Login before viewing this page');
+			$location.path('/');
 		}
 	});
 
@@ -84,7 +71,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			dataService.currentStudent = dataService.studentArray[idx];
 			dataService.index = idx;
 			// if no PIN is required, check-out a student
-			if (dataService.currentStudent.receiveTexts == true) {
+			if (dataService.currentStudent.receiveTexts == true ){
 				its = {
 					phone: dataService.currentStudent.emergencyPhone,
 					name: dataService.currentStudent.firstName
@@ -108,13 +95,13 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	vm.enterCheckoutPin = function(thingie, pin) {
 		if (pin == dataService.currentStudent.pin) {
 			console.log('PIN matches!');
+			document.getElementById('keypad').style.display = 'none';
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;
 			parentID = id.split('$', 1);
 			hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
 				console.log('in enterCheckoutPin, res is:', res);
 			});
-			vm.keypadClose();
 		} else {
 			console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
 			let numAttempts = attempts();
@@ -123,7 +110,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
 				text: "Please enter the correct PIN",
 				imageUrl: 'public/assets/images/abamath.png',
 				imageWidth: 150,
-				imageHeight: 150
+				imageHeight: 150,
+				animation: false
 			});
 			console.log(numAttempts);
 			vm.pinEntry = '';
@@ -156,13 +144,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	}; // end emergencySubmit
 
 	vm.emergencyAlert = function(boolean) {
-		swal({
-			title: 'Before continuing...',
-			text: "You can click on incorrect information to edit",
-			imageUrl: 'public/assets/images/abamath.png',
-			imageWidth: 150,
-			imageHeight: 150
-		});
+		alert('You can edit the info directly on this page.');
 	}; // end emergencyAlert
 
 	vm.selfCheckout = function(boolean) {

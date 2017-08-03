@@ -20,7 +20,7 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
 
     vm.attendOptions = {
       scales: {
-        yAxes: [{id: 'y-axis-1', type: 'linear', position: 'left', ticks: {min: 0, max:20}}]
+        yAxes: [{id: 'y-axis-1', type: 'linear', position: 'left', ticks: {autoSkip: false, min: 0, max:20}}]
       }
     };
 
