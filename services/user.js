@@ -78,10 +78,11 @@ var UserService = {
 		);
 	},
 
-	createUser: function(email, callback) {
+	createUser: function(req, callback) {
 		var user = new User();
 
-		user.googleEmail = email;
+		user.googleEmail = req.email;
+		user.googleName = req.name;
 
 		user.save(function(err) {
 			if (err) {

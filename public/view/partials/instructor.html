@@ -1,7 +1,11 @@
 <div class="row center-align marginTop" ng-init="inc.getInstructors()">
-  <div ng-if='inc.admin' class="input-field col s5 offset-s2">
+  <div ng-if='inc.admin' class="input-field col s4">
     <input  ng-model=inc.email type="email" id="instructorEmail" value="">
     <label for="instructorEmail">Instructors email</label>
+  </div>
+  <div ng-if='inc.admin' class="input-field col s4">
+    <input  ng-model=inc.instName type="text" id="instructorName" value="">
+    <label for="instructorName">Instructors name</label>
   </div>
   <div class="col s3 center-align">
     <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Add Instructor</button>
@@ -10,15 +14,18 @@
 
 <table>
   <tr>
-    <th class="tb">Instructor Name</th>
     <th class="tb">Instructor Email</th>
+    <th class="tb">Instructor Name</th>
     <th class="tb">Phone Number</th>
     <th class="tb">Edit</th>
     <th class="tb">Delete</th>
   </tr>
   <tr ng-repeat="user in inc.users">
-    <td>{{user.googleName}}</td>
     <td>{{user.googleEmail}}</td>
+    <td>
+      <input ng-if="user.edit" class="center-align" type="text" ng-model="user.googleName" value="">
+      <p ng-if="user.notEdit">{{user.googleName}}</p>
+    </td>
     <td>
       <input phone-input ng-if="user.edit" class="center-align" type="text" ng-model="user.phone" value="">
       <p ng-if="user.notEdit">{{user.phone | tel}}</p>
