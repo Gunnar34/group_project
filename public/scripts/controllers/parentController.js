@@ -106,36 +106,41 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	}; // end checkOutStudent
 
 	vm.enterCheckoutPin = function(thingie, pin) {
-		if (pin == dataService.currentStudent.pin) {
-			console.log('PIN matches!');
-			dataService.currentStudent.checkedIn = 'false';
-			id = dataService.currentStudent.studentID;
-			parentID = id.split('$', 1);
-			hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
-				console.log('in enterCheckoutPin, res is:', res);
-			});
-			vm.keypadClose();
+		if (pin.length < 4) {
+			console.log('nothing happens in this case, PIN too short');
 		} else {
-			console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
-			let numAttempts = attempts();
-			swal({
-				title: 'That PIN was incorrect!',
-				text: "Please enter the correct PIN",
-				imageUrl: 'public/assets/images/abamath.png',
-				imageWidth: 150,
-				imageHeight: 150
-			});
-			console.log(numAttempts);
-			vm.pinEntry = '';
-			if (numAttempts >= 3) {
-				objectToSend = {
-					phone: "+16124301051"
-				};
+			if (pin == dataService.currentStudent.pin) {
+				console.log('PIN matches!');
+				dataService.currentStudent.checkedIn = 'false';
+				id = dataService.currentStudent.studentID;
+				parentID = id.split('$', 1);
+				hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
+					console.log('in enterCheckoutPin, res is:', res);
+				});
+				vm.keypadClose();
+				showToast('Checked Out!', 2000);
+			} else {
+				console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
+				let numAttempts = attempts();
+				swal({
+					title: 'That PIN was incorrect!',
+					text: "Please enter the correct PIN",
+					imageUrl: 'public/assets/images/abamath.png',
+					imageWidth: 150,
+					imageHeight: 150
+				});
+				console.log(numAttempts);
 				vm.pinEntry = '';
-				// hs.postItem('/private/comm/call', objectToSend).then(function(res) {
-				//
-				// });
-				$location.path('/checkoutError');
+				if (numAttempts >= 3) {
+					objectToSend = {
+						phone: "+16124301051"
+					};
+					vm.pinEntry = '';
+					// hs.postItem('/private/comm/call', objectToSend).then(function(res) {
+					//
+					// });
+					$location.path('/checkoutError');
+				}
 			}
 		}
 	}; // end enterCheckoutPin
@@ -195,10 +200,14 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	}; // end usePin
 
 	vm.enterPin = function(thingie, pin) {
-		dataService.currentStudent.pin = pin;
-		console.log('in enterPin', dataService.currentStudent);
-		document.getElementById('keypad').style.display = 'none';
-		vm.go('/receiveTexts');
+		if (pin.length < 4) {
+			console.log('nothing happens in this case, PIN too short');
+		} else {
+			dataService.currentStudent.pin = pin;
+			console.log('in enterPin', dataService.currentStudent);
+			document.getElementById('keypad').style.display = 'none';
+			vm.go('/receiveTexts');
+		}
 	}; // end enterPin
 
 	vm.keypadClose = function() {
