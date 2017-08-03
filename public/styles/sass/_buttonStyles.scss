@@ -1,10 +1,10 @@
 /* button styling */
 
-.btn {
+.btn, .swal2-confirm {
   background-color: $buttonColor !important;
 }
 
-.cancel {
+.cancel, .swal2-cancel {
   background-color: $cancelButtonColor !important;
 }
 
