@@ -64,7 +64,7 @@ router.post('/call', function(req, res) {
   console.log("req body: ", req.body);
   client.calls.create({
     url: "http://demo.twilio.com/docs/voice.xml",
-    to: req.body.phone,
+    to: '+1' + req.body.phone,
     from: config.numberSRC
   }, function(err, call) {
     if (call) {

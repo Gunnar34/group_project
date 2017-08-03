@@ -11,6 +11,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	vm.pinEntry = '';
 	vm.currentID = localStorage.getItem('classID');
 	vm.studentsArray = [];
+	vm.instructorsArray = [];
 	localStorage.setItem('notParentView', false);
 	vm.currentStudent = dataService.currentStudent;
 
@@ -50,8 +51,10 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	vm.loadClassInfo = function() {
 		hs.getWithID('/private/students', vm.currentID).then(function(res) {
 			vm.studentArray = res.data.students;
+			vm.instructorsArray = res.data.instructors;
 			console.log('got class info');
 			dataService.studentArray = vm.studentArray;
+			dataService.instructorsArray = vm.instructorsArray;
 			for (var i = 0; i < dataService.studentArray.length; i++) {
 				console.log(vm.studentArray[i].checkedIn);
 			}
@@ -133,12 +136,12 @@ app.controller('ParentController', function(dataService, httpService, $location)
 				vm.pinEntry = '';
 				if (numAttempts >= 3) {
 					objectToSend = {
-						phone: "+16124301051"
+						phone: dataService.instructorsArray[0].phone
 					};
 					vm.pinEntry = '';
-					// hs.postItem('/private/comm/call', objectToSend).then(function(res) {
-					//
-					// });
+					hs.postItem('/private/comm/call', objectToSend).then(function(res) {
+
+					});
 					$location.path('/checkoutError');
 				}
 			}
