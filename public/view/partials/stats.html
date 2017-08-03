@@ -1,16 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col s4">
-      <h5>Number of Students in each class</h5>
-      <canvas id="attend" class="chart chart-doughnut" chart-data="sc.attendDataArr" chart-labels="sc.attendLabelArr"></canvas>
+    <div class="col s12">
+      <h5 class="center-align">Current Number of Students by Class</h5>
+      <canvas id="attend" class="chart chart-bar" chart-data="sc.attendDataArr" chart-labels="sc.attendLabelArr" chart-options="sc.attendOptions"></canvas>
     </div>
+    <div class="row">
+
+
     <div class="col s4">
-      <h5>Today's attendance</h5>
+      <h5>Today's Attendance</h5>
       <canvas id="today" class="chart chart-doughnut" chart-data="sc.inNowDataArr" chart-labels="sc.inNowLabelArr"></canvas>
     </div>
     <div class="col s4">
-      <h5>Number of people using Pin</h5>
+
+    </div>
+    <div class="col s4">
+      <h5>Pin Users</h5>
       <canvas id="pin" class="chart chart-doughnut" chart-data="sc.pinDataArr" chart-labels="sc.pinLabelArr"></canvas>
     </div>
+      </div>
   </div>
 </div>
