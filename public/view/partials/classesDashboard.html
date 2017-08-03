@@ -1,4 +1,4 @@
-<div ng-init='cc.populateClasses()' class="row">
+<div ng-init='cc.populateClasses(); cc.getInstructors()' class="row">
   <div class="col s12">
     <h4 class="center-align">Welcome {{cc.name}}</h4>
   </div>
@@ -95,8 +95,10 @@
         </div>
         <div class="input-field col l10 s12" ng-repeat="number in cc.inputNumber">
           <i class="material-icons prefix">person</i>
-          <input ng-model='cc.instructor[number]' type="text" id="instructor{{$index}}" value="">
-          <label for="instructor{{$index}}">Instructors</label>
+          <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
+            <option value="" disabled selected style="display: none;">instructors</option>
+            <option ng-repeat='user in cc.users'>{{user.name}}</option>
+          </select>
         </div>
         <div class="col l2 s12 center-align">
           <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
@@ -160,8 +162,10 @@
         </div>
         <div class="input-field col l10 s12" ng-repeat="obj in cc.instructorsUP">
           <i class="material-icons prefix">person</i>
-          <input ng-model='obj.instructor' type="text" id="{{$index}}UP" value="">
-          <label for="{{$index}}UP">instructors</label>
+          <select class="" ng-model="obj.instructor" material-select watch>
+            <option value="" disabled selected style="display: none;">instructors</option>
+            <option ng-repeat='user in cc.users'>{{user.name}}</option>
+          </select>
         </div>
         <div class="col l2 s12">
           <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
