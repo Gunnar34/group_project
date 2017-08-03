@@ -80,6 +80,7 @@ app.controller('ClassesController', function(httpService, $location) {
   };
 
   vm.editClass = function(index) {
+    console.log(vm.classesArray[index]);
     vm.id = vm.classesArray[index]._id;
     vm.gradesUP = vm.classesArray[index].grades;
     vm.subjectUP = vm.classesArray[index].subject;
@@ -125,10 +126,9 @@ app.controller('ClassesController', function(httpService, $location) {
 
     let instructorsArray = [];
     for (var i = 0; i < vm.inputNumber.length; i++) {
-      let instructorName = vm.instructor[i];
-      instructorsArray.push({
-        instructor: instructorName
-      });
+      let index = vm.instructor[i];
+      console.log(index);
+      instructorsArray.push(vm.users[index]);
     }
     let objectToSend = {
       grades: vm.gradesArray,
