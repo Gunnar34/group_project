@@ -18,9 +18,10 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 		vm.editB(index);
 		let user = vm.users[index];
 		httpService.putItem('private/instructor', user._id, {
-			phone: user.phone
+			phone: user.phone,
+			googleName: user.googleName
 		}).then(function(res) {
-			console.log(res);
+			showToast('Edits saved!', 1500)
 		});
 	};
 
@@ -57,24 +58,33 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 			vm.admin = res.data.name.admin;
 			vm.name = res.data.name.googleName;
 		} else {
-			alert('Please Login before viewing this page');
-			$location.path('/');
-		}
+			swal({
+        title: 'Oops!',
+        text: "Please login to continue",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
+      $location.path('/');
+    }
 	});
 
 	vm.addUser = function() {
-		if (vm.email) {
+		if (vm.email != undefined && vm.instName != undefined) {
 			let itemToSend = {
-				email: vm.email
+				email: vm.email,
+				name: vm.instName
 			};
 			httpService.postItem('private/instructor', itemToSend).then(function() {
 				vm.email = undefined;
+				vm.instName = undefined;
 				vm.getInstructors();
 				showToast('Instuctor Added', 1500);
 			});
 		} else {
 			//end if
-			alert('please enter an email before submitting');
+			showToast('Please fill out fields before submitting', 1500);
 		}
 	};
 
