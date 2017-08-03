@@ -34,9 +34,16 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 			vm.admin = res.data.name.admin;
 			vm.name = res.data.name.googleName;
 		} else {
-			alert('Please Login before viewing this page');
-			$location.path('/');
-		}
+			swal({
+        title: 'Oops!',
+        text: "Please login to continue",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
+      $location.path('/');
+    }
 	}); //end httpService get item
 
 	vm.displayClass = function() {
