@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	user.createUser(req.body.email, function(err, user) {
+	user.createUser(req.body, function(err, user) {
 		if (err) {
 			res.send(err);
 		}
@@ -32,12 +32,9 @@ router.post('/', function(req, res) {
 router.put('/:id', function(req, res) {
 	console.log(req.params.id);
 	console.log(req.body);
-	var newValue = {
-		phone: req.body.phone
-	};
 	User.findOneAndUpdate({
 		_id: req.params.id
-	}, newValue, function(err, user) {
+	}, req.body, function(err, user) {
 		if (err) {
 			res.send(err);
 		}
