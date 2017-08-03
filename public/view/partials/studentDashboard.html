@@ -19,9 +19,9 @@
   <div class="col s7">
     <a class='dropdown-button btn right' href data-activates='dropdownStud' dropdown data-hover="true">Check in options</a>
     <ul id='dropdownStud' class='dropdown-content'>
-        <li><a href ng-click='sc.checkInAll(sc.studentsArray)' >Check-in Students</a></li>
-        <li><a href ng-click='sc.checkoutAllStudents(sc.studentsArray)'>Check-out Students</a></li>
-        <li><a href ng-click='sc.forceCheckout(sc.studentsArray)'>Force Check-out All Students</a></li>
+        <li><a href ng-click='sc.toggleCheckIn(sc.studentsArray, "in")' >Check-in Students</a></li>
+        <li><a href ng-click='sc.toggleCheckIn(sc.studentsArray, "out")'>Check-out Students</a></li>
+        <li><a href ng-click='sc.toggleCheckIn(sc.studentsArray, "forceOut")'>Force Check-out All Students</a></li>
     </ul>
     </div>
   </div>
