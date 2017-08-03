@@ -12,10 +12,17 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   var check = new Date();
   var inNow = 0;
   var outNow = 0;
+
   vm.pinDataArr = [];
   vm.pinLabelArr = ['Yes', 'No'];
   vm.inNowDataArr = [];
   vm.inNowLabelArr = ['In', 'Out'];
+
+    vm.attendOptions = {
+      scales: {
+        yAxes: [{id: 'y-axis-1', type: 'linear', position: 'left', ticks: {min: 0, max:20}}]
+      }
+    };
 
   httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
