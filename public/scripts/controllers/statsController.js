@@ -9,58 +9,61 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   vm.classesArray = [];
   var pin = 0;
   var noPin = 0;
+  var check = new Date();
+  var inNow = 0;
+  var outNow = 0;
   vm.pinDataArr = [];
-  vm.pinLabelArr = ['True', 'False'];
+  vm.pinLabelArr = ['Yes', 'No'];
+  vm.inNowDataArr = [];
+  vm.inNowLabelArr = ['In', 'Out'];
 
   httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
     } else {
-      swal({
-        title: 'Oops!',
-        text: "Please login to continue",
-        imageUrl: 'public/assets/images/abamath.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        animation: false
-      });
+      alert('Please Login before viewing this page');
       $location.path('/');
     }
   });
 
   vm.populateClasses = function() {
-    console.log('in populateClasses');
     httpService.getItem('private/classes/classes').then(function(res) {
       var pin = 0;
       var noPin = 0;
       vm.classesArray = res.data[0];
-      console.log(vm.classesArray);
-      for (var i = 0; i < vm.classesArray.length; i++) {
+      for (let i = 0; i < vm.classesArray.length; i++) {
         //attend donut
         vm.attendLabelArr.push(vm.classesArray[i].location);
         vm.attendDataArr.push(vm.classesArray[i].students.length);
-        console.log('length', vm.classesArray[i].students.length);
-      }
-      for (var j = 0; j < vm.classesArray.length; j++) {
-        for (var k = 0; k < vm.classesArray[j].students.length; k++) {
-          if (vm.classesArray[j].students[k].usePin == true) {
-            pin++;
-            console.log('pin', pin);
-						console.log('pin arr', vm.pinDataArr);
-          } else {
-            noPin++;
-            console.log('nopin', noPin);
-						console.log('pin arr', vm.pinDataArr);
+        let start = Date.parse(vm.classesArray[i].startDate);
+        let end = Date.parse(vm.classesArray[i].endDate);
+        //today's attendance
+        if((check.getTime() <= end && check.getTime() >= start)){
+          for (let j = 0; j < vm.classesArray[i].students.length; j++) {
+            if (vm.classesArray[i].students[j].checkedIn == 'true') {
+              inNow++;
+            } else {
+              outNow++;
+            }
           }
         }
       }
+      // pin use
+      for (let j = 0; j < vm.classesArray.length; j++) {
+        for (let k = 0; k < vm.classesArray[j].students.length; k++) {
+          if (vm.classesArray[j].students[k].usePin == true) {
+            pin++;
+          } else {
+            noPin++;
+          }
+        }
+      }
+      vm.inNowDataArr = [inNow, outNow];
 			vm.pinDataArr = [pin, noPin];
-			console.log( vm.pinDataArr);
-    });
+    }); //end http get popClasses
+  };//end populateClasses
 
-  }; //end http get popClasses
-  //end populateClasses
 
   vm.populateClasses();
 
@@ -68,6 +71,5 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   vm.attendDataArr = [];
   vm.attendLabelArr = [];
 
-  //
-  // window.dispatchEvent(new Event('resize'));
+
 });
