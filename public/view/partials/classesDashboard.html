@@ -25,7 +25,7 @@
           <th class="tb">Delete class</th>
         </tr>
         <tr ng-repeat='x in cc.classesArray '>
-          <td><span ng-repeat="instructor in x.instructors">{{instructor.instructor}}{{$last ? '' : ', '}} </span></td>
+          <td><span ng-repeat="instructor in x.instructors">{{instructor.name}}{{$last ? '' : ', '}} </span></td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
           <td>{{ x.startDate | date : 'EEE' }}-{{ x.endDate | date : 'EEE'}}</td>
@@ -97,7 +97,7 @@
           <i class="material-icons prefix">person</i>
           <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
             <option value="" disabled selected style="display: none;">instructors</option>
-            <option ng-repeat='user in cc.users'>{{user.name}}</option>
+            <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
           </select>
         </div>
         <div class="col l2 s12 center-align">
@@ -162,7 +162,7 @@
         </div>
         <div class="input-field col l10 s12" ng-repeat="obj in cc.instructorsUP">
           <i class="material-icons prefix">person</i>
-          <select class="" ng-model="obj.instructor" material-select watch>
+          <select class="" ng-model="obj.name" material-select watch>
             <option value="" disabled selected style="display: none;">instructors</option>
             <option ng-repeat='user in cc.users'>{{user.name}}</option>
           </select>
