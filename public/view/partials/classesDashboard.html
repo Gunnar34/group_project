@@ -1,11 +1,15 @@
 <div ng-init='cc.populateClasses(); cc.getInstructors()' class="row">
-  <div class="col s12">
-    <h4 class="center-align">Welcome {{cc.name}}</h4>
-  </div>
-</div>
-<div class="row">
-  <div class="col s12 center-align">
-    <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+  <div class="card col s6 offset-s3">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h4 class="center-align">Welcome {{cc.name}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+      </div>
+    </div>
   </div>
 </div>
   <div class="row">
