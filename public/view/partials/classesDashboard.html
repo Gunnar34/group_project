@@ -56,14 +56,14 @@
   <div id="addClass" class="modal">
     <div class="modal-content animate">
       <form id="addClassForm" class="row">
-        <div class="input-field col l10 s12" ng-repeat="number in cc.inputNumber">
+        <div class="input-field col s9" ng-repeat="number in cc.inputNumber">
           <i class="material-icons prefix">person</i>
           <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
             <option value="" disabled selected style="display: none;">instructors</option>
             <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
           </select>
         </div>
-        <div class="col l2 s12 center-align">
+        <div class="col s3">
           <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
             <i class="material-icons prefix">add</i>
           </button>
@@ -124,14 +124,14 @@
   <div id="editClass" class="modal">
     <div class="modal-content animate">
       <form class="row">
-        <div class="input-field col l10 s12" ng-repeat="obj in cc.instructorsUP">
+        <div class="input-field col s9" ng-repeat="obj in cc.instructorsUP">
           <i class="material-icons prefix">person</i>
           <select class="" ng-model="obj.name" material-select watch>
             <option value="" disabled selected style="display: none;">instructors</option>
             <option ng-repeat='user in cc.users'>{{user.name}}</option>
           </select>
         </div>
-        <div class="col l2 s12">
+        <div class="col s3">
           <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
             <i class="material-icons prefix">add</i>
           </button>

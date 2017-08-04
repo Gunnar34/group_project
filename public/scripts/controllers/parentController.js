@@ -93,9 +93,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
 					name: dataService.currentStudent.firstName
 				};
 				console.log('text ', its);
-				// hs.postItem('/private/comm/text', its ).then(function(){
-				//
-				// });
+				hs.postItem('/private/comm/text', its ).then(function(){
+
+				});
 			}
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;

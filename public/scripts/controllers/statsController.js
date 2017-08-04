@@ -30,7 +30,14 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
     } else {
-      alert('Please Login before viewing this page');
+      swal({
+        title: 'Oops!',
+        text: "Please login to continue",
+        imageUrl: 'public/assets/images/abamath.png',
+        imageWidth: 150,
+        imageHeight: 150,
+        animation: false
+      });
       $location.path('/');
     }
   });
