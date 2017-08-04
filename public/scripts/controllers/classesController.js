@@ -149,11 +149,12 @@ app.controller('ClassesController', function(httpService, $location) {
     console.log(objectToSend);
     httpService.postItem('private/classes/classes', objectToSend).then(function(res) {
       console.log(res);
-      vm.populateClasses(); //repopulate classes in table
+       //repopulate classes in table
     }); //end then function
     document.getElementById('addClass').style.display = 'none'; //close modal
     document.getElementById('addClassForm').reset();
     vm.inputNumber = [0];
+    vm.populateClasses();
   }; //end addClass
 
   vm.populateClasses = function() {
