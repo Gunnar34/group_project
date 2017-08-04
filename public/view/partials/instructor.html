@@ -1,5 +1,5 @@
-<div ng-if='inc.admin' class="row center-align marginTop" ng-init="inc.getInstructors()">
-  <a class="waves-effect waves-light btn" onclick="document.getElementById('addInstructor').style.display = 'block'">Add Instructor</a>
+<div class="row center-align marginTop" ng-init="inc.getInstructors()">
+  <a ng-if='inc.admin'  class="waves-effect waves-light btn" onclick="document.getElementById('addInstructor').style.display = 'block'">Add Instructor</a>
 </div>
 
 <table>
