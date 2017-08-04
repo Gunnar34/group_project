@@ -17,6 +17,7 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   vm.pinLabelArr = ['Yes', 'No'];
   vm.inNowDataArr = [];
   vm.inNowLabelArr = ['In', 'Out'];
+  vm.logData = [];
 
     vm.attendOptions = {
       scales: {
@@ -24,7 +25,7 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
       }
     };
 
-  httpService.getItem('auth').then(function(res) {
+  hs.getItem('auth').then(function(res) {
     if (res.data.name) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
@@ -32,6 +33,11 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
       alert('Please Login before viewing this page');
       $location.path('/');
     }
+  });
+
+  hs.getItem('private/classes/logs').then(function(res) {
+  console.log('stats hit', res);
+  vm.logData = res.data;
   });
 
   vm.populateClasses = function() {
