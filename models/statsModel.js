@@ -7,9 +7,8 @@ var classStatSchema = new mongoose.Schema({
      subject: String,
      startDate: Date,
      endDate: Date,
-     students: Number,
      events: Array
  });
 
  var classStat = mongoose.model('statclasses', classStatSchema);
- module.exports = classes;
+ module.exports = classStat;

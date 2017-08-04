@@ -30,4 +30,25 @@
       </div>
     </div>
   </div>
+  <div class="row" ng-if="sc.admin">
+    <div class="col s12">
+      <table>
+        <tr>
+          <th class="tb">Date</th>
+          <th class="tb">In/Out</th>
+          <th class="tb">Name</th>
+          <th class="tb">Time</th>
+        </tr>
+        <tr ng-repeat='x in sc.logData | orderBy: "-date" | limitTo: 20'>
+          <td>{{ x.date | date : 'mediumDate'  }}</td>
+          <td>
+            <span ng-if="x.inOrOut == 'OUT'">OUT</span>
+            <span ng-if="x.inOrOut == 'IN'">IN</span>
+          </td>
+          <td>{{ x.user }}</td>
+          <td>{{ x.date | date : 'mediumTime' }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
