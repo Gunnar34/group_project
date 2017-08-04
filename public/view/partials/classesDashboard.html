@@ -63,7 +63,7 @@
         <div class="input-field col l10 s12" ng-repeat="number in cc.inputNumber">
           <i class="material-icons prefix">person</i>
           <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
-            <option value="" disabled selected style="display: none;">instructors</option>
+            <option value="" disabled selected style="display: none;">Instructors</option>
             <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
           </select>
         </div>
