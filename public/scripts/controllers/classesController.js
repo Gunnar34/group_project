@@ -29,8 +29,8 @@ app.controller('ClassesController', function(httpService, $location) {
   //vars
   var vm = this;
 
-  vm.inputNumber = [0];
-  var number = 1;
+  vm.inputNumber = [0, 1];
+  var number = 2;
   vm.instructorsUP;
   localStorage.setItem('classView', false);
   localStorage.setItem('notParentView', true);
