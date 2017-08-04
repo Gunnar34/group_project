@@ -31,11 +31,19 @@
 
 .menu {
   font-size: 8vh !important;
-  margin-top: 3vh;
+}
+
+.header {
+  font-size: 1.7rem;
+  color: $htmlBackground;
+}
+
+.headCol {
+  height: inherit;
 }
 
 nav {
-  height: 14vh;
+  height: 10vh;
   background-color: $navColor;
   position: relative;
   z-index: 10;
