@@ -1,5 +1,5 @@
 <div class="row center-align marginTop" ng-init="inc.getInstructors()">
-  <a class="waves-effect waves-light btn" onclick="document.getElementById('addInstructor').style.display = 'block'">Add Instructor</a>
+  <a ng-if='inc.admin'  class="waves-effect waves-light btn" onclick="document.getElementById('addInstructor').style.display = 'block'">Add Instructor</a>
 </div>
 
 <table>
@@ -23,7 +23,7 @@
     <td>
       <button ng-if="user.notEdit" ng-click="inc.editB($index)" type="button" class="btn"><i class="material-icons small">edit</i></button>
       <button ng-if="user.edit" ng-click="inc.save($index)" type="button" class="btn"><i class="material-icons small">save</i></button>
-      <button ng-if="user.edit" ng-click="inc.editB($index); inc.getInstructors()" type="button" class="btn cancel"><i class="material-icons small">cancel</i></button>
+      <button ng-if="user.edit" ng-click="inc.editB($index); inc.getInstructors()" type="button" class="btn cancel" message="Edits Canceled" duration="1500" toast='click'><i class="material-icons small">cancel</i></button>
     </td>
     <td>
       <button ng-click="inc.deleteInsctructor($index)" type="button" class="btn cancel"><i class="small material-icons">delete</i></button>
@@ -31,19 +31,19 @@
   </tr>
 </table>
 
-<div id="addInstructor" class="modal">
+<div ng-if='inc.admin' id="addInstructor" class="modal">
   <div id="" class="modal-content animate center-align">
-    <div ng-if='inc.admin' class="input-field col s12">
+    <div class="input-field col s12">
       <input class="" ng-model=inc.instEmail type="email" id="instructorEmail" value="">
       <label for="instructorEmail">Instructors email</label>
     </div>
-    <div ng-if='inc.admin' class="input-field col s12 ">
+    <div class="input-field col s12 ">
       <input class="" ng-model=inc.instName type="text" id="instructorName" value="">
       <label for="instructorName">Instructors name</label>
     </div>
     <div class="col s12 center-align editInput">
-      <button ng-if='inc.admin' ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Save</button>
-      <a class="waves-effect cancel waves-light btn" ng-click="inc.closeModal()" message="Edit Canceled" duration="1500" toast='click'>Cancel</a>
+      <button ng-click="inc.addUser()" class='btn center-align' type="button" name="button">Save</button>
+      <a class="waves-effect cancel waves-light btn" ng-click="inc.closeModal()" message="Canceled" duration="1500" toast='click'>Cancel</a>
     </div>
     </div>
   </div>
