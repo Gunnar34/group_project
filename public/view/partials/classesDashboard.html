@@ -56,6 +56,21 @@
   <div id="addClass" class="modal">
     <div class="modal-content animate">
       <form id="addClassForm" class="row">
+        <div class="input-field col l10 s12" ng-repeat="number in cc.inputNumber">
+          <i class="material-icons prefix">person</i>
+          <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
+            <option value="" disabled selected style="display: none;">instructors</option>
+            <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
+          </select>
+        </div>
+        <div class="col l2 s12 center-align">
+          <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
+            <i class="material-icons prefix">add</i>
+          </button>
+          <button tooltipped class="btn cancel btn-floating" name="button" ng-click="cc.subInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
+            <i class="material-icons prefix">cancel</i>
+          </button>
+        </div>
         <div class='input-field col l12 s12' input-field>
           <i class="material-icons prefix">grade</i>
           <select class="" ng-model="cc.gradesArray" material-select multiple watch>
@@ -93,21 +108,6 @@
           <input ng-model='cc.location' type="text" id="location" value="">
           <label for="location">Location</label>
         </div>
-        <div class="input-field col l10 s12" ng-repeat="number in cc.inputNumber">
-          <i class="material-icons prefix">person</i>
-          <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
-            <option value="" disabled selected style="display: none;">instructors</option>
-            <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
-          </select>
-        </div>
-        <div class="col l2 s12 center-align">
-          <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
-            <i class="material-icons prefix">add</i>
-          </button>
-          <button tooltipped class="btn cancel btn-floating" name="button" ng-click="cc.subInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
-            <i class="material-icons prefix">cancel</i>
-          </button>
-        </div>
       </form>
       <div class="row">
         <!-- <div class="col s12 center-align">
@@ -124,6 +124,21 @@
   <div id="editClass" class="modal">
     <div class="modal-content animate">
       <form class="row">
+        <div class="input-field col l10 s12" ng-repeat="obj in cc.instructorsUP">
+          <i class="material-icons prefix">person</i>
+          <select class="" ng-model="obj.name" material-select watch>
+            <option value="" disabled selected style="display: none;">instructors</option>
+            <option ng-repeat='user in cc.users'>{{user.name}}</option>
+          </select>
+        </div>
+        <div class="col l2 s12">
+          <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
+            <i class="material-icons prefix">add</i>
+          </button>
+          <button tooltipped class="btn btn-floating cancel" name="button" ng-click="cc.subEditInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
+            <i class="material-icons prefix">cancel</i>
+          </button>
+        </div>
         <div class='input-field col l12 s12' input-field>
           <i class="material-icons prefix">grade</i>
           <select class="" ng-model="cc.gradesUP" material-select multiple watch>
@@ -159,21 +174,6 @@
           <i class="material-icons prefix">location_on</i>
           <input ng-model='cc.locationUP' type="text" id="locationUP" value="">
           <label for="locationUP">Location</label>
-        </div>
-        <div class="input-field col l10 s12" ng-repeat="obj in cc.instructorsUP">
-          <i class="material-icons prefix">person</i>
-          <select class="" ng-model="obj.name" material-select watch>
-            <option value="" disabled selected style="display: none;">instructors</option>
-            <option ng-repeat='user in cc.users'>{{user.name}}</option>
-          </select>
-        </div>
-        <div class="col l2 s12">
-          <button tooltipped class="btn btn-floating" name="button" ng-click="cc.addEditInput()" data-position="left" data-delay="50" data-tooltip="Add instructor box">
-            <i class="material-icons prefix">add</i>
-          </button>
-          <button tooltipped class="btn btn-floating cancel" name="button" ng-click="cc.subEditInput()" data-position="right" data-delay="50" data-tooltip="Remove instructor box">
-            <i class="material-icons prefix">cancel</i>
-          </button>
         </div>
       </form>
       <div class="row">
