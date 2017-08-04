@@ -1,11 +1,15 @@
 <div ng-init='cc.populateClasses(); cc.getInstructors()' class="row">
-  <div class="col s12">
-    <h4 class="center-align">Welcome {{cc.name}}</h4>
-  </div>
-</div>
-<div class="row">
-  <div class="col s12 center-align">
-    <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+  <div class="card col s6 offset-s3">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h4 class="center-align">Welcome {{cc.name}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn" onclick="document.getElementById('addClass').style.display = 'block'">Add Class</button>
+      </div>
+    </div>
   </div>
 </div>
   <div class="row">
@@ -59,7 +63,7 @@
         <div class="input-field col s9" ng-repeat="number in cc.inputNumber">
           <i class="material-icons prefix">person</i>
           <select class="" ng-model="cc.instructor[number]" id="instructor{{$index}}" material-select watch>
-            <option value="" disabled selected style="display: none;">instructors</option>
+            <option value="" disabled selected style="display: none;">Instructors</option>
             <option ng-repeat='user in cc.users' value="{{$index}}">{{user.name}}</option>
           </select>
         </div>
