@@ -3,6 +3,7 @@ var router = express.Router();
 var config = require('../../config/auth.js');
 var nodemailer = require('nodemailer');
 var twilio = require('twilio');
+var VoiceResponse = twilio.twiml.VoiceResponse;
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -13,7 +14,10 @@ var transporter = nodemailer.createTransport({
 });
 
 var client = twilio(config.accountSid, config.authToken);
-
+// var twiml = new twilio.TwimlResponse();
+//    twiml.say("Hello from your pals at Twilio! Have fun.");
+//    res.writeHead(200, {'Content-Type': 'text/xml'});
+//    res.end(twiml.toString());
 
 
 
@@ -60,22 +64,28 @@ router.post('/text', function(req, res) {
 
 // to make a call
 router.post('/call', function(req, res) {
-  console.log("req body: ", req.body);
-  client.calls.create({
-    url: "http://demo.twilio.com/docs/voice.xml",
-    to: '+1' + req.body.phone,
-    from: config.numberSRC
-  }, function(err, call) {
-    if (call) {
-      console.log('call ', call);
-      process.stdout.write(call.sid);
-      res.send('success!');
-    } else {
-      console.log(err);
-      res.send(err);
-    }
 
-  });
+   var url = 'https://hostabacall.herokuapp.com/index.xml';
+
+   var options = {
+       to: req.body.phone,
+       from: config.numberSRC,
+       url: url,
+   };
+
+   // Place an outbound call to the user, using the TwiML instructions
+   // from the /outbound route
+   client.calls.create(options)
+     .then((message) => {
+       console.log('message', message.responseText);
+       res.sendStatus(200);
+     })
+     .catch((error) => {
+       console.log('error', error);
+       res.status(500).send(error);
+     });
 });
+
+
 
 module.exports = router;
