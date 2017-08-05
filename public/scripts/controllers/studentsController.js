@@ -1,5 +1,4 @@
 app.controller('StudentsController', function($http, dataService, httpService, $location) {
-	console.log('loaded sc');
 	//conts
 	const vm = this;
 	const ds = dataService;
@@ -14,7 +13,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	vm.currentStudentID;
 	vm.gradesRange = []
 	vm.goToParent = function() {
-		console.log('click');
 		$location.path('/parent');
 	};
 
@@ -47,12 +45,9 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	}); //end httpService get item
 
 	vm.displayClass = function() {
-		console.log('before', vm.currentID);
 		hs.getWithID('/private/students', vm.currentID).then(function(res) {
 			vm.studentsArray = res.data.students;
-			console.log(vm.studentsArray);
 			vm.currentClass = res.data;
-			console.log(vm.currentClass);
 			vm.gradesRange = vm.currentClass.grades.split(',')
 		}); //end get withId
 	}; //end displayClass
@@ -64,7 +59,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 	vm.addStudent = function() {
 		//creates item to send
 		var itemToSend = new Student(vm.currentID, vm.firstName, vm.lastName, vm.grade, vm.emergencyName, vm.emergencyPhone, vm.emergencyRelation);
-		console.log(itemToSend);
 		hs.putItem('/private/students', vm.currentID, itemToSend).then(function(res) {
 			//call to update
 			vm.displayClass();
@@ -76,7 +70,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 
 	vm.setId = function(id) {
 		vm.currentStudent = id;
-		console.log(id);
 		vm.id = vm.currentStudent.studentID;
 		vm.firstNameUp = vm.currentStudent.firstName;
 		vm.lastNameUp = vm.currentStudent.lastName;
@@ -102,16 +95,13 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 			receiveTexts: vm.currentStudent.receiveTexts,
 			initialized: vm.currentStudent.initialized
 		};
-		console.log(objectToSend);
 		hs.putItem('/private/students/edit', objectToSend.id, objectToSend);
 		document.getElementById('editStudent').style.display = 'none';
 		vm.displayClass();
 	}; //end edit students
 
 	vm.viewEmergency = function(id) {
-		console.log(id);
 		httpService.getWithID('/private/students/emergencyInfo', id).then(function(res) {
-			console.log(res.data);
 			vm.studentName = res.data.firstName + ' ' + res.data.lastName;
 			vm.emergencyName = res.data.emergencyName;
 			vm.emergencyRelation = res.data.emergencyRelation;
@@ -126,7 +116,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 		} else {
 			vm.data = response.data.message;
 		} //end else
-		console.log(vm.data);
 	}); //end displayClass
 
 
@@ -145,7 +134,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 			allowOutsideClick: true
 		}).then(function() {
 			hs.deleteItem('/private/students', id).then(function(res) {
-				console.log('back from deleteItem');
 				vm.displayClass();
 				// swal({
 				// 	title: 'Deleted!',
@@ -167,7 +155,6 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 		id = studentArrayToCheckIn[0].studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/togglecheckout', parentID[0], its).then(function(res) {
-			console.log('in checkoutAllStudents, res is:', res);
 			vm.displayClass();
 		});
 	}; //end checkinall

@@ -65,7 +65,6 @@ function InstuctorController(httpService, AuthFactory, $window, $location) {
 	vm.closeModal = function(){
 		vm.instEmail = '';
 		vm.instName = undefined;
-		console.log(vm.instEmail, vm.instName);
 		document.getElementById('addInstructor').style.display = 'none'
 	}
 
