@@ -27,7 +27,6 @@ router.post('/email', function(req,res){
     console.log(mailer);
 
     var mailOptions = {
-//example: from: '"Scott" scott@primeacademy.io',
         from: '"'+ mailer.from +'" ' + config.username + '', // sender address -> //YOUR GMAIL USER HERE IN STRING + email not in string! -> EXAMPLE@gmail.com
         to: mailer.toEmail, // list of receivers
         subject: 'Appointment Reminder', // Subject line

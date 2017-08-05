@@ -51,16 +51,19 @@
     <!-- start topNav -->
     <nav class="z-depth-2" ng-if="ic.notParentView">
       <div class="nav-wrapper row">
-        <div class=" col s4">
+        <div class="col s1 valign-wrapper headCol">
           <a ng-if="ic.displayLogout" href="#" class="navButton button-collapse left" data-activates="nav" data-sidenav="left" data-closeonclick="true">
             <i class="menu material-icons">menu</i>
           </a>
         </div>
-        <div class="col s4">
-          <h1 class="center-align">Abamath</h1>
+        <div class="col s9">
+
         </div>
-        <div class="col s4 ">
-          <img ng-src="public/assets/images/abamath.png" class="brand-logo right navLogo" />
+        <div class="col s1 headCol valign-wrapper">
+          <span class="header">abamath</span>
+        </div>
+        <div class="col s1 headCol valign-wrapper">
+          <img ng-src="public/assets/images/abamath.png" class="navLogo" />
         </div>
       </div>
 
@@ -107,12 +110,18 @@
 
 
     <nav class="z-depth-2" id="parentNav" ng-hide="ic.notParentView">
-      <div class="row">
-        <div class="col s4 offset-s4">
-          <h1 class="center-align">Abamath</h1>
+      <div class="nav-wrapper row">
+        <div class="col s2 headCol valign-wrapper">
+          <a href="#!parent"><span class="header">Back To Check-In</span></a>
         </div>
-        <div class="col s4 ">
-          <a href="#!students"><img ng-src="public/assets/images/abamath.png" class="brand-logo right navLogo" /></a>
+        <div class="col s8">
+
+        </div>
+        <div class="col s1 headCol valign-wrapper">
+          <span class="header">abamath</span>
+        </div>
+        <div class="col s1 headCol valign-wrapper">
+          <a href="#!students" class="navLogo"><img ng-src="public/assets/images/abamath.png" class="navLogo" /></a>
         </div>
       </div>
 

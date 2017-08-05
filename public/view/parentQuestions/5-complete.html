@@ -6,7 +6,7 @@
           <h3 class="">Great!  {{pc.currentStudent.firstName}} has been checked in!</h3>
         </div>
         <div class="col s12 center-align">
-          <a class="parentBtn" href ng-click='pc.completeParentReview(); pc.go("/parent")' type="button" name="button"><span>Complete</span></a>
+          <button class="waves-effect waves-light btn checkInBtn" ng-click='pc.completeParentReview(); pc.go("/parent")' type="button" name="button"><span>Complete</span></button>
         </div>
         <div class="col s3">
           <a href="#!receiveTexts"><h4>< Prev</h4></a>
