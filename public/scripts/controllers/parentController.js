@@ -93,7 +93,13 @@ app.controller('ParentController', function(dataService, httpService, $location)
 					name: dataService.currentStudent.firstName
 				};
 				console.log('text ', its);
+<<<<<<< HEAD
 				hs.postItem('/private/comm/text', its );
+=======
+				// hs.postItem('/private/comm/text', its ).then(function(){
+				//
+				// });
+>>>>>>> master
 			}
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;
@@ -137,7 +143,13 @@ app.controller('ParentController', function(dataService, httpService, $location)
 						phone: dataService.instructorsArray[0].phone
 					};
 					vm.pinEntry = '';
+<<<<<<< HEAD
 					hs.postItem('/private/comm/call', objectToSend);
+=======
+					// hs.postItem('/private/comm/call', objectToSend).then(function(res) {
+					//
+					// });
+>>>>>>> master
 					$location.path('/checkoutError');
 				}
 			}
