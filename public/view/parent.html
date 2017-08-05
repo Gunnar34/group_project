@@ -2,8 +2,8 @@
   <!-- checkedout -->
   <div class="col l6 s6 center-align">
     <div class="card col s6 offset-s3">
-      <h3><u>To Check In</u></h3>
-      <span class="center-align">Click your childs name</span>
+      <h3>To Check In</h3>
+      <span class="center-align">Click your child's name</span>
     </div>
     <div class="row">
       <div class="col s6" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'false'">
@@ -17,8 +17,8 @@
   <!-- checkedin -->
   <div class="col s6 center-align">
     <div class="card col s6 offset-s3">
-      <h3><u>To Check Out</u></h3>
-      <span class="center-align">Click your childs name</span>
+      <h3>To Check Out</h3>
+      <span class="center-align">Click your child's name</span>
     </div>
     <div class="row center-align">
       <div class="col s6" ng-repeat="student in pc.studentArray | orderBy:'firstName'" ng-if="student.checkedIn == 'true'">
