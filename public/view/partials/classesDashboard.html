@@ -28,7 +28,7 @@
           <th class="tb">Edit class</th>
           <th class="tb">Delete class</th>
         </tr>
-        <tr ng-repeat='x in cc.classesArray '>
+        <tr ng-repeat='x in cc.classesArray | orderBy: "startDate"'>
           <td><span ng-repeat="instructor in x.instructors">{{instructor.name}}{{$last ? '' : ', '}} </span></td>
           <td>{{ x.subject }}</td>
           <td>{{ x.location }}</td>
