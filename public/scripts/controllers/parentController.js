@@ -93,9 +93,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 					name: dataService.currentStudent.firstName
 				};
 				console.log('text ', its);
-				hs.postItem('/private/comm/text', its ).then(function(){
-
-				});
+				hs.postItem('/private/comm/text', its );
 			}
 			dataService.currentStudent.checkedIn = 'false';
 			id = dataService.currentStudent.studentID;
@@ -139,9 +137,7 @@ app.controller('ParentController', function(dataService, httpService, $location)
 						phone: dataService.instructorsArray[0].phone
 					};
 					vm.pinEntry = '';
-					hs.postItem('/private/comm/call', objectToSend).then(function(res) {
-
-					});
+					hs.postItem('/private/comm/call', objectToSend);
 					$location.path('/checkoutError');
 				}
 			}
