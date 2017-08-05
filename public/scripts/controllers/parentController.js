@@ -1,7 +1,6 @@
 app.controller('ParentController', function(dataService, httpService, $location) {
 
 	if (performance.navigation.type == 1) {
-		console.info("This page is reloaded");
 		$location.path('/parent');
 		swal('Sorry, it seems you refreshed the page, please reselect your student from the list')
 	};
@@ -52,11 +51,9 @@ app.controller('ParentController', function(dataService, httpService, $location)
 		hs.getWithID('/private/students', vm.currentID).then(function(res) {
 			vm.studentArray = res.data.students;
 			vm.instructorsArray = res.data.instructors;
-			console.log('got class info');
 			dataService.studentArray = vm.studentArray;
 			dataService.instructorsArray = vm.instructorsArray;
 			for (var i = 0; i < dataService.studentArray.length; i++) {
-				console.log(vm.studentArray[i].checkedIn);
 			}
 
 		}); //end getWithId
@@ -92,7 +89,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
 					phone: dataService.currentStudent.emergencyPhone,
 					name: dataService.currentStudent.firstName
 				};
-				console.log('text ', its);
 				hs.postItem('/private/comm/text', its ).then(function(){
 
 				});
@@ -101,7 +97,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
 			id = dataService.currentStudent.studentID;
 			parentID = id.split('$', 1);
 			hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
-				console.log('in completeParentReview, res is:', res);
 				vm.loadClassInfo();
 				showToast('Checked Out!', 2000);
 			});
@@ -110,20 +105,16 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
 	vm.enterCheckoutPin = function(thingie, pin) {
 		if (pin.length < 4) {
-			console.log('nothing happens in this case, PIN too short');
 		} else {
 			if (pin == dataService.currentStudent.pin) {
-				console.log('PIN matches!');
 				dataService.currentStudent.checkedIn = 'false';
 				id = dataService.currentStudent.studentID;
 				parentID = id.split('$', 1);
 				hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
-					console.log('in enterCheckoutPin, res is:', res);
 				});
 				vm.keypadClose();
 				showToast('Checked Out!', 2000);
 			} else {
-				console.log("PIN didn't match!  PIN:", pin, "Student PIN:", dataService.currentStudent.pin);
 				let numAttempts = attempts();
 				swal({
 					title: 'That PIN was incorrect!',
@@ -132,7 +123,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
 					imageWidth: 150,
 					imageHeight: 150
 				});
-				console.log(numAttempts);
 				vm.pinEntry = '';
 				if (numAttempts >= 3) {
 					objectToSend = {
@@ -153,13 +143,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	vm.loadEmergencyInfo = function() {
 		// load currentStudent data from service into vm to be edited
 		vm.currentStudent = dataService.currentStudent;
-		console.log('in loadEmergencyInfo', dataService.currentStudent);
 	}; // end loadEmergencyInfo
 
 	vm.emergencySubmit = function() {
 		// reverse last function, saving data from vm back to service
 		dataService.currentStudent = vm.currentStudent;
-		console.log('in emergencySubmit', dataService.currentStudent);
 		vm.go("/selfCheckout");
 	}; // end emergencySubmit
 
@@ -175,25 +163,21 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
 	vm.selfCheckout = function(boolean) {
 		dataService.currentStudent.selfCheck = boolean;
-		console.log('in selfCheckout', dataService.currentStudent);
 		vm.go('/pinSystem');
 	}; // end selfCheckout
 
 	vm.receiveTexts = function(boolean) {
 		dataService.currentStudent.receiveTexts = boolean;
-		console.log('in receiveTexts', dataService.currentStudent);
 		vm.go('/complete');
 	}; // end receiveTexts
 
 	vm.loadPinInfo = function() {
 		// load currentStudent data from service into vm to go to appropriate PIN page
 		vm.currentStudent = dataService.currentStudent;
-		console.log('in loadPinInfo', dataService.currentStudent);
 	}; // end loadPinInfo
 
 	vm.usePin = function(boolean) {
 		dataService.currentStudent.usePin = boolean;
-		console.log('in usePin', dataService.currentStudent);
 		if (boolean) {
 			// vm.go('/pinPad');  // old design, now using modal
 			document.getElementById('keypad').style.display = 'block';
@@ -204,10 +188,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
 
 	vm.enterPin = function(thingie, pin) {
 		if (pin.length < 4) {
-			console.log('nothing happens in this case, PIN too short');
 		} else {
 			dataService.currentStudent.pin = pin;
-			console.log('in enterPin', dataService.currentStudent);
 			document.getElementById('keypad').style.display = 'none';
 			vm.go('/receiveTexts');
 		}
@@ -226,7 +208,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
 		id = dataService.currentStudent.studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
-			console.log('in completeParentReview, res is:', res);
 		});
 	}; // end completeParentReview
 

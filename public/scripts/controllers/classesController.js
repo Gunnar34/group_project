@@ -1,10 +1,7 @@
 app.controller('ClassesController', function(httpService, $location) {
-  console.log('loaded CC');
-
   //make sure its an authorized user
   httpService.getItem('auth').then(function(res) {
     if (res.data.name) {
-      console.log(res.data.name);
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
       vm.userId = res.data.name._id;
@@ -42,7 +39,6 @@ app.controller('ClassesController', function(httpService, $location) {
 			for (var i = 0; i < res.data.length; i++) {
         vm.users.push({name: res.data[i].googleName, phone: res.data[i].phone})
 			}
-      console.log(vm.users);
     });
   }
 
@@ -73,14 +69,12 @@ app.controller('ClassesController', function(httpService, $location) {
       phone: vm.phone
     }
     httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
-      console.log(res);
       document.getElementById('addPhoneNumber').style.display = 'none';
       showToast('Saved', 1500);
     });
   };
 
   vm.editClass = function(index) {
-    console.log(vm.classesArray[index]);
     vm.id = vm.classesArray[index]._id;
     vm.gradesUP = vm.classesArray[index].grades;
     vm.subjectUP = vm.classesArray[index].subject;
@@ -132,7 +126,6 @@ app.controller('ClassesController', function(httpService, $location) {
     let instructorsArray = [];
     for (var i = 0; i < vm.inputNumber.length; i++) {
       let index = vm.instructor[i];
-      console.log(index);
       instructorsArray.push(vm.users[index]);
     }
     let objectToSend = {
@@ -146,9 +139,7 @@ app.controller('ClassesController', function(httpService, $location) {
       instructors: instructorsArray,
       students: []
     };
-    console.log(objectToSend);
     httpService.postItem('private/classes/classes', objectToSend).then(function(res) {
-      console.log(res);
        //repopulate classes in table
     }); //end then function
     document.getElementById('addClass').style.display = 'none'; //close modal
@@ -158,7 +149,6 @@ app.controller('ClassesController', function(httpService, $location) {
   }; //end addClass
 
   vm.populateClasses = function() {
-    console.log('in populateClasses');
     httpService.getItem('private/classes/classes').then(function(res) {
       vm.classesArray = res.data[0];
     });  //end http get popClasses
@@ -178,7 +168,6 @@ app.controller('ClassesController', function(httpService, $location) {
       confirmButtonText: 'Yes, delete it!'
     }).then(function() {
       httpService.deleteItem('/private/classes', id).then(function(res) {
-        console.log('deleted', res);
         vm.populateClasses();
       }); //end deleteItem
       // swal({
@@ -194,7 +183,6 @@ app.controller('ClassesController', function(httpService, $location) {
   }; //end remove class
 
   vm.classView = function(x) {
-    console.log(x); //takes the class Id that was clicked and stores it
     localStorage.setItem('classID', x);
     $location.path('/students');
     localStorage.setItem('classView', true);
