@@ -1,5 +1,4 @@
 app.controller('StatsController', function($http, dataService, httpService, $location) {
-  console.log('loaded sc');
   localStorage.setItem('notParentView', true);
   const vm = this;
   const ds = dataService;
@@ -44,7 +43,6 @@ app.controller('StatsController', function($http, dataService, httpService, $loc
   });
 
   hs.getItem('private/classes/logs').then(function(res) {
-  console.log('stats hit', res);
   vm.logData = res.data;
   });
 
