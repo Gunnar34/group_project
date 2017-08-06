@@ -102,10 +102,10 @@ app.controller('StudentsController', function($http, dataService, httpService, $
 
 	vm.viewEmergency = function(id) {
 		httpService.getWithID('/private/students/emergencyInfo', id).then(function(res) {
-			vm.studentName = res.data.firstName + ' ' + res.data.lastName;
-			vm.emergencyName = res.data.emergencyName;
-			vm.emergencyRelation = res.data.emergencyRelation;
-			vm.emergencyPhone = res.data.emergencyPhone;
+			vm.studentName1 = res.data.firstName + ' ' + res.data.lastName;
+			vm.emergencyName1 = res.data.emergencyName;
+			vm.emergencyRelation1 = res.data.emergencyRelation;
+			vm.emergencyPhone1 = res.data.emergencyPhone;
 		}); //end .then
 
 	}; //end viewEmrgency
