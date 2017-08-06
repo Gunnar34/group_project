@@ -105,7 +105,12 @@ app.controller('ParentController', function(dataService, httpService, $location)
 		if (pin.length < 4) {
 		} else {
 			if (pin == dataService.currentStudent.pin) {
+				its = {
+					phone: dataService.currentStudent.emergencyPhone,
+					name: dataService.currentStudent.firstName
+				};
 				dataService.currentStudent.checkedIn = 'false';
+				hs.postItem('/private/comm/text', its );
 				id = dataService.currentStudent.studentID;
 				parentID = id.split('$', 1);
 				hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
