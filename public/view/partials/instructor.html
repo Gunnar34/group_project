@@ -26,7 +26,7 @@
       <button ng-if="user.edit" ng-click="inc.editB($index); inc.getInstructors()" type="button" class="btn cancel" message="Edits Canceled" duration="1500" toast='click'><i class="material-icons small">cancel</i></button>
     </td>
     <td>
-      <button ng-click="inc.deleteInsctructor($index)" type="button" class="btn cancel"><i class="small material-icons">delete</i></button>
+      <button ng-if='user.admin === false || user.admin === undefined' ng-click="inc.deleteInsctructor($index)" type="button" class="btn cancel"><i class="small material-icons">delete</i></button>
     </td>
   </tr>
 </table>
