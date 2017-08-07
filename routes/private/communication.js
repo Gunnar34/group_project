@@ -88,6 +88,7 @@ router.post('/call', function(req, res) {
 });
 
 router.post('/index.xml', function(req, res){
+  
   console.log('xml hit');
   var twimlResponse = new VoiceResponse();
 
