@@ -14,7 +14,7 @@ var http = require("http");
 setInterval(function() {
 	console.log('ping');
     http.get("http://hostabacall.herokuapp.com");
-}, 120000); // every 5 minutes (300000)
+}, 120000); // every 2 minutes 
 //uses
 app.use('/public', express.static('public'));
 app.use(bodyParser.json());
