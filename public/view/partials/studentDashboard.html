@@ -155,12 +155,11 @@
     <div id="showEmergency" class='modal'>
       <div id="emergency" class="modal-content animate">
         <div class="display center-align">
-          <h3>{{sc.studentName | uppercase}}</h3>
-          <h5>Emergency Contact: {{sc.emergencyName}}</h5>
-          <h5>Phone Number: {{sc.emergencyPhone | tel}}</h5>
-          <h5>Relation: {{sc.emergencyRelation}}</h5>
-          <button onclick="document.getElementById('showEmergency').style.display = 'none'; document.getElementById('editStudent').style.display = 'block'" class='btn' type="button" name="button">Update Information</button>
-          <button class="btn cancel" onclick="document.getElementById('showEmergency').style.display = 'none'">cancel</button>
+          <h3>{{sc.studentName1 | uppercase}}</h3>
+          <h5>Emergency Contact: {{sc.emergencyName1}}</h5>
+          <h5>Phone Number: {{sc.emergencyPhone1 | tel}}</h5>
+          <h5>Relation: {{sc.emergencyRelation1}}</h5>
+          <button class="btn cancel" onclick="document.getElementById('showEmergency').style.display = 'none'">close</button>
         </div>
       </div>
     </div>
