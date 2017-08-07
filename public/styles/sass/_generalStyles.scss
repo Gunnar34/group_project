@@ -10,6 +10,10 @@ html {
   margin-top: 40px;
 }
 
+.marginTop2 {
+  margin-top: 20px;
+}
+
 .marginAuto {
   margin: auto;
 }
@@ -117,7 +121,7 @@ td {
     overflow-y: auto;
      -webkit-overflow-scrolling: touch;
      min-height: 10%;
-     max-height: 100vh;
+     max-height: 90vh;
 }
 
 .animate {
