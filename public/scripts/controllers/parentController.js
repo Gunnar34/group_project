@@ -203,6 +203,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
 		id = dataService.currentStudent.studentID;
 		parentID = id.split('$', 1);
 		hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
+			vm.loadClassInfo();
+			vm.go("/parent");
 		});
 	}; // end completeParentReview
 
