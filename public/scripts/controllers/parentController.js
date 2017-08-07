@@ -175,7 +175,6 @@ app.controller('ParentController', function(dataService, httpService, $location)
 	vm.usePin = function(boolean) {
 		dataService.currentStudent.usePin = boolean;
 		if (boolean) {
-			// vm.go('/pinPad');  // old design, now using modal
 			document.getElementById('keypad').style.display = 'block';
 		} else {
 			vm.go('/receiveTexts');
