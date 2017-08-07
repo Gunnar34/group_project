@@ -5,6 +5,7 @@ var nodemailer = require('nodemailer');
 var twilio = require('twilio');
 var VoiceResponse = twilio.twiml.VoiceResponse;
 
+
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -65,7 +66,7 @@ router.post('/text', function(req, res) {
 // to make a call
 router.post('/call', function(req, res) {
 
-   var url = 'https://hostabacall.herokuapp.com/index.xml';
+   var url = 'http://localhost:3000/private/comm/index.xml';
 
    var options = {
        to: req.body.phone,
@@ -86,6 +87,16 @@ router.post('/call', function(req, res) {
      });
 });
 
+router.post('/index.xml', function(req, res){
+  console.log('xml hit');
+  var twimlResponse = new VoiceResponse();
+
+          twimlResponse.say('Hello. Please go to the student check in computer. There has been a Pin failure. Please go to the student check in computer. Again, there has been a Pin failure.',
+                            { voice: 'alice' , language: "en-gb"});
+
+          res.send(twimlResponse.toString());
+
+});
 
 
 module.exports = router;

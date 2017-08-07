@@ -60,7 +60,7 @@ app.config(function($routeProvider) {
 		controller: 'StatsController',
 		controllerAs: 'sc'
 	});
-
+ 
 }); //end config
 
 app.filter('tel', function() {

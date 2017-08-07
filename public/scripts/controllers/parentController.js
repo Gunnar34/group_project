@@ -110,6 +110,11 @@ app.controller('ParentController', function(dataService, httpService, $location)
 				parentID = id.split('$', 1);
 				hs.putItem('private/students/init', parentID[0], dataService.currentStudent).then(function(res) {
 				});
+				its = {
+					phone: dataService.currentStudent.emergencyPhone,
+					name: dataService.currentStudent.firstName
+				};
+				hs.postItem('/private/comm/text', its );
 				vm.keypadClose();
 				showToast('Checked Out!', 2000);
 			} else {

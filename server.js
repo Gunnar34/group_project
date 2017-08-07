@@ -10,7 +10,11 @@ var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
 var database = require('./utils/database');
 var port = process.env.PORT || 3000;
-
+var http = require("http");
+setInterval(function() {
+	console.log('ping');
+    http.get("http://hostabacall.herokuapp.com");
+}, 120000); // every 5 minutes (300000)
 //uses
 app.use('/public', express.static('public'));
 app.use(bodyParser.json());
