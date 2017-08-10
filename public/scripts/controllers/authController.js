@@ -12,5 +12,5 @@ app.controller('AuthController', function (AuthFactory) {
     	imageHeight: 150,
     	animation: false
     });
-  }
+  };
 });

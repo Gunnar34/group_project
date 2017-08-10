@@ -11,8 +11,10 @@ var private = require('./routes/private/index');
 var database = require('./utils/database');
 var port = process.env.PORT || 3000;
 var http = require("http");
+// ping abacall
 setInterval(function() {
     http.get("http://hostabacall.herokuapp.com");
+    console.log('ping');
 }, 120000); // every 2 minutes (120000)
 //uses
 app.use('/public', express.static('public'));
