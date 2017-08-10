@@ -37,10 +37,10 @@ app.controller('ClassesController', function(httpService, $location) {
   vm.getInstructors = function() {
 		httpService.getItem('private/instructor').then(function(res) {
 			for (var i = 0; i < res.data.length; i++) {
-        vm.users.push({name: res.data[i].googleName, phone: res.data[i].phone})
+        vm.users.push({name: res.data[i].googleName, phone: res.data[i].phone});
 			}
     });
-  }
+  };
 
   var showToast = function(message, duration) {
     Materialize.toast(message, duration);
@@ -67,7 +67,7 @@ app.controller('ClassesController', function(httpService, $location) {
   vm.savePhone = function() {
     let its = {
       phone: vm.phone
-    }
+    };
     httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
       document.getElementById('addPhoneNumber').style.display = 'none';
       showToast('Saved', 1500);
@@ -102,7 +102,7 @@ app.controller('ClassesController', function(httpService, $location) {
   vm.cancelEdit = function(){
     document.getElementById('editClass').style.display = 'none';
     vm.populateClasses();
-  }
+  };
 
   vm.saveEdit = function() {
     let itemToSend = {
