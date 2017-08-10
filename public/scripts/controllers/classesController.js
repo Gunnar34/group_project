@@ -81,7 +81,7 @@ app.controller('ClassesController', function(httpService, $location) {
     vm.startDateUP = vm.classesArray[index].startDate;
     vm.endDateUP = vm.classesArray[index].endDate;
     vm.startTimeUP = vm.classesArray[index].startTime;
-    vm.endTimeUP = vm.classesArray[index].startTime;
+    vm.endTimeUP = vm.classesArray[index].endTime;
     vm.locationUP = vm.classesArray[index].location;
     vm.instructorsUP = vm.classesArray[index].instructors;
     document.getElementById('editClass').style.display = 'block';
