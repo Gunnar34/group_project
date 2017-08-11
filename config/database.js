@@ -5,4 +5,4 @@
  * @todo Update to match the path of your actual database.
  * @module config/database
  */
-module.exports = 'mongodb://localhost:27017/abaclasses';
+module.exports = process.env.MONGODB_URI || 'mongodb://localhost:27017/abaclasses';
