@@ -1,7 +1,5 @@
-# Abamath Check-In ![abamath logo][logo]
-
-Team Abamath
-![Group Photo][group]
+![abamath logo][logo]
+# Abamath Check-In
 
 ## About Abamath Check-In
 This is a MEAN stack application designed to keep track of class rosters for Abamath programming classes and provide an interface for parents to check students in and out of class.  Please navigate through the app using visible buttons and the hamburger menu in the upper-left.
@@ -53,6 +51,9 @@ On this page, view number of students by location, attendance, PIN users, and In
 ## Credits
 Team Abamath:  Noah Rolf, Parker Walker, Peter Wildberger, and Ben Zeise
 
+![Group Photo][group]
+And Instructors: Sam and Adalee
+
 ### Technologies Used
 * Google OAuth
 * Passport
@@ -66,6 +67,9 @@ Team Abamath:  Noah Rolf, Parker Walker, Peter Wildberger, and Ben Zeise
 * Chart.js
 * Xeditable
 * SweetAlerts
+
+### Special Thanks
+Thanks to Luke Schlangen, Abamath instructors Sam and Adalee, Omega instructors Dev, Millie, Huck, Scott, Antoinette, and the entire Omega Cohort and the rest of Prime!
 
 [group]: https://github.com/Gunnar34/group_project/blob/master/public/assets/images/groupphoto.png
  [logo]:https://github.com/Gunnar34/group_project/blob/master/public/assets/images/abamath.png
