@@ -58,12 +58,11 @@ And Instructors: Sam and Adalee
 * Google OAuth
 * Passport
 * JavaScript
-* jQuery
 * Mongo DB
 * Express
 * AngularJS
 * Node.js
-* Angular Materialize
+* Materialize
 * Chart.js
 * Xeditable
 * SweetAlerts
