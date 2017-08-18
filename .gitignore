@@ -3,4 +3,4 @@ node_modules
 *-log
 config/auth.js
 package-lock.json
-public/styles/sass/main.min.css
+routes/private/communication.js

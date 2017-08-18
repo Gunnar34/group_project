@@ -3,7 +3,7 @@ var router = express.Router();
 var twilio = require('twilio');
 var VoiceResponse = twilio.twiml.VoiceResponse;
 
-var client = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+var client = twilio( process.env.accountSid, process.env.authToken);
 // var twiml = new twilio.TwimlResponse();
 //    twiml.say("Hello from your pals at Twilio! Have fun.");
 //    res.writeHead(200, {'Content-Type': 'text/xml'});
@@ -14,10 +14,18 @@ var client = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 router.post('/text', function(req, res) {
   console.log("req body: ", req.body);
   var d = new Date();
+  var hours = d.getHours();
+  var min = d.getMinutes();
+  if (min < 10) {
+    min = "0" + min;
+  }
+  var ampm = hours >= 12 ? 'pm' : 'am';
+ hours = hours % 12;
+ hours = hours ? hours : 12; // the hour '0' should be '12'
   client.messages.create({
     to: '+1' + req.body.phone,
-    from: process.env.NUM_SRC,
-    body: 'From Abamath: Your student ' + req.body.name +', was checked out at '+ d.getHours() + ':' + d.getMinutes() + '.' // plain text body,
+    from:  process.env.numberSRC,
+    body: 'From Abamath: Your student ' + req.body.name +', was checked out at '+ hours + ':' + min + ampm + '.' // plain text body,
   }, function(err, message) {
     if (err) {
       console.log(err);
@@ -36,7 +44,7 @@ router.post('/call', function(req, res) {
 
    var options = {
        to: req.body.phone,
-       from: process.env.NUM_SRC,
+       from: '+16512731107',
        url: url,
    };
 

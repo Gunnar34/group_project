@@ -141,11 +141,12 @@ app.controller('ClassesController', function(httpService, $location) {
     };
     httpService.postItem('private/classes/classes', objectToSend).then(function(res) {
        //repopulate classes in table
+         vm.populateClasses();
     }); //end then function
     document.getElementById('addClass').style.display = 'none'; //close modal
     document.getElementById('addClassForm').reset();
     vm.inputNumber = [0];
-    vm.populateClasses();
+
   }; //end addClass
 
   vm.populateClasses = function() {

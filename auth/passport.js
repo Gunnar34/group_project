@@ -14,7 +14,7 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 /** ---------- REQUIRE CUSTOM APP MODULES ---------- **/
-var config = require('../config/auth');
+// var config = require('../config/auth');
 
 // all db queries moved to a service layer, necessary for proper unit testing
 var logData = require('../models/log.js');
@@ -48,9 +48,9 @@ passport.deserializeUser(function(id, done) {
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
 passport.use('google', new GoogleStrategy({
   // identify ourselves to Google and request Google user data
-  clientID: config.googleAuth.clientId,
-  clientSecret: config.googleAuth.clientSecret,
-  callbackURL: config.googleAuth.callbackUrl,
+  clientID: process.env.clientId,
+  clientSecret: process.env.clientSecret,
+  callbackURL: process.env.callbackUrl,
 }, function(token, refreshToken, profile, done) {
   // Google has responded
 
@@ -66,10 +66,10 @@ passport.use('google', new GoogleStrategy({
     }
 
     // user does not exist in our database, let's create one!
-    UserService.findUserByEmail(profile.emails[0].value, function(err, user) {
-      if (user === null || err) {
-        return done(err);
-      }
+    // UserService.findUserByEmail(profile.emails[0].value, function(err, user) {
+    //   if (user === null || err) {
+    //     return done(err);
+    //   }
       UserService.createGoogleUser(profile.id, token, profile.displayName,
         profile.emails[0].value, /* we take first email address */
         function(err, user) {
@@ -81,7 +81,7 @@ passport.use('google', new GoogleStrategy({
         });
     });
 
-  });
+  // });
 }));
 
 module.exports = passport;
