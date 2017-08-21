@@ -30,7 +30,7 @@ router.get('/google', passport.authenticate('google', {
  */
 router.get('/google/callback', passport.authenticate('google', {
   successRedirect: '/#!/classes', // take them to their private data
-  failureRedirect: '/' // take them to failure to try again})
+  failureRedirect: '/#!/failure' // take them to failure to try again})
 }));
 /**
  * GET /auth

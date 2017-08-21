@@ -56,11 +56,13 @@ passport.use('google', new GoogleStrategy({
 
   // does this user exist in our database already?
   UserService.findUserByGoogleId(profile.id, function(err, user) {
+
     if (err) {
       return done(err);
     }
 
     if (user) { // user does exist!
+      console.log('fubgi',user);
       return done(null, user);
 
     }
@@ -76,7 +78,7 @@ passport.use('google', new GoogleStrategy({
           if (err) {
             return done(err);
           }
-
+          console.log('cgu', user);
           return done(null, user);
         });
     });
