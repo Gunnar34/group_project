@@ -53,37 +53,61 @@ passport.use('google', new GoogleStrategy({
   callbackURL: process.env.callbackUrl,
 }, function(token, refreshToken, profile, done) {
   // Google has responded
-
   // does this user exist in our database already?
-  UserService.findUserByGoogleId(profile.id, function(err, user) {
+    UserService.findUserByGoogleId(profile.id, function (err, user) {
+        if (err) {
+          return done(err);
+        }
 
-    if (err) {
-      return done(err);
-    }
-
-    if (user) { // user does exist!
-      console.log('fubgi',user);
-      return done(null, user);
-
-    }
-
-    // user does not exist in our database, let's create one!
-    // UserService.findUserByEmail(profile.emails[0].value, function(err, user) {
-    //   if (user === null || err) {
-    //     return done(err);
-    //   }
-      UserService.createGoogleUser(profile.id, token, profile.displayName,
-        profile.emails[0].value, /* we take first email address */
-        function(err, user) {
-          if (err) {
-            return done(err);
-          }
-          console.log('cgu', user);
+        if (user) { // user does exist!
           return done(null, user);
-        });
-    });
+        }
 
-  // });
-}));
+        // user does not exist in our database, let's create one!
+        UserService.createGoogleUser(profile.id, token, profile.displayName,
+          profile.emails[0].value, /* we take first email address */
+          function (err, user) {
+            if (err) {
+              return done(err);
+            }
 
-module.exports = passport;
+            return done(null, user);
+          });
+      });
+
+  }));
+
+  module.exports = passport;
+//   // does this user exist in our database already?
+//   UserService.findUserByGoogleId(profile.id, function(err, user) {
+//
+//     if (err) {
+//       return done(err);
+//     }
+//
+//     if (user) { // user does exist!
+//       console.log('fubgi',user);
+//       return done(null, user);
+//
+//     }
+//
+//     // user does not exist in our database, let's create one!
+//     // UserService.findUserByEmail(profile.emails[0].value, function(err, user) {
+//     //   if (user === null || err) {
+//     //     return done(err);
+//     //   }
+//       UserService.createGoogleUser(profile.id, token, profile.displayName,
+//         profile.emails[0].value, /* we take first email address */
+//         function(err, user) {
+//           if (err) {
+//             return done(err);
+//           }
+//           console.log('cgu', user);
+//           return done(null, user);
+//         });
+//     });
+//
+//   // });
+// }));
+//
+// module.exports = passport;
