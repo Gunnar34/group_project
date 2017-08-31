@@ -83,7 +83,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
           phone: dataService.currentStudent.emergencyPhone,
           name: dataService.currentStudent.firstName
         };
-        hs.postItem('/private/comm/text', its);
+        // hs.postItem('/private/comm/text', its);
+        console.log('Texting feature disabled for demonstration.');
       }
       dataService.currentStudent.checkedIn = 'false';
       id = dataService.currentStudent.studentID;
@@ -109,7 +110,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
 						name: dataService.currentStudent.firstName
 					};
 					console.log('send text', its);
-					hs.postItem('/private/comm/text', its);
+					// hs.postItem('/private/comm/text', its);
+          console.log('Texting feature disabled for demonstration.');
 					showToast('Checked Out!', 2000);
 				});
 
@@ -130,7 +132,8 @@ app.controller('ParentController', function(dataService, httpService, $location)
             phone: dataService.instructorsArray[0].phone
           };
           vm.pinEntry = '';
-          hs.postItem('/private/comm/call', objectToSend);
+          // hs.postItem('/private/comm/call', objectToSend);
+          console.log('Calling feature disabled for demonstration.');
           $location.path('/checkoutError');
         }
       }
