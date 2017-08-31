@@ -5,11 +5,11 @@ app.controller('ClassesController', function(httpService, $location) {
       vm.admin = res.data.name.admin;
       vm.name = res.data.name.googleName;
       vm.userId = res.data.name._id;
-      if (!res.data.name.phone) {
-        setTimeout(function() {
-          document.getElementById('addPhoneNumber').style.display = 'block';
-        }, 600);
-      }
+      // if (!res.data.name.phone) {
+      //   setTimeout(function() {
+      //     document.getElementById('addPhoneNumber').style.display = 'block';
+      //   }, 600);
+      // }
     } else {
       swal({
         title: 'Oops!',
@@ -64,15 +64,15 @@ app.controller('ClassesController', function(httpService, $location) {
     }
   }; //end window.onclick //allows clicking outside the modal to close
 
-  vm.savePhone = function() {
-    let its = {
-      phone: vm.phone
-    };
-    httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
-      document.getElementById('addPhoneNumber').style.display = 'none';
-      showToast('Saved', 1500);
-    });
-  };
+  // vm.savePhone = function() {
+  //   let its = {
+  //     phone: vm.phone
+  //   };
+  //   httpService.putItem('/private/instructor', vm.userId, its).then(function(res) {
+  //     document.getElementById('addPhoneNumber').style.display = 'none';
+  //     showToast('Saved', 1500);
+  //   });
+  // };
 
   vm.editClass = function(index) {
     vm.id = vm.classesArray[index]._id;
