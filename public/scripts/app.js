@@ -36,7 +36,7 @@ app.config(function($routeProvider) {
 		controller: 'ParentController',
 		controllerAs: 'pc'
 	}).when('/selfCheckout', {
-		templateUrl: 'public/view/parentQuestions/2-selfCheckOut.html',
+		templateUrl: 'public/view/parentQuestions/2-selfCheckout.html',
 		controller: 'ParentController',
 		controllerAs: 'pc'
 	}).when('/receiveTexts', {
