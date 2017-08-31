@@ -8,12 +8,12 @@ class Student {
     this.emergencyName = emergencyName;
     this.emergencyPhone = emergencyPhone;
     this.emergencyRelation = emergencyRelation;
-    this.selfCheck = false;
-    this.receiveTexts = false;
-    this.usePin = false;
-    this.pin = null;
+    this.selfCheck = 'false';
+    this.receiveTexts = 'false';
+    this.usePin = 'false';
+    this.pin = 'null';
     this.checkedIn = 'false';
-    this.initialized = false;
+    this.initialized = 'false';
 
   } // end constructor
 }
